@@ -530,24 +530,24 @@ module.exports = {
 
 ### 阶段五：字符串工具（预计 1-2 天）
 
-- [ ] 实现 string 模块（15个函数）
-  - [ ] camelCase, kebabCase, snakeCase, pascalCase
-  - [ ] capitalize, upperFirst, lowerFirst
-  - [ ] trim, trimStart, trimEnd
-  - [ ] truncate, padStart, padEnd
-  - [ ] repeat, template
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 string 模块（15个函数）
+  - [x] camelCase, kebabCase, snakeCase, pascalCase
+  - [x] capitalize, upperFirst, lowerFirst
+  - [x] trim, trimStart, trimEnd
+  - [x] truncate, padStart, padEnd
+  - [x] repeat, template
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段六：函数工具（预计 2 天）
 
-- [ ] 实现 function 模块（10个函数）
-  - [ ] debounce, throttle
-  - [ ] once, memoize
-  - [ ] curry, partial, bind
-  - [ ] negate, compose, pipe
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 function 模块（10个函数）
+  - [x] debounce, throttle
+  - [x] once, memoize
+  - [x] curry, partial, bind
+  - [x] negate, compose, pipe
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段七：数字和数学工具（预计 1 天）
 

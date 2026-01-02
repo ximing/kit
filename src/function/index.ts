@@ -3,7 +3,13 @@
  * @module function
  */
 
-// Function utilities will be implemented in Phase 6
-// This is a placeholder to satisfy module exports
-
-export {};
+export { debounce } from './debounce';
+export { throttle } from './throttle';
+export { once } from './once';
+export { memoize } from './memoize';
+export { curry } from './curry';
+export { partial } from './partial';
+export { bind } from './bind';
+export { negate } from './negate';
+export { compose } from './compose';
+export { pipe } from './pipe';
