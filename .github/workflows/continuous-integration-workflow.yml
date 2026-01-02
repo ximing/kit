@@ -49,8 +49,4 @@ jobs:
           node-version: 'lts/*'
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run build:es2015
-      - run: pnpm run build:esm5
-      - run: pnpm run build:cjs
-      - run: pnpm run build:umd
-      - run: pnpm run build:types
+      - run: pnpm run build
