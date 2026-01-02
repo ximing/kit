@@ -518,15 +518,15 @@ module.exports = {
 
 ### 阶段四：对象工具（预计 2 天）
 
-- [ ] 实现 object 模块（15个函数）
-  - [ ] clone, cloneDeep
-  - [ ] merge, mergeDeep
-  - [ ] pick, omit
-  - [ ] get, set, has
-  - [ ] keys, values, entries
-  - [ ] mapKeys, mapValues, invert
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 object 模块（15个函数）
+  - [x] clone, cloneDeep
+  - [x] merge, mergeDeep
+  - [x] pick, omit
+  - [x] get, set, has
+  - [x] keys, values, entries
+  - [x] mapKeys, mapValues, invert
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段五：字符串工具（预计 1-2 天）
 

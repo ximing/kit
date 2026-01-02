@@ -3,7 +3,18 @@
  * @module object
  */
 
-// Object functions will be implemented in Phase 4
-// This is a placeholder to satisfy module exports
-
-export {};
+export { clone } from './clone';
+export { cloneDeep } from './cloneDeep';
+export { merge } from './merge';
+export { mergeDeep } from './mergeDeep';
+export { pick } from './pick';
+export { omit } from './omit';
+export { get } from './get';
+export { set } from './set';
+export { has } from './has';
+export { keys } from './keys';
+export { values } from './values';
+export { entries } from './entries';
+export { mapKeys } from './mapKeys';
+export { mapValues } from './mapValues';
+export { invert } from './invert';

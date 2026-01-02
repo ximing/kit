@@ -20,7 +20,7 @@ export function flatten<T>(array: any[], depth: number = 1): T[] {
 
   for (const item of array) {
     if (Array.isArray(item) && depth > 0) {
-      result.push(...flatten(item, depth - 1));
+      result.push(...(flatten(item, depth - 1) as T[]));
     } else {
       result.push(item as T);
     }
@@ -45,7 +45,7 @@ export function flattenDeep<T>(array: any[]): T[] {
 
   for (const item of array) {
     if (Array.isArray(item)) {
-      result.push(...flattenDeep(item));
+      result.push(...(flattenDeep(item) as T[]));
     } else {
       result.push(item as T);
     }
