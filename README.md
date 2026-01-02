@@ -2,6 +2,7 @@
 
 ![Build Status](https://github.com/ximing/kit/workflows/CI/badge.svg)
 [![npm version](https://badge.fury.io/js/%40rabjs%2Fkit.svg)](https://badge.fury.io/js/%40rabjs%2Fkit)
+[![codecov](https://codecov.io/gh/ximing/kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/ximing/kit)
 
 A comprehensive TypeScript utility library with 100+ helper functions for arrays, objects, strings, functions, numbers, dates, promises, and more. Similar to lodash but with full TypeScript support and tree-shaking friendly.
 

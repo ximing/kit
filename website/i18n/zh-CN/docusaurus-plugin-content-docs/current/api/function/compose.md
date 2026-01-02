@@ -1,0 +1,56 @@
+---
+id: compose
+title: compose
+description: 'Creates a function that is the composition of the provided functions, where each successive invocation is supplied the return value of the previous. Functions are executed from right to left.'
+---
+
+# `compose`
+
+Creates a function that is the composition of the provided functions,
+where each successive invocation is supplied the return value of the previous.
+Functions are executed from right to left.
+
+## 参数
+
+| 参数    | 类型  | 描述                       |
+| ------- | ----- | -------------------------- |
+| `funcs` | `any` | - The functions to compose |
+
+## 返回值
+
+- **类型**: `any`
+- **描述**: Returns the new composite function
+
+## 示例
+
+```typescript
+* const add = (x: number) => x + 1;
+ * const multiply = (x: number) => x * 2;
+ * const composed = compose(add, multiply);
+ * composed(5); // => 11 (multiply(5) = 10, then add(10) = 11)
+ *
+ *
+```
+
+```typescript
+* const toUpper = (str: string) => str.toUpperCase();
+ * const exclaim = (str: string) => `${str}!`;
+ * const shout = compose(exclaim, toUpper);
+ * shout('hello'); // => 'HELLO!'
+```
+
+## 交互式示例
+
+```tsx live
+function composeExample() {
+  return (
+    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
+      <h4>`compose` Example</h4>
+      <p>
+        Creates a function that is the composition of the provided functions, where each successive invocation is
+        supplied the return value of the previous. Functions are executed from right to left.
+      </p>
+    </div>
+  );
+}
+```

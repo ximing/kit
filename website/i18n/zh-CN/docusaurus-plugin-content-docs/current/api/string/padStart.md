@@ -1,0 +1,43 @@
+---
+id: padStart
+title: padStart
+description: "Pads string on the left side if it's shorter than length."
+---
+
+# `padStart`
+
+Pads string on the left side if it's shorter than length.
+
+## 参数
+
+| 参数     | 类型  | 描述                                        |
+| -------- | ----- | ------------------------------------------- |
+| `str`    | `any` | - The string to pad                         |
+| `length` | `any` | - The padding length                        |
+| `chars`  | `any` | - The string used as padding (default: ' ') |
+
+## 返回值
+
+- **类型**: `any`
+- **描述**: The padded string
+
+## 示例
+
+```typescript
+* padStart('abc', 6) // => '   abc'
+ * padStart('abc', 6, '_-') // => '_-_abc'
+ * padStart('abc', 3) // => 'abc'
+```
+
+## 交互式示例
+
+```tsx live
+function padStartExample() {
+  return (
+    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
+      <h4>`padStart` Example</h4>
+      <p>Pads string on the left side if it's shorter than length.</p>
+    </div>
+  );
+}
+```

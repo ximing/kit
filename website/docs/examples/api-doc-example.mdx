@@ -1,0 +1,249 @@
+---
+sidebar_position: 3
+---
+
+import ApiFunction, { ApiCategory } from '@site/src/components/ApiDoc';
+
+# API Documentation Component Example
+
+This page demonstrates how to use the ApiDoc component to create beautiful API documentation.
+
+<ApiCategory title="Array Utilities" description="Functions for working with arrays">
+
+<ApiFunction
+  name="chunk"
+  description="Splits an array into chunks of a specified size. The last chunk may contain fewer elements if the array length is not evenly divisible by the chunk size."
+  signature="function chunk<T>(array: T[], size: number): T[][]"
+  params={[
+    {
+      name: 'array',
+      type: 'T[]',
+      description: 'The array to be split into chunks',
+    },
+    {
+      name: 'size',
+      type: 'number',
+      description: 'The size of each chunk. Must be a positive integer.',
+    }
+  ]}
+  returns={{
+    type: 'T[][]',
+    description: 'A two-dimensional array where each sub-array contains at most `size` elements',
+  }}
+  examples={[
+    {
+      title: 'Basic usage',
+      code: `const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+const chunks = chunk(numbers, 3);
+console.log(chunks);
+// Output: [[1, 2, 3], [4, 5, 6], [7, 8]]`,
+      language: 'typescript',
+    },
+    {
+      title: 'With strings',
+      code: `const letters = ['a', 'b', 'c', 'd', 'e'];
+const chunks = chunk(letters, 2);
+console.log(chunks);
+// Output: [['a', 'b'], ['c', 'd'], ['e']]`,
+      language: 'typescript',
+    }
+  ]}
+  since="1.0.0"
+/>
+
+<ApiFunction
+  name="compact"
+  description="Creates an array with all falsy values removed. Values false, null, 0, empty string, undefined, and NaN are falsy."
+  signature="function compact<T>(array: T[]): T[]"
+  params={[
+    {
+      name: 'array',
+      type: 'T[]',
+      description: 'The array to compact',
+    }
+  ]}
+  returns={{
+    type: 'T[]',
+    description: 'Returns the new array of filtered values',
+  }}
+  examples={[
+    {
+      title: 'Remove falsy values',
+      code: `const mixed = [0, 1, false, 2, '', 3, null, undefined, NaN];
+const compacted = compact(mixed);
+console.log(compacted);
+// Output: [1, 2, 3]`,
+      language: 'typescript',
+    }
+  ]}
+  since="1.0.0"
+/>
+
+<ApiFunction
+  name="flatten"
+  description="Flattens a nested array structure into a single-level array. Can optionally flatten to a specific depth."
+  signature="function flatten<T>(array: any[], depth?: number): T[]"
+  params={[
+    {
+      name: 'array',
+      type: 'any[]',
+      description: 'The array to flatten',
+    },
+    {
+      name: 'depth',
+      type: 'number',
+      description: 'The maximum recursion depth',
+      optional: true,
+      defaultValue: 'Infinity',
+    }
+  ]}
+  returns={{
+    type: 'T[]',
+    description: 'Returns the new flattened array',
+  }}
+  examples={[
+    {
+      title: 'Flatten completely',
+      code: `const nested = [1, [2, [3, [4]], 5]];
+const flat = flatten(nested);
+console.log(flat);
+// Output: [1, 2, 3, 4, 5]`,
+      language: 'typescript',
+    },
+    {
+      title: 'Flatten with depth',
+      code: `const nested = [1, [2, [3, [4]], 5]];
+const flat = flatten(nested, 2);
+console.log(flat);
+// Output: [1, 2, 3, [4], 5]`,
+      language: 'typescript',
+    }
+  ]}
+  since="1.0.0"
+/>
+
+<ApiFunction
+  name="oldFunction"
+  description="This function is deprecated and will be removed in version 2.0. Use newFunction instead."
+  signature="function oldFunction(): void"
+  deprecated={true}
+  deprecatedMessage="This function will be removed in v2.0. Please use newFunction() instead."
+  returns={{
+    type: 'void',
+    description: 'Returns nothing',
+  }}
+  since="0.5.0"
+/>
+
+</ApiCategory>
+
+<ApiCategory title="String Utilities" description="Functions for working with strings">
+
+<ApiFunction
+  name="capitalize"
+  description="Converts the first character of a string to uppercase and the remaining characters to lowercase."
+  signature="function capitalize(str: string): string"
+  params={[
+    {
+      name: 'str',
+      type: 'string',
+      description: 'The string to capitalize',
+    }
+  ]}
+  returns={{
+    type: 'string',
+    description: 'The capitalized string',
+  }}
+  examples={[
+    {
+      title: 'Basic usage',
+      code: `const result = capitalize('hello world');
+console.log(result);
+// Output: "Hello world"`,
+      language: 'typescript',
+    }
+  ]}
+  since="1.0.0"
+/>
+
+<ApiFunction
+  name="camelCase"
+  description="Converts a string to camelCase format."
+  signature="function camelCase(str: string): string"
+  params={[
+    {
+      name: 'str',
+      type: 'string',
+      description: 'The string to convert',
+    }
+  ]}
+  returns={{
+    type: 'string',
+    description: 'The camelCase string',
+  }}
+  examples={[
+    {
+      title: 'From kebab-case',
+      code: `const result = camelCase('hello-world');
+console.log(result);
+// Output: "helloWorld"`,
+      language: 'typescript',
+    },
+    {
+      title: 'From snake_case',
+      code: `const result = camelCase('hello_world');
+console.log(result);
+// Output: "helloWorld"`,
+      language: 'typescript',
+    }
+  ]}
+  since="1.0.0"
+/>
+
+</ApiCategory>
+
+## Features
+
+The ApiDoc component provides:
+
+- **Clear function signatures** with TypeScript types
+- **Parameter documentation** with optional/required indicators and default values
+- **Return type documentation** with descriptions
+- **Multiple examples** with syntax highlighting
+- **Version information** with "since" badges
+- **Deprecation warnings** for outdated functions
+- **Responsive design** that works on all screen sizes
+- **Dark mode support** that respects user preferences
+
+## Usage in MDX Files
+
+To use the ApiDoc component in your MDX files:
+
+1. Import the component at the top of your MDX file:
+```tsx
+import ApiFunction, { ApiCategory } from '@site/src/components/ApiDoc';
+```
+
+2. Group related functions using `ApiCategory`:
+```tsx
+<ApiCategory title="Category Name" description="Category description">
+  {/* Your ApiFunction components here */}
+</ApiCategory>
+```
+
+3. Document each function using `ApiFunction`:
+```tsx
+<ApiFunction
+  name="functionName"
+  description="Function description"
+  signature="function signature"
+  params={[/* parameter definitions */]}
+  returns={{/* return type info */}}
+  examples={[/* code examples */]}
+  since="1.0.0"
+/>
+```
+
+## Try it yourself!
+
+Edit this page to see how easy it is to create professional API documentation using the ApiDoc component.
