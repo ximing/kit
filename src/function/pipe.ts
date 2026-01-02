@@ -27,9 +27,11 @@ export function pipe<R>(...funcs: Array<(arg: any) => any>): (arg: any) => R {
     return funcs[0];
   }
 
-  return funcs.reduce(
-    (a, b) =>
-      (...args: any[]) =>
-        b(a(...args))
-  );
+  return function piped(...args: any[]): any {
+    let result = args[0];
+    for (let i = 0; i < funcs.length; i++) {
+      result = funcs[i](result);
+    }
+    return result;
+  } as (arg: any) => R;
 }

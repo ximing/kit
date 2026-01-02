@@ -27,9 +27,11 @@ export function compose<R>(...funcs: Array<(arg: any) => any>): (arg: any) => R 
     return funcs[0];
   }
 
-  return funcs.reduce(
-    (a, b) =>
-      (...args: any[]) =>
-        a(b(...args))
-  );
+  return function composed(...args: any[]): any {
+    let result = args[0];
+    for (let i = funcs.length - 1; i >= 0; i--) {
+      result = funcs[i](result);
+    }
+    return result;
+  } as (arg: any) => R;
 }

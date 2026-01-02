@@ -32,7 +32,7 @@ export function mergeDeep<T extends object, S extends object>(
             result[key] = mergeDeep(
               Object(targetValue),
               sourceValue as any
-            ) as any;
+            );
           } else {
             result[key] = sourceValue;
           }
