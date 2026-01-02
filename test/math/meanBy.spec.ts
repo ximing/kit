@@ -7,7 +7,11 @@ describe('meanBy', () => {
   });
 
   it('should calculate mean of computed values', () => {
-    const objects = [{ a: 1, b: 5 }, { a: 2, b: 3 }, { a: 3, b: 1 }];
+    const objects = [
+      { a: 1, b: 5 },
+      { a: 2, b: 3 },
+      { a: 3, b: 1 },
+    ];
     expect(meanBy(objects, (o) => o.b)).toBe(3);
   });
 

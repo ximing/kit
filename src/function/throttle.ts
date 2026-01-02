@@ -26,7 +26,7 @@ export function throttle<T extends (...args: any[]) => any>(
   options: {
     leading?: boolean;
     trailing?: boolean;
-  } = {}
+  } = {},
 ): T & { cancel: () => void; flush: () => void } {
   const { leading = true, trailing = true } = options;
 
@@ -72,10 +72,7 @@ export function throttle<T extends (...args: any[]) => any>(
     // trailing edge, the system time has gone backwards and we're treating
     // it as the trailing edge, or we've hit the `wait` limit.
     return (
-      lastCallTime === undefined ||
-      timeSinceLastCall >= wait ||
-      timeSinceLastCall < 0 ||
-      timeSinceLastInvoke >= wait
+      lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || timeSinceLastInvoke >= wait
     );
   }
 

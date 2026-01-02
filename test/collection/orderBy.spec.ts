@@ -5,7 +5,7 @@ describe('orderBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 25 },
-      { name: 'Bob', age: 35 }
+      { name: 'Bob', age: 35 },
     ];
     const result = orderBy(users, 'age');
     expect(result[0].age).toBe(25);
@@ -17,7 +17,7 @@ describe('orderBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 25 },
-      { name: 'Bob', age: 35 }
+      { name: 'Bob', age: 35 },
     ];
     const result = orderBy(users, 'age', ['desc']);
     expect(result[0].age).toBe(35);
@@ -29,7 +29,7 @@ describe('orderBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 25 },
-      { name: 'Alice', age: 25 }
+      { name: 'Alice', age: 25 },
     ];
     const result = orderBy(users, ['age', 'name'], ['asc', 'desc']);
     expect(result[0].name).toBe('Jane');

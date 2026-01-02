@@ -10,11 +10,7 @@
  * get(obj, ['a', 'b', 'c']); // 3
  * get(obj, 'a.b.d', 'default'); // 'default'
  */
-export function get<T = any>(
-  obj: any,
-  path: string | readonly (string | number)[],
-  defaultValue?: T
-): T {
+export function get<T = any>(obj: any, path: string | readonly (string | number)[], defaultValue?: T): T {
   if (obj == null) {
     return defaultValue as T;
   }

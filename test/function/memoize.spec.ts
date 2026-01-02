@@ -25,7 +25,7 @@ describe('memoize', () => {
         callCount++;
         return a + b;
       },
-      (a: number, b: number) => `${a}-${b}`
+      (a: number, b: number) => `${a}-${b}`,
     );
 
     expect(memoized(1, 2)).toBe(3);

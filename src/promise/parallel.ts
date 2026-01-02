@@ -20,10 +20,7 @@
  *   () => delay(150, 'c')
  * ]); // Executes all at once
  */
-export function parallel<T>(
-  tasks: Array<() => Promise<T> | T>,
-  concurrency = Infinity
-): Promise<T[]> {
+export function parallel<T>(tasks: Array<() => Promise<T> | T>, concurrency = Infinity): Promise<T[]> {
   if (!Array.isArray(tasks) || tasks.length === 0) {
     return Promise.resolve([]);
   }
@@ -59,7 +56,7 @@ export function parallel<T>(
               hasError = true;
               reject(error);
             }
-          }
+          },
         );
       }
     }

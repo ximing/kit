@@ -20,7 +20,7 @@
 export function map<T, U>(
   array: T[],
   mapper: (value: T, index: number) => Promise<U> | U,
-  concurrency = Infinity
+  concurrency = Infinity,
 ): Promise<U[]> {
   if (!Array.isArray(array) || array.length === 0) {
     return Promise.resolve([]);
@@ -57,7 +57,7 @@ export function map<T, U>(
               hasError = true;
               reject(error);
             }
-          }
+          },
         );
       }
     }

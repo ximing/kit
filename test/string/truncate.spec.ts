@@ -2,9 +2,7 @@ import { truncate } from '../../src/string/truncate';
 
 describe('truncate', () => {
   it('should truncate string longer than length', () => {
-    expect(truncate('Hi-Diddly-Ho there, Flanders!', { length: 20 })).toBe(
-      'Hi-Diddly-Ho ther...',
-    );
+    expect(truncate('Hi-Diddly-Ho there, Flanders!', { length: 20 })).toBe('Hi-Diddly-Ho ther...');
   });
 
   it('should use default length of 30', () => {
@@ -15,9 +13,7 @@ describe('truncate', () => {
   });
 
   it('should use custom omission string', () => {
-    expect(truncate('Hi-Diddly-Ho there, Flanders!', { length: 20, omission: ' [...]' })).toBe(
-      'Hi-Diddly-Ho t [...]',
-    );
+    expect(truncate('Hi-Diddly-Ho there, Flanders!', { length: 20, omission: ' [...]' })).toBe('Hi-Diddly-Ho t [...]');
   });
 
   it('should not truncate if string is shorter than length', () => {

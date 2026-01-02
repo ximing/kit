@@ -5,7 +5,7 @@ describe('countBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 30 },
-      { name: 'Bob', age: 25 }
+      { name: 'Bob', age: 25 },
     ];
     const result = countBy(users, 'age');
     expect(result['30']).toBe(2);
@@ -14,7 +14,7 @@ describe('countBy', () => {
 
   it('should count elements by function', () => {
     const numbers = [1, 2, 3, 4, 5, 6];
-    const result = countBy(numbers, (n) => n % 2 === 0 ? 'even' : 'odd');
+    const result = countBy(numbers, (n) => (n % 2 === 0 ? 'even' : 'odd'));
     expect(result['even']).toBe(3);
     expect(result['odd']).toBe(3);
   });
@@ -25,11 +25,7 @@ describe('countBy', () => {
   });
 
   it('should count with numeric keys', () => {
-    const items = [
-      { type: 1 },
-      { type: 1 },
-      { type: 2 }
-    ];
+    const items = [{ type: 1 }, { type: 1 }, { type: 2 }];
     const result = countBy(items, 'type');
     expect(result[1]).toBe(2);
     expect(result[2]).toBe(1);

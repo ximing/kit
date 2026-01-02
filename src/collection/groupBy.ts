@@ -14,7 +14,7 @@
  */
 export function groupBy<T>(
   collection: T[],
-  iteratee: ((item: T, index: number) => string | number) | string
+  iteratee: ((item: T, index: number) => string | number) | string,
 ): Record<string | number, T[]> {
   const result: Record<string | number, T[]> = {};
 

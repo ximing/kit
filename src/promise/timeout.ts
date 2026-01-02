@@ -17,11 +17,7 @@
  * @example
  * const result = await timeout(fetchData(), 5000, 'Request took too long');
  */
-export function timeout<T>(
-  promise: Promise<T>,
-  ms: number,
-  message = 'Promise timeout'
-): Promise<T> {
+export function timeout<T>(promise: Promise<T>, ms: number, message = 'Promise timeout'): Promise<T> {
   return Promise.race([
     promise,
     new Promise<T>((_, reject) => {

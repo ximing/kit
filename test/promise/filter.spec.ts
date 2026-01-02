@@ -7,19 +7,13 @@ describe('filter', () => {
   });
 
   it('should filter with async predicate', async () => {
-    const results = await filter([1, 2, 3, 4, 5], (n) =>
-      Promise.resolve(n % 2 === 0)
-    );
+    const results = await filter([1, 2, 3, 4, 5], (n) => Promise.resolve(n % 2 === 0));
     expect(results).toEqual([2, 4]);
   });
 
   it('should respect concurrency limit', async () => {
     const start = Date.now();
-    const results = await filter(
-      [1, 2, 3, 4, 5],
-      () => delay(50, true),
-      2
-    );
+    const results = await filter([1, 2, 3, 4, 5], () => delay(50, true), 2);
     const elapsed = Date.now() - start;
     expect(results.length).toBe(5);
     expect(elapsed).toBeGreaterThanOrEqual(150); // Should be ~150ms with concurrency 2
@@ -31,10 +25,7 @@ describe('filter', () => {
   });
 
   it('should preserve order', async () => {
-    const results = await filter(
-      [1, 2, 3, 4, 5],
-      (n) => Promise.resolve(n % 2 === 0)
-    );
+    const results = await filter([1, 2, 3, 4, 5], (n) => Promise.resolve(n % 2 === 0));
     expect(results).toEqual([2, 4]);
   });
 
@@ -54,9 +45,7 @@ describe('filter', () => {
       }
       return Promise.resolve(n > 2);
     };
-    await expect(filter([1, 2, 3, 4, 5], predicate)).rejects.toThrow(
-      'error on 3'
-    );
+    await expect(filter([1, 2, 3, 4, 5], predicate)).rejects.toThrow('error on 3');
   });
 
   it('should handle synchronous predicate', async () => {
@@ -76,11 +65,7 @@ describe('filter', () => {
 
   it('should handle concurrency of 1 (sequential)', async () => {
     const start = Date.now();
-    const results = await filter(
-      [1, 2, 3],
-      () => delay(50, true),
-      1
-    );
+    const results = await filter([1, 2, 3], () => delay(50, true), 1);
     const elapsed = Date.now() - start;
     expect(results.length).toBe(3);
     expect(elapsed).toBeGreaterThanOrEqual(150); // Should be ~150ms
@@ -92,9 +77,7 @@ describe('filter', () => {
       { id: 2, active: false },
       { id: 3, active: true },
     ];
-    const results = await filter(input, (obj) =>
-      Promise.resolve(obj.active)
-    );
+    const results = await filter(input, (obj) => Promise.resolve(obj.active));
     expect(results).toEqual([
       { id: 1, active: true },
       { id: 3, active: true },
@@ -102,10 +85,7 @@ describe('filter', () => {
   });
 
   it('should handle strings in array', async () => {
-    const results = await filter(
-      ['apple', 'banana', 'apricot', 'cherry'],
-      (s) => s.startsWith('a')
-    );
+    const results = await filter(['apple', 'banana', 'apricot', 'cherry'], (s) => s.startsWith('a'));
     expect(results).toEqual(['apple', 'apricot']);
   });
 });

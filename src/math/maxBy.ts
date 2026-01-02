@@ -11,10 +11,7 @@
  * maxBy([{ n: 1 }, { n: 2 }, { n: 3 }], (o) => o.n) // => { n: 3 }
  * maxBy([], (o) => o.n) // => undefined
  */
-export function maxBy<T>(
-  array: T[],
-  iteratee: (item: T) => number
-): T | undefined {
+export function maxBy<T>(array: T[], iteratee: (item: T) => number): T | undefined {
   if (!Array.isArray(array) || array.length === 0) {
     return undefined;
   }

@@ -34,7 +34,7 @@ describe('sample', () => {
   it('should have reasonable distribution', () => {
     const arr = [1, 2, 3, 4, 5];
     const counts: Record<number, number> = {};
-    
+
     for (let i = 0; i < 1000; i++) {
       const result = sample(arr);
       counts[result!] = (counts[result!] || 0) + 1;
@@ -42,9 +42,9 @@ describe('sample', () => {
 
     // Check that all elements were sampled
     expect(Object.keys(counts)).toHaveLength(5);
-    
+
     // Check that distribution is somewhat balanced (rough check)
-    Object.values(counts).forEach(count => {
+    Object.values(counts).forEach((count) => {
       expect(count).toBeGreaterThan(50);
       expect(count).toBeLessThan(350);
     });

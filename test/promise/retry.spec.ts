@@ -9,10 +9,7 @@ describe('retry', () => {
   });
 
   it('should retry on failure and succeed', async () => {
-    const fn = jest
-      .fn()
-      .mockRejectedValueOnce(new Error('fail'))
-      .mockResolvedValueOnce('success');
+    const fn = jest.fn().mockRejectedValueOnce(new Error('fail')).mockResolvedValueOnce('success');
     const result = await retry(fn, { maxAttempts: 3, delay: 10 });
     expect(result).toBe('success');
     expect(fn).toHaveBeenCalledTimes(2);
@@ -21,9 +18,7 @@ describe('retry', () => {
   it('should fail after max attempts', async () => {
     const error = new Error('persistent failure');
     const fn = jest.fn().mockRejectedValue(error);
-    await expect(retry(fn, { maxAttempts: 3, delay: 10 })).rejects.toThrow(
-      'persistent failure'
-    );
+    await expect(retry(fn, { maxAttempts: 3, delay: 10 })).rejects.toThrow('persistent failure');
     expect(fn).toHaveBeenCalledTimes(3);
   });
 
@@ -34,10 +29,7 @@ describe('retry', () => {
   });
 
   it('should use default delay of 1000', async () => {
-    const fn = jest
-      .fn()
-      .mockRejectedValueOnce(new Error('fail'))
-      .mockResolvedValueOnce('success');
+    const fn = jest.fn().mockRejectedValueOnce(new Error('fail')).mockResolvedValueOnce('success');
     const start = Date.now();
     await retry(fn, { maxAttempts: 2 });
     const elapsed = Date.now() - start;
@@ -85,9 +77,7 @@ describe('retry', () => {
 
   it('should handle string errors', async () => {
     const fn = jest.fn().mockRejectedValue('string error');
-    await expect(retry(fn, { maxAttempts: 2, delay: 10 })).rejects.toThrow(
-      'string error'
-    );
+    await expect(retry(fn, { maxAttempts: 2, delay: 10 })).rejects.toThrow('string error');
   });
 
   it('should handle object errors', async () => {

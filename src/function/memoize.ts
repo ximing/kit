@@ -27,7 +27,7 @@
  */
 export function memoize<T extends (...args: any[]) => any>(
   func: T,
-  resolver?: (...args: Parameters<T>) => any
+  resolver?: (...args: Parameters<T>) => any,
 ): T & { cache: Map<any, ReturnType<T>> } {
   const cache = new Map<any, ReturnType<T>>();
 

@@ -12,10 +12,7 @@
  * partition(users, 'active');
  * // => [[{name: 'John', active: true}, {name: 'Bob', active: true}], [{name: 'Jane', active: false}]]
  */
-export function partition<T>(
-  collection: T[],
-  predicate: ((item: T, index: number) => boolean) | string
-): [T[], T[]] {
+export function partition<T>(collection: T[], predicate: ((item: T, index: number) => boolean) | string): [T[], T[]] {
   const trueGroup: T[] = [];
   const falseGroup: T[] = [];
 

@@ -8,10 +8,7 @@
  * const obj2 = { b: { d: 3 }, e: 4 };
  * merge(obj1, obj2); // { a: 1, b: { d: 3 }, e: 4 }
  */
-export function merge<T extends object, S extends object>(
-  target: T,
-  ...sources: S[]
-): T & S {
+export function merge<T extends object, S extends object>(target: T, ...sources: S[]): T & S {
   if (target == null) {
     throw new TypeError('Cannot convert undefined or null to object');
   }

@@ -5,7 +5,7 @@ describe('sortBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 25 },
-      { name: 'Bob', age: 35 }
+      { name: 'Bob', age: 35 },
     ];
     const result = sortBy(users, 'age');
     expect(result[0].age).toBe(25);
@@ -23,7 +23,7 @@ describe('sortBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 25 },
-      { name: 'Alice', age: 25 }
+      { name: 'Alice', age: 25 },
     ];
     const result = sortBy(users, ['age', 'name']);
     expect(result[0].name).toBe('Alice');
@@ -37,11 +37,7 @@ describe('sortBy', () => {
   });
 
   it('should handle strings', () => {
-    const items = [
-      { label: 'zebra' },
-      { label: 'apple' },
-      { label: 'banana' }
-    ];
+    const items = [{ label: 'zebra' }, { label: 'apple' }, { label: 'banana' }];
     const result = sortBy(items, 'label');
     expect(result[0].label).toBe('apple');
     expect(result[1].label).toBe('banana');

@@ -7,19 +7,13 @@ describe('map', () => {
   });
 
   it('should map with async mapper', async () => {
-    const results = await map([1, 2, 3], (n) =>
-      Promise.resolve(n * 2)
-    );
+    const results = await map([1, 2, 3], (n) => Promise.resolve(n * 2));
     expect(results).toEqual([2, 4, 6]);
   });
 
   it('should respect concurrency limit', async () => {
     const start = Date.now();
-    const results = await map(
-      [1, 2, 3],
-      () => delay(50),
-      2
-    );
+    const results = await map([1, 2, 3], () => delay(50), 2);
     const elapsed = Date.now() - start;
     expect(results.length).toBe(3);
     expect(elapsed).toBeGreaterThanOrEqual(100); // Should be ~100ms with concurrency 2
@@ -31,10 +25,7 @@ describe('map', () => {
   });
 
   it('should preserve order', async () => {
-    const results = await map(
-      [1, 2, 3],
-      (n) => delay(100 - n * 20, n)
-    );
+    const results = await map([1, 2, 3], (n) => delay(100 - n * 20, n));
     expect(results).toEqual([1, 2, 3]);
   });
 
@@ -63,19 +54,13 @@ describe('map', () => {
   });
 
   it('should handle different types', async () => {
-    const results = await map(['a', 'b', 'c'], (s) =>
-      Promise.resolve(s.toUpperCase())
-    );
+    const results = await map(['a', 'b', 'c'], (s) => Promise.resolve(s.toUpperCase()));
     expect(results).toEqual(['A', 'B', 'C']);
   });
 
   it('should handle concurrency of 1 (sequential)', async () => {
     const start = Date.now();
-    const results = await map(
-      [1, 2, 3],
-      () => delay(50),
-      1
-    );
+    const results = await map([1, 2, 3], () => delay(50), 1);
     const elapsed = Date.now() - start;
     expect(results.length).toBe(3);
     expect(elapsed).toBeGreaterThanOrEqual(150); // Should be ~150ms
@@ -88,9 +73,7 @@ describe('map', () => {
 
   it('should handle objects in array', async () => {
     const input = [{ id: 1 }, { id: 2 }, { id: 3 }];
-    const results = await map(input, (obj) =>
-      Promise.resolve({ ...obj, processed: true })
-    );
+    const results = await map(input, (obj) => Promise.resolve({ ...obj, processed: true }));
     expect(results).toEqual([
       { id: 1, processed: true },
       { id: 2, processed: true },

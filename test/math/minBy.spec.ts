@@ -7,7 +7,11 @@ describe('minBy', () => {
   });
 
   it('should return object with minimum computed value', () => {
-    const objects = [{ a: 1, b: 5 }, { a: 2, b: 3 }, { a: 3, b: 1 }];
+    const objects = [
+      { a: 1, b: 5 },
+      { a: 2, b: 3 },
+      { a: 3, b: 1 },
+    ];
     expect(minBy(objects, (o) => o.b)).toEqual({ a: 3, b: 1 });
   });
 

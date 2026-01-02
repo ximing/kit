@@ -8,7 +8,7 @@
  */
 export function mapKeys<T extends object, K extends string | number | symbol>(
   obj: T,
-  iteratee: (value: T[keyof T], key: keyof T, obj: T) => K
+  iteratee: (value: T[keyof T], key: keyof T, obj: T) => K,
 ): Record<K, T[keyof T]> {
   if (obj == null) {
     return {} as Record<K, T[keyof T]>;

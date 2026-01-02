@@ -3,11 +3,7 @@ import { series, delay } from '../../src/promise';
 describe('series', () => {
   it('should execute tasks in series', async () => {
     const start = Date.now();
-    const results = await series([
-      () => delay(50, 'a'),
-      () => delay(50, 'b'),
-      () => delay(50, 'c'),
-    ]);
+    const results = await series([() => delay(50, 'a'), () => delay(50, 'b'), () => delay(50, 'c')]);
     const elapsed = Date.now() - start;
     expect(results).toEqual(['a', 'b', 'c']);
     expect(elapsed).toBeGreaterThanOrEqual(150); // Should be ~150ms
@@ -24,20 +20,12 @@ describe('series', () => {
   });
 
   it('should preserve order', async () => {
-    const results = await series([
-      () => delay(10, 'first'),
-      () => delay(10, 'second'),
-      () => delay(10, 'third'),
-    ]);
+    const results = await series([() => delay(10, 'first'), () => delay(10, 'second'), () => delay(10, 'third')]);
     expect(results).toEqual(['first', 'second', 'third']);
   });
 
   it('should handle synchronous tasks', async () => {
-    const results = await series([
-      () => 'a',
-      () => 'b',
-      () => 'c',
-    ]);
+    const results = await series([() => 'a', () => 'b', () => 'c']);
     expect(results).toEqual(['a', 'b', 'c']);
   });
 

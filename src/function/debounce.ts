@@ -28,7 +28,7 @@ export function debounce<T extends (...args: any[]) => any>(
     leading?: boolean;
     trailing?: boolean;
     maxWait?: number;
-  } = {}
+  } = {},
 ): T & { cancel: () => void; flush: () => void } {
   const { leading = false, trailing = true, maxWait } = options;
 
@@ -63,9 +63,7 @@ export function debounce<T extends (...args: any[]) => any>(
     const timeSinceLastInvoke = time - lastInvokeTime;
     const timeWaiting = wait - timeSinceLastCall;
 
-    return maxWait !== undefined
-      ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke)
-      : timeWaiting;
+    return maxWait !== undefined ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
   }
 
   function shouldInvoke(time: number) {

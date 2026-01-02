@@ -5,9 +5,7 @@
  * @example
  * invert({ a: 1, b: 2, c: 1 }); // { '1': 'c', '2': 'b' }
  */
-export function invert<T extends Record<string | number, string | number>>(
-  obj: T
-): Record<string, string> {
+export function invert<T extends Record<string | number, string | number>>(obj: T): Record<string, string> {
   if (obj == null) {
     return {};
   }

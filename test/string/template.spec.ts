@@ -3,23 +3,17 @@ import { template } from '../../src/string/template';
 describe('template', () => {
   it('should replace <%= placeholder %> style', () => {
     expect(template('Hello <%= name %>', { name: 'World' })).toBe('Hello World');
-    expect(template('<%= greeting %>, <%= name %>!', { greeting: 'Hi', name: 'John' })).toBe(
-      'Hi, John!',
-    );
+    expect(template('<%= greeting %>, <%= name %>!', { greeting: 'Hi', name: 'John' })).toBe('Hi, John!');
   });
 
   it('should replace ${ placeholder } style', () => {
     expect(template('Hello ${name}', { name: 'World' })).toBe('Hello World');
-    expect(template('${greeting}, ${name}!', { greeting: 'Hi', name: 'John' })).toBe(
-      'Hi, John!',
-    );
+    expect(template('${greeting}, ${name}!', { greeting: 'Hi', name: 'John' })).toBe('Hi, John!');
   });
 
   it('should replace { placeholder } style', () => {
     expect(template('Hello {name}', { name: 'World' })).toBe('Hello World');
-    expect(template('{greeting}, {name}!', { greeting: 'Hi', name: 'John' })).toBe(
-      'Hi, John!',
-    );
+    expect(template('{greeting}, {name}!', { greeting: 'Hi', name: 'John' })).toBe('Hi, John!');
   });
 
   it('should handle missing placeholder values', () => {
@@ -29,9 +23,7 @@ describe('template', () => {
   });
 
   it('should handle mixed placeholder styles', () => {
-    expect(
-      template('<%= a %> ${b} {c}', { a: '1', b: '2', c: '3' }),
-    ).toBe('1 2 3');
+    expect(template('<%= a %> ${b} {c}', { a: '1', b: '2', c: '3' })).toBe('1 2 3');
   });
 
   it('should handle whitespace in placeholders', () => {

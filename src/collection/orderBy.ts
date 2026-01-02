@@ -15,7 +15,7 @@
 export function orderBy<T>(
   collection: T[],
   iteratees: ((item: T) => any) | string | (((item: T) => any) | string)[],
-  orders?: ('asc' | 'desc')[]
+  orders?: ('asc' | 'desc')[],
 ): T[] {
   const iterateeArray = Array.isArray(iteratees) ? iteratees : [iteratees];
   const orderArray = orders || iterateeArray.map(() => 'asc');

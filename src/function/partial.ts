@@ -18,7 +18,10 @@
  * const add5 = partial(add, 5);
  * add5(10, 15); // => 30
  */
-export function partial<T extends (...args: any[]) => any>(func: T, ...partialArgs: any[]): (...args: any[]) => ReturnType<T> {
+export function partial<T extends (...args: any[]) => any>(
+  func: T,
+  ...partialArgs: any[]
+): (...args: any[]) => ReturnType<T> {
   return function (this: any, ...args: any[]): ReturnType<T> {
     return func.apply(this, [...partialArgs, ...args]);
   };

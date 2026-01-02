@@ -30,7 +30,7 @@ describe('debounce', () => {
         callCount++;
       },
       100,
-      { leading: true, trailing: false }
+      { leading: true, trailing: false },
     );
 
     debounced();
@@ -51,7 +51,7 @@ describe('debounce', () => {
         callCount++;
       },
       100,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
 
     debounced();
@@ -68,7 +68,7 @@ describe('debounce', () => {
         callCount++;
       },
       100,
-      { maxWait: 150 }
+      { maxWait: 150 },
     );
 
     debounced();
@@ -141,7 +141,7 @@ describe('debounce', () => {
         callCount++;
       },
       100,
-      { leading: true, trailing: true }
+      { leading: true, trailing: true },
     );
 
     debounced();
@@ -159,7 +159,7 @@ describe('debounce', () => {
         callCount++;
       },
       50,
-      { maxWait: 100 }
+      { maxWait: 100 },
     );
 
     debounced();
@@ -201,7 +201,7 @@ describe('debounce', () => {
         callCount++;
       },
       100,
-      { leading: false, trailing: false }
+      { leading: false, trailing: false },
     );
 
     debounced();

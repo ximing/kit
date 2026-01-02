@@ -18,7 +18,7 @@
 export function filter<T>(
   array: T[],
   predicate: (value: T, index: number) => Promise<boolean> | boolean,
-  concurrency = Infinity
+  concurrency = Infinity,
 ): Promise<T[]> {
   if (!Array.isArray(array) || array.length === 0) {
     return Promise.resolve([]);
@@ -57,7 +57,7 @@ export function filter<T>(
               hasError = true;
               reject(error);
             }
-          }
+          },
         );
       }
     }

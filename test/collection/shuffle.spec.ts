@@ -34,7 +34,7 @@ describe('shuffle', () => {
   it('should have reasonable randomness', () => {
     const arr = [1, 2, 3];
     const permutations = new Set<string>();
-    
+
     for (let i = 0; i < 1000; i++) {
       const result = shuffle(arr);
       permutations.add(JSON.stringify(result));
@@ -49,7 +49,7 @@ describe('shuffle', () => {
     const obj2 = { id: 2 };
     const obj3 = { id: 3 };
     const arr = [obj1, obj2, obj3];
-    
+
     const result = shuffle(arr);
     expect(result).toHaveLength(3);
     expect(result).toContain(obj1);

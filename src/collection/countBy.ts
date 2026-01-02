@@ -14,7 +14,7 @@
  */
 export function countBy<T>(
   collection: T[],
-  iteratee: ((item: T, index: number) => string | number) | string
+  iteratee: ((item: T, index: number) => string | number) | string,
 ): Record<string | number, number> {
   const result: Record<string | number, number> = {};
 

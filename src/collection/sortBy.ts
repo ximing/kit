@@ -13,7 +13,7 @@
  */
 export function sortBy<T>(
   collection: T[],
-  iteratees: ((item: T) => any) | string | (((item: T) => any) | string)[]
+  iteratees: ((item: T) => any) | string | (((item: T) => any) | string)[],
 ): T[] {
   const iterateeArray = Array.isArray(iteratees) ? iteratees : [iteratees];
 

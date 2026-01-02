@@ -33,7 +33,7 @@ describe('throttle', () => {
         callCount++;
       },
       100,
-      { leading: true, trailing: false }
+      { leading: true, trailing: false },
     );
 
     throttled();
@@ -54,7 +54,7 @@ describe('throttle', () => {
         callCount++;
       },
       100,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
 
     throttled();
@@ -71,7 +71,7 @@ describe('throttle', () => {
         callCount++;
       },
       100,
-      { leading: true, trailing: true }
+      { leading: true, trailing: true },
     );
 
     throttled();
@@ -166,7 +166,7 @@ describe('throttle', () => {
         callCount++;
       },
       100,
-      { leading: false, trailing: false }
+      { leading: false, trailing: false },
     );
 
     throttled();
@@ -187,7 +187,7 @@ describe('throttle', () => {
         callCount++;
       },
       100,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
 
     throttled();

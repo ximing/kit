@@ -18,10 +18,7 @@ export function trimEnd(str: string, chars?: string): string {
     return str.trimEnd();
   }
 
-  const charsRegex = new RegExp(
-    `[${chars.replace(/[-[\]{}()*+?.,\\^$|#\\s]/g, '\\$&')}]+$`,
-    'g',
-  );
+  const charsRegex = new RegExp(`[${chars.replace(/[-[\]{}()*+?.,\\^$|#\\s]/g, '\\$&')}]+$`, 'g');
 
   return str.replace(charsRegex, '');
 }

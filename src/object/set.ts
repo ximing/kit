@@ -10,11 +10,7 @@
  * set(obj, ['x', 'y', 'z'], 5);
  * set(obj, 'a.b.d[0]', 6);
  */
-export function set<T extends object>(
-  obj: T,
-  path: string | readonly (string | number)[],
-  value: any
-): T {
+export function set<T extends object>(obj: T, path: string | readonly (string | number)[], value: any): T {
   if (obj == null) {
     return obj;
   }

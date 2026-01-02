@@ -5,7 +5,7 @@ describe('sampleSize', () => {
     const arr = [1, 2, 3, 4, 5];
     const result = sampleSize(arr, 2);
     expect(result).toHaveLength(2);
-    result.forEach(item => {
+    result.forEach((item) => {
       expect(arr).toContain(item);
     });
   });
@@ -38,7 +38,7 @@ describe('sampleSize', () => {
     const arr = ['a', 'b', 'c', 'd'];
     const result = sampleSize(arr, 2);
     expect(result).toHaveLength(2);
-    result.forEach(item => {
+    result.forEach((item) => {
       expect(arr).toContain(item);
     });
   });
@@ -46,19 +46,19 @@ describe('sampleSize', () => {
   it('should have reasonable distribution', () => {
     const arr = [1, 2, 3, 4, 5];
     const counts: Record<number, number> = {};
-    
+
     for (let i = 0; i < 1000; i++) {
       const result = sampleSize(arr, 3);
-      result.forEach(item => {
+      result.forEach((item) => {
         counts[item] = (counts[item] || 0) + 1;
       });
     }
 
     // Check that all elements were sampled
     expect(Object.keys(counts)).toHaveLength(5);
-    
+
     // Check that distribution is somewhat balanced
-    Object.values(counts).forEach(count => {
+    Object.values(counts).forEach((count) => {
       expect(count).toBeGreaterThan(400);
       expect(count).toBeLessThan(800);
     });

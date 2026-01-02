@@ -28,18 +28,15 @@
 export function reduce<T, U>(
   array: T[],
   reducer: (accumulator: U, value: T, index: number) => Promise<U> | U,
-  initialValue: U
+  initialValue: U,
 ): Promise<U> {
   if (!Array.isArray(array) || array.length === 0) {
     return Promise.resolve(initialValue);
   }
 
   return array.reduce(
-    (promise, value, index) =>
-      promise.then((accumulator) =>
-        Promise.resolve(reducer(accumulator, value, index))
-      ),
-    Promise.resolve(initialValue)
+    (promise, value, index) => promise.then((accumulator) => Promise.resolve(reducer(accumulator, value, index))),
+    Promise.resolve(initialValue),
   );
 }
 

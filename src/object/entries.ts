@@ -5,9 +5,7 @@
  * @example
  * entries({ a: 1, b: 2, c: 3 }); // [['a', 1], ['b', 2], ['c', 3]]
  */
-export function entries<T extends object>(
-  obj: T
-): Array<[keyof T, T[keyof T]]> {
+export function entries<T extends object>(obj: T): Array<[keyof T, T[keyof T]]> {
   if (obj == null) {
     return [];
   }

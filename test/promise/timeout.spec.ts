@@ -14,9 +14,7 @@ describe('timeout', () => {
 
   it('should use custom error message', async () => {
     const promise = delay(200);
-    await expect(timeout(promise, 50, 'Custom timeout error')).rejects.toThrow(
-      'Custom timeout error'
-    );
+    await expect(timeout(promise, 50, 'Custom timeout error')).rejects.toThrow('Custom timeout error');
   });
 
   it('should handle rejected promises', async () => {

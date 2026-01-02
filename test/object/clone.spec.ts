@@ -31,7 +31,10 @@ describe('clone', () => {
   });
 
   it('should clone Map', () => {
-    const map = new Map([['a', 1], ['b', 2]]);
+    const map = new Map([
+      ['a', 1],
+      ['b', 2],
+    ]);
     const cloned = clone(map);
     expect(cloned).toEqual(map);
     expect(cloned).not.toBe(map);

@@ -15,9 +15,7 @@ export function camelCase(str: string): string {
   }
 
   // First, insert separators before uppercase letters (for camelCase/PascalCase)
-  let normalized = str
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2');
+  let normalized = str.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([A-Z])([A-Z][a-z])/g, '$1-$2');
 
   // Split by non-alphanumeric characters and filter empty strings
   const words = normalized.split(/[-_\s]+/).filter((word) => word.length > 0);

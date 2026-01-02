@@ -28,7 +28,7 @@ export function retry<T>(
     delay?: number;
     backoff?: number;
     onRetry?: (attempt: number, error: Error) => void;
-  } = {}
+  } = {},
 ): Promise<T> {
   const { maxAttempts = 3, delay: initialDelay = 1000, backoff = 1, onRetry } = options;
 

@@ -2,20 +2,12 @@ import { reduce, delay } from '../../src/promise';
 
 describe('reduce', () => {
   it('should reduce array to single value', async () => {
-    const result = await reduce(
-      [1, 2, 3, 4],
-      (acc, value) => acc + value,
-      0
-    );
+    const result = await reduce([1, 2, 3, 4], (acc, value) => acc + value, 0);
     expect(result).toBe(10);
   });
 
   it('should reduce with async reducer', async () => {
-    const result = await reduce(
-      [1, 2, 3, 4],
-      (acc, value) => Promise.resolve(acc + value),
-      0
-    );
+    const result = await reduce([1, 2, 3, 4], (acc, value) => Promise.resolve(acc + value), 0);
     expect(result).toBe(10);
   });
 
@@ -25,11 +17,7 @@ describe('reduce', () => {
   });
 
   it('should use initial value', async () => {
-    const result = await reduce(
-      [1, 2, 3],
-      (acc, value) => acc + value,
-      10
-    );
+    const result = await reduce([1, 2, 3], (acc, value) => acc + value, 10);
     expect(result).toBe(16);
   });
 
@@ -41,26 +29,18 @@ describe('reduce', () => {
         indices.push(index);
         return acc;
       },
-      0
+      0,
     );
     expect(indices).toEqual([0, 1, 2]);
   });
 
   it('should reduce to array', async () => {
-    const result = await reduce(
-      [1, 2, 3],
-      (acc, value) => [...acc, value * 2],
-      []
-    );
+    const result = await reduce([1, 2, 3], (acc, value) => [...acc, value * 2], []);
     expect(result).toEqual([2, 4, 6]);
   });
 
   it('should reduce to object', async () => {
-    const result = await reduce(
-      [1, 2, 3],
-      (acc, value) => ({ ...acc, [value]: value * 2 }),
-      {}
-    );
+    const result = await reduce([1, 2, 3], (acc, value) => ({ ...acc, [value]: value * 2 }), {});
     expect(result).toEqual({ 1: 2, 2: 4, 3: 6 });
   });
 
@@ -71,7 +51,7 @@ describe('reduce', () => {
         await delay(10);
         return acc + value;
       },
-      0
+      0,
     );
     expect(result).toBe(6);
   });
@@ -92,11 +72,7 @@ describe('reduce', () => {
   });
 
   it('should work with strings', async () => {
-    const result = await reduce(
-      ['a', 'b', 'c'],
-      (acc, value) => acc + value,
-      ''
-    );
+    const result = await reduce(['a', 'b', 'c'], (acc, value) => acc + value, '');
     expect(result).toBe('abc');
   });
 
@@ -106,20 +82,12 @@ describe('reduce', () => {
       { id: 2, value: 20 },
       { id: 3, value: 30 },
     ];
-    const result = await reduce(
-      items,
-      (acc, item) => acc + item.value,
-      0
-    );
+    const result = await reduce(items, (acc, item) => acc + item.value, 0);
     expect(result).toBe(60);
   });
 
   it('should accumulate in order', async () => {
-    const result = await reduce(
-      [1, 2, 3, 4],
-      (acc, value) => [...acc, value],
-      []
-    );
+    const result = await reduce([1, 2, 3, 4], (acc, value) => [...acc, value], []);
     expect(result).toEqual([1, 2, 3, 4]);
   });
 });

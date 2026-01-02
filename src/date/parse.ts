@@ -75,7 +75,20 @@ export function parse(dateStr: string, formatStr: string = 'YYYY-MM-DD HH:mm:ss'
   const millisecond = positions.SSS !== undefined ? parseInt(match[positions.SSS], 10) : 0;
 
   // Validate extracted values
-  if (month < 0 || month > 11 || day < 1 || day > 31 || hour < 0 || hour > 23 || minute < 0 || minute > 59 || second < 0 || second > 59 || millisecond < 0 || millisecond > 999) {
+  if (
+    month < 0 ||
+    month > 11 ||
+    day < 1 ||
+    day > 31 ||
+    hour < 0 ||
+    hour > 23 ||
+    minute < 0 ||
+    minute > 59 ||
+    second < 0 ||
+    second > 59 ||
+    millisecond < 0 ||
+    millisecond > 999
+  ) {
     return null;
   }
 

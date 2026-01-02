@@ -5,7 +5,7 @@ describe('partition', () => {
     const users = [
       { name: 'John', active: true },
       { name: 'Jane', active: false },
-      { name: 'Bob', active: true }
+      { name: 'Bob', active: true },
     ];
     const [active, inactive] = partition(users, 'active');
     expect(active).toHaveLength(2);
@@ -45,7 +45,7 @@ describe('partition', () => {
     const items = [
       { name: 'John', flag: true },
       { name: 'Jane', flag: false },
-      { name: 'Bob', flag: null }
+      { name: 'Bob', flag: null },
     ];
     const [trueGroup, falseGroup] = partition(items, 'flag');
     expect(trueGroup).toHaveLength(1);

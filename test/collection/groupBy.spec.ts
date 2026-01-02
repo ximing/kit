@@ -5,7 +5,7 @@ describe('groupBy', () => {
     const users = [
       { name: 'John', age: 30 },
       { name: 'Jane', age: 30 },
-      { name: 'Bob', age: 25 }
+      { name: 'Bob', age: 25 },
     ];
     const result = groupBy(users, 'age');
     expect(result['30']).toHaveLength(2);
@@ -15,7 +15,7 @@ describe('groupBy', () => {
 
   it('should group elements by function', () => {
     const numbers = [1, 2, 3, 4, 5, 6];
-    const result = groupBy(numbers, (n) => n % 2 === 0 ? 'even' : 'odd');
+    const result = groupBy(numbers, (n) => (n % 2 === 0 ? 'even' : 'odd'));
     expect(result['even']).toEqual([2, 4, 6]);
     expect(result['odd']).toEqual([1, 3, 5]);
   });
@@ -29,7 +29,7 @@ describe('groupBy', () => {
     const items = [
       { id: 1, type: 1 },
       { id: 2, type: 1 },
-      { id: 3, type: 2 }
+      { id: 3, type: 2 },
     ];
     const result = groupBy(items, 'type');
     expect(result[1]).toHaveLength(2);

@@ -8,7 +8,7 @@
  */
 export function mapValues<T extends object, U>(
   obj: T,
-  iteratee: (value: T[keyof T], key: keyof T, obj: T) => U
+  iteratee: (value: T[keyof T], key: keyof T, obj: T) => U,
 ): Record<keyof T, U> {
   if (obj == null) {
     return {} as Record<keyof T, U>;
