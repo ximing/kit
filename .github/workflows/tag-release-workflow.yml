@@ -1,0 +1,88 @@
+name: Tag Release Workflow
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  validate:
+    name: Validate Release Tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract version from tag
+        id: version
+        run: |
+          TAG_NAME=${{ github.ref_name }}
+          VERSION=${TAG_NAME#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+          
+          # Validate semantic versioning format (e.g., 0.10.2)
+          if [[ ! $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "❌ Invalid version format: $VERSION"
+            echo "Expected format: v<major>.<minor>.<patch> (e.g., v0.10.2)"
+            exit 1
+          fi
+          
+          echo "✓ Valid version format: $VERSION"
+      
+      - name: Output validation result
+        run: |
+          echo "Tag: ${{ steps.version.outputs.tag_name }}"
+          echo "Version: ${{ steps.version.outputs.version }}"
+
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: validate
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: previous_tag
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 ${{ github.ref_name }}^ 2>/dev/null || echo "")
+          echo "tag=$PREV_TAG" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          if [ -z "${{ steps.previous_tag.outputs.tag }}" ]; then
+            echo "changelog=First release" >> $GITHUB_OUTPUT
+          else
+            CHANGELOG=$(git log ${{ steps.previous_tag.outputs.tag }}..${{ github.ref_name }} --oneline)
+            echo "changelog<<EOF" >> $GITHUB_OUTPUT
+            echo "$CHANGELOG" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## Release Notes
+            
+            **Version:** ${{ github.ref_name }}
+            **Previous Release:** ${{ steps.previous_tag.outputs.tag || 'N/A' }}
+            
+            ### Changes
+            ${{ steps.changelog.outputs.changelog }}
+            
+            ---
+            This release was automatically created by the Tag Release Workflow.
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_BOT_TOKEN }}
+
+      - name: Release created successfully
+        run: |
+          echo "✓ Release ${{ github.ref_name }} created successfully!"
+          echo "Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
