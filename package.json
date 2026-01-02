@@ -90,50 +90,610 @@
       "import": "./dist/esm/array/index.js",
       "require": "./dist/cjs/array/index.js"
     },
-    "./object": {
-      "types": "./dist/types/object/index.d.ts",
-      "import": "./dist/esm/object/index.js",
-      "require": "./dist/cjs/object/index.js"
+    "./array/chunk": {
+      "types": "./dist/types/array/chunk.d.ts",
+      "import": "./dist/esm/array/chunk.js",
+      "require": "./dist/cjs/array/chunk.js"
     },
-    "./string": {
-      "types": "./dist/types/string/index.d.ts",
-      "import": "./dist/esm/string/index.js",
-      "require": "./dist/cjs/string/index.js"
+    "./array/compact": {
+      "types": "./dist/types/array/compact.d.ts",
+      "import": "./dist/esm/array/compact.js",
+      "require": "./dist/cjs/array/compact.js"
     },
-    "./function": {
-      "types": "./dist/types/function/index.d.ts",
-      "import": "./dist/esm/function/index.js",
-      "require": "./dist/cjs/function/index.js"
+    "./array/difference": {
+      "types": "./dist/types/array/difference.d.ts",
+      "import": "./dist/esm/array/difference.js",
+      "require": "./dist/cjs/array/difference.js"
     },
-    "./number": {
-      "types": "./dist/types/number/index.d.ts",
-      "import": "./dist/esm/number/index.js",
-      "require": "./dist/cjs/number/index.js"
+    "./array/findIndex": {
+      "types": "./dist/types/array/findIndex.d.ts",
+      "import": "./dist/esm/array/findIndex.js",
+      "require": "./dist/cjs/array/findIndex.js"
     },
-    "./is": {
-      "types": "./dist/types/is/index.d.ts",
-      "import": "./dist/esm/is/index.js",
-      "require": "./dist/cjs/is/index.js"
+    "./array/flatten": {
+      "types": "./dist/types/array/flatten.d.ts",
+      "import": "./dist/esm/array/flatten.js",
+      "require": "./dist/cjs/array/flatten.js"
     },
-    "./date": {
-      "types": "./dist/types/date/index.d.ts",
-      "import": "./dist/esm/date/index.js",
-      "require": "./dist/cjs/date/index.js"
+    "./array/intersection": {
+      "types": "./dist/types/array/intersection.d.ts",
+      "import": "./dist/esm/array/intersection.js",
+      "require": "./dist/cjs/array/intersection.js"
     },
-    "./promise": {
-      "types": "./dist/types/promise/index.d.ts",
-      "import": "./dist/esm/promise/index.js",
-      "require": "./dist/cjs/promise/index.js"
+    "./array/union": {
+      "types": "./dist/types/array/union.d.ts",
+      "import": "./dist/esm/array/union.js",
+      "require": "./dist/cjs/array/union.js"
+    },
+    "./array/uniq": {
+      "types": "./dist/types/array/uniq.d.ts",
+      "import": "./dist/esm/array/uniq.js",
+      "require": "./dist/cjs/array/uniq.js"
+    },
+    "./array/zip": {
+      "types": "./dist/types/array/zip.d.ts",
+      "import": "./dist/esm/array/zip.js",
+      "require": "./dist/cjs/array/zip.js"
     },
     "./collection": {
       "types": "./dist/types/collection/index.d.ts",
       "import": "./dist/esm/collection/index.js",
       "require": "./dist/cjs/collection/index.js"
     },
+    "./collection/countBy": {
+      "types": "./dist/types/collection/countBy.d.ts",
+      "import": "./dist/esm/collection/countBy.js",
+      "require": "./dist/cjs/collection/countBy.js"
+    },
+    "./collection/groupBy": {
+      "types": "./dist/types/collection/groupBy.d.ts",
+      "import": "./dist/esm/collection/groupBy.js",
+      "require": "./dist/cjs/collection/groupBy.js"
+    },
+    "./collection/keyBy": {
+      "types": "./dist/types/collection/keyBy.d.ts",
+      "import": "./dist/esm/collection/keyBy.js",
+      "require": "./dist/cjs/collection/keyBy.js"
+    },
+    "./collection/orderBy": {
+      "types": "./dist/types/collection/orderBy.d.ts",
+      "import": "./dist/esm/collection/orderBy.js",
+      "require": "./dist/cjs/collection/orderBy.js"
+    },
+    "./collection/partition": {
+      "types": "./dist/types/collection/partition.d.ts",
+      "import": "./dist/esm/collection/partition.js",
+      "require": "./dist/cjs/collection/partition.js"
+    },
+    "./collection/sample": {
+      "types": "./dist/types/collection/sample.d.ts",
+      "import": "./dist/esm/collection/sample.js",
+      "require": "./dist/cjs/collection/sample.js"
+    },
+    "./collection/sampleSize": {
+      "types": "./dist/types/collection/sampleSize.d.ts",
+      "import": "./dist/esm/collection/sampleSize.js",
+      "require": "./dist/cjs/collection/sampleSize.js"
+    },
+    "./collection/shuffle": {
+      "types": "./dist/types/collection/shuffle.d.ts",
+      "import": "./dist/esm/collection/shuffle.js",
+      "require": "./dist/cjs/collection/shuffle.js"
+    },
+    "./collection/sortBy": {
+      "types": "./dist/types/collection/sortBy.d.ts",
+      "import": "./dist/esm/collection/sortBy.js",
+      "require": "./dist/cjs/collection/sortBy.js"
+    },
+    "./date": {
+      "types": "./dist/types/date/index.d.ts",
+      "import": "./dist/esm/date/index.js",
+      "require": "./dist/cjs/date/index.js"
+    },
+    "./date/addDays": {
+      "types": "./dist/types/date/addDays.d.ts",
+      "import": "./dist/esm/date/addDays.js",
+      "require": "./dist/cjs/date/addDays.js"
+    },
+    "./date/addMonths": {
+      "types": "./dist/types/date/addMonths.d.ts",
+      "import": "./dist/esm/date/addMonths.js",
+      "require": "./dist/cjs/date/addMonths.js"
+    },
+    "./date/addYears": {
+      "types": "./dist/types/date/addYears.d.ts",
+      "import": "./dist/esm/date/addYears.js",
+      "require": "./dist/cjs/date/addYears.js"
+    },
+    "./date/diffDays": {
+      "types": "./dist/types/date/diffDays.d.ts",
+      "import": "./dist/esm/date/diffDays.js",
+      "require": "./dist/cjs/date/diffDays.js"
+    },
+    "./date/diffMonths": {
+      "types": "./dist/types/date/diffMonths.d.ts",
+      "import": "./dist/esm/date/diffMonths.js",
+      "require": "./dist/cjs/date/diffMonths.js"
+    },
+    "./date/diffYears": {
+      "types": "./dist/types/date/diffYears.d.ts",
+      "import": "./dist/esm/date/diffYears.js",
+      "require": "./dist/cjs/date/diffYears.js"
+    },
+    "./date/endOfDay": {
+      "types": "./dist/types/date/endOfDay.d.ts",
+      "import": "./dist/esm/date/endOfDay.js",
+      "require": "./dist/cjs/date/endOfDay.js"
+    },
+    "./date/format": {
+      "types": "./dist/types/date/format.d.ts",
+      "import": "./dist/esm/date/format.js",
+      "require": "./dist/cjs/date/format.js"
+    },
+    "./date/parse": {
+      "types": "./dist/types/date/parse.d.ts",
+      "import": "./dist/esm/date/parse.js",
+      "require": "./dist/cjs/date/parse.js"
+    },
+    "./date/startOfDay": {
+      "types": "./dist/types/date/startOfDay.d.ts",
+      "import": "./dist/esm/date/startOfDay.js",
+      "require": "./dist/cjs/date/startOfDay.js"
+    },
+    "./function": {
+      "types": "./dist/types/function/index.d.ts",
+      "import": "./dist/esm/function/index.js",
+      "require": "./dist/cjs/function/index.js"
+    },
+    "./function/bind": {
+      "types": "./dist/types/function/bind.d.ts",
+      "import": "./dist/esm/function/bind.js",
+      "require": "./dist/cjs/function/bind.js"
+    },
+    "./function/compose": {
+      "types": "./dist/types/function/compose.d.ts",
+      "import": "./dist/esm/function/compose.js",
+      "require": "./dist/cjs/function/compose.js"
+    },
+    "./function/curry": {
+      "types": "./dist/types/function/curry.d.ts",
+      "import": "./dist/esm/function/curry.js",
+      "require": "./dist/cjs/function/curry.js"
+    },
+    "./function/debounce": {
+      "types": "./dist/types/function/debounce.d.ts",
+      "import": "./dist/esm/function/debounce.js",
+      "require": "./dist/cjs/function/debounce.js"
+    },
+    "./function/memoize": {
+      "types": "./dist/types/function/memoize.d.ts",
+      "import": "./dist/esm/function/memoize.js",
+      "require": "./dist/cjs/function/memoize.js"
+    },
+    "./function/negate": {
+      "types": "./dist/types/function/negate.d.ts",
+      "import": "./dist/esm/function/negate.js",
+      "require": "./dist/cjs/function/negate.js"
+    },
+    "./function/once": {
+      "types": "./dist/types/function/once.d.ts",
+      "import": "./dist/esm/function/once.js",
+      "require": "./dist/cjs/function/once.js"
+    },
+    "./function/partial": {
+      "types": "./dist/types/function/partial.d.ts",
+      "import": "./dist/esm/function/partial.js",
+      "require": "./dist/cjs/function/partial.js"
+    },
+    "./function/pipe": {
+      "types": "./dist/types/function/pipe.d.ts",
+      "import": "./dist/esm/function/pipe.js",
+      "require": "./dist/cjs/function/pipe.js"
+    },
+    "./function/throttle": {
+      "types": "./dist/types/function/throttle.d.ts",
+      "import": "./dist/esm/function/throttle.js",
+      "require": "./dist/cjs/function/throttle.js"
+    },
+    "./is": {
+      "types": "./dist/types/is/index.d.ts",
+      "import": "./dist/esm/is/index.js",
+      "require": "./dist/cjs/is/index.js"
+    },
+    "./is/isArray": {
+      "types": "./dist/types/is/isArray.d.ts",
+      "import": "./dist/esm/is/isArray.js",
+      "require": "./dist/cjs/is/isArray.js"
+    },
+    "./is/isBoolean": {
+      "types": "./dist/types/is/isBoolean.d.ts",
+      "import": "./dist/esm/is/isBoolean.js",
+      "require": "./dist/cjs/is/isBoolean.js"
+    },
+    "./is/isDate": {
+      "types": "./dist/types/is/isDate.d.ts",
+      "import": "./dist/esm/is/isDate.js",
+      "require": "./dist/cjs/is/isDate.js"
+    },
+    "./is/isEmpty": {
+      "types": "./dist/types/is/isEmpty.d.ts",
+      "import": "./dist/esm/is/isEmpty.js",
+      "require": "./dist/cjs/is/isEmpty.js"
+    },
+    "./is/isError": {
+      "types": "./dist/types/is/isError.d.ts",
+      "import": "./dist/esm/is/isError.js",
+      "require": "./dist/cjs/is/isError.js"
+    },
+    "./is/isFunction": {
+      "types": "./dist/types/is/isFunction.d.ts",
+      "import": "./dist/esm/is/isFunction.js",
+      "require": "./dist/cjs/is/isFunction.js"
+    },
+    "./is/isMap": {
+      "types": "./dist/types/is/isMap.d.ts",
+      "import": "./dist/esm/is/isMap.js",
+      "require": "./dist/cjs/is/isMap.js"
+    },
+    "./is/isNil": {
+      "types": "./dist/types/is/isNil.d.ts",
+      "import": "./dist/esm/is/isNil.js",
+      "require": "./dist/cjs/is/isNil.js"
+    },
+    "./is/isNull": {
+      "types": "./dist/types/is/isNull.d.ts",
+      "import": "./dist/esm/is/isNull.js",
+      "require": "./dist/cjs/is/isNull.js"
+    },
+    "./is/isNumber": {
+      "types": "./dist/types/is/isNumber.d.ts",
+      "import": "./dist/esm/is/isNumber.js",
+      "require": "./dist/cjs/is/isNumber.js"
+    },
+    "./is/isObject": {
+      "types": "./dist/types/is/isObject.d.ts",
+      "import": "./dist/esm/is/isObject.js",
+      "require": "./dist/cjs/is/isObject.js"
+    },
+    "./is/isPlainObject": {
+      "types": "./dist/types/is/isPlainObject.d.ts",
+      "import": "./dist/esm/is/isPlainObject.js",
+      "require": "./dist/cjs/is/isPlainObject.js"
+    },
+    "./is/isPromise": {
+      "types": "./dist/types/is/isPromise.d.ts",
+      "import": "./dist/esm/is/isPromise.js",
+      "require": "./dist/cjs/is/isPromise.js"
+    },
+    "./is/isRegExp": {
+      "types": "./dist/types/is/isRegExp.d.ts",
+      "import": "./dist/esm/is/isRegExp.js",
+      "require": "./dist/cjs/is/isRegExp.js"
+    },
+    "./is/isSet": {
+      "types": "./dist/types/is/isSet.d.ts",
+      "import": "./dist/esm/is/isSet.js",
+      "require": "./dist/cjs/is/isSet.js"
+    },
+    "./is/isString": {
+      "types": "./dist/types/is/isString.d.ts",
+      "import": "./dist/esm/is/isString.js",
+      "require": "./dist/cjs/is/isString.js"
+    },
+    "./is/isSymbol": {
+      "types": "./dist/types/is/isSymbol.d.ts",
+      "import": "./dist/esm/is/isSymbol.js",
+      "require": "./dist/cjs/is/isSymbol.js"
+    },
+    "./is/isUndefined": {
+      "types": "./dist/types/is/isUndefined.d.ts",
+      "import": "./dist/esm/is/isUndefined.js",
+      "require": "./dist/cjs/is/isUndefined.js"
+    },
+    "./is/isWeakMap": {
+      "types": "./dist/types/is/isWeakMap.d.ts",
+      "import": "./dist/esm/is/isWeakMap.js",
+      "require": "./dist/cjs/is/isWeakMap.js"
+    },
+    "./is/isWeakSet": {
+      "types": "./dist/types/is/isWeakSet.d.ts",
+      "import": "./dist/esm/is/isWeakSet.js",
+      "require": "./dist/cjs/is/isWeakSet.js"
+    },
     "./math": {
       "types": "./dist/types/math/index.d.ts",
       "import": "./dist/esm/math/index.js",
       "require": "./dist/cjs/math/index.js"
+    },
+    "./math/max": {
+      "types": "./dist/types/math/max.d.ts",
+      "import": "./dist/esm/math/max.js",
+      "require": "./dist/cjs/math/max.js"
+    },
+    "./math/maxBy": {
+      "types": "./dist/types/math/maxBy.d.ts",
+      "import": "./dist/esm/math/maxBy.js",
+      "require": "./dist/cjs/math/maxBy.js"
+    },
+    "./math/meanBy": {
+      "types": "./dist/types/math/meanBy.d.ts",
+      "import": "./dist/esm/math/meanBy.js",
+      "require": "./dist/cjs/math/meanBy.js"
+    },
+    "./math/min": {
+      "types": "./dist/types/math/min.d.ts",
+      "import": "./dist/esm/math/min.js",
+      "require": "./dist/cjs/math/min.js"
+    },
+    "./math/minBy": {
+      "types": "./dist/types/math/minBy.d.ts",
+      "import": "./dist/esm/math/minBy.js",
+      "require": "./dist/cjs/math/minBy.js"
+    },
+    "./math/sumBy": {
+      "types": "./dist/types/math/sumBy.d.ts",
+      "import": "./dist/esm/math/sumBy.js",
+      "require": "./dist/cjs/math/sumBy.js"
+    },
+    "./number": {
+      "types": "./dist/types/number/index.d.ts",
+      "import": "./dist/esm/number/index.js",
+      "require": "./dist/cjs/number/index.js"
+    },
+    "./number/ceil": {
+      "types": "./dist/types/number/ceil.d.ts",
+      "import": "./dist/esm/number/ceil.js",
+      "require": "./dist/cjs/number/ceil.js"
+    },
+    "./number/clamp": {
+      "types": "./dist/types/number/clamp.d.ts",
+      "import": "./dist/esm/number/clamp.js",
+      "require": "./dist/cjs/number/clamp.js"
+    },
+    "./number/floor": {
+      "types": "./dist/types/number/floor.d.ts",
+      "import": "./dist/esm/number/floor.js",
+      "require": "./dist/cjs/number/floor.js"
+    },
+    "./number/inRange": {
+      "types": "./dist/types/number/inRange.d.ts",
+      "import": "./dist/esm/number/inRange.js",
+      "require": "./dist/cjs/number/inRange.js"
+    },
+    "./number/mean": {
+      "types": "./dist/types/number/mean.d.ts",
+      "import": "./dist/esm/number/mean.js",
+      "require": "./dist/cjs/number/mean.js"
+    },
+    "./number/median": {
+      "types": "./dist/types/number/median.d.ts",
+      "import": "./dist/esm/number/median.js",
+      "require": "./dist/cjs/number/median.js"
+    },
+    "./number/random": {
+      "types": "./dist/types/number/random.d.ts",
+      "import": "./dist/esm/number/random.js",
+      "require": "./dist/cjs/number/random.js"
+    },
+    "./number/range": {
+      "types": "./dist/types/number/range.d.ts",
+      "import": "./dist/esm/number/range.js",
+      "require": "./dist/cjs/number/range.js"
+    },
+    "./number/round": {
+      "types": "./dist/types/number/round.d.ts",
+      "import": "./dist/esm/number/round.js",
+      "require": "./dist/cjs/number/round.js"
+    },
+    "./number/sum": {
+      "types": "./dist/types/number/sum.d.ts",
+      "import": "./dist/esm/number/sum.js",
+      "require": "./dist/cjs/number/sum.js"
+    },
+    "./object": {
+      "types": "./dist/types/object/index.d.ts",
+      "import": "./dist/esm/object/index.js",
+      "require": "./dist/cjs/object/index.js"
+    },
+    "./object/clone": {
+      "types": "./dist/types/object/clone.d.ts",
+      "import": "./dist/esm/object/clone.js",
+      "require": "./dist/cjs/object/clone.js"
+    },
+    "./object/cloneDeep": {
+      "types": "./dist/types/object/cloneDeep.d.ts",
+      "import": "./dist/esm/object/cloneDeep.js",
+      "require": "./dist/cjs/object/cloneDeep.js"
+    },
+    "./object/entries": {
+      "types": "./dist/types/object/entries.d.ts",
+      "import": "./dist/esm/object/entries.js",
+      "require": "./dist/cjs/object/entries.js"
+    },
+    "./object/get": {
+      "types": "./dist/types/object/get.d.ts",
+      "import": "./dist/esm/object/get.js",
+      "require": "./dist/cjs/object/get.js"
+    },
+    "./object/has": {
+      "types": "./dist/types/object/has.d.ts",
+      "import": "./dist/esm/object/has.js",
+      "require": "./dist/cjs/object/has.js"
+    },
+    "./object/invert": {
+      "types": "./dist/types/object/invert.d.ts",
+      "import": "./dist/esm/object/invert.js",
+      "require": "./dist/cjs/object/invert.js"
+    },
+    "./object/keys": {
+      "types": "./dist/types/object/keys.d.ts",
+      "import": "./dist/esm/object/keys.js",
+      "require": "./dist/cjs/object/keys.js"
+    },
+    "./object/mapKeys": {
+      "types": "./dist/types/object/mapKeys.d.ts",
+      "import": "./dist/esm/object/mapKeys.js",
+      "require": "./dist/cjs/object/mapKeys.js"
+    },
+    "./object/mapValues": {
+      "types": "./dist/types/object/mapValues.d.ts",
+      "import": "./dist/esm/object/mapValues.js",
+      "require": "./dist/cjs/object/mapValues.js"
+    },
+    "./object/merge": {
+      "types": "./dist/types/object/merge.d.ts",
+      "import": "./dist/esm/object/merge.js",
+      "require": "./dist/cjs/object/merge.js"
+    },
+    "./object/mergeDeep": {
+      "types": "./dist/types/object/mergeDeep.d.ts",
+      "import": "./dist/esm/object/mergeDeep.js",
+      "require": "./dist/cjs/object/mergeDeep.js"
+    },
+    "./object/omit": {
+      "types": "./dist/types/object/omit.d.ts",
+      "import": "./dist/esm/object/omit.js",
+      "require": "./dist/cjs/object/omit.js"
+    },
+    "./object/pick": {
+      "types": "./dist/types/object/pick.d.ts",
+      "import": "./dist/esm/object/pick.js",
+      "require": "./dist/cjs/object/pick.js"
+    },
+    "./object/set": {
+      "types": "./dist/types/object/set.d.ts",
+      "import": "./dist/esm/object/set.js",
+      "require": "./dist/cjs/object/set.js"
+    },
+    "./object/values": {
+      "types": "./dist/types/object/values.d.ts",
+      "import": "./dist/esm/object/values.js",
+      "require": "./dist/cjs/object/values.js"
+    },
+    "./promise": {
+      "types": "./dist/types/promise/index.d.ts",
+      "import": "./dist/esm/promise/index.js",
+      "require": "./dist/cjs/promise/index.js"
+    },
+    "./promise/delay": {
+      "types": "./dist/types/promise/delay.d.ts",
+      "import": "./dist/esm/promise/delay.js",
+      "require": "./dist/cjs/promise/delay.js"
+    },
+    "./promise/filter": {
+      "types": "./dist/types/promise/filter.d.ts",
+      "import": "./dist/esm/promise/filter.js",
+      "require": "./dist/cjs/promise/filter.js"
+    },
+    "./promise/map": {
+      "types": "./dist/types/promise/map.d.ts",
+      "import": "./dist/esm/promise/map.js",
+      "require": "./dist/cjs/promise/map.js"
+    },
+    "./promise/parallel": {
+      "types": "./dist/types/promise/parallel.d.ts",
+      "import": "./dist/esm/promise/parallel.js",
+      "require": "./dist/cjs/promise/parallel.js"
+    },
+    "./promise/reduce": {
+      "types": "./dist/types/promise/reduce.d.ts",
+      "import": "./dist/esm/promise/reduce.js",
+      "require": "./dist/cjs/promise/reduce.js"
+    },
+    "./promise/retry": {
+      "types": "./dist/types/promise/retry.d.ts",
+      "import": "./dist/esm/promise/retry.js",
+      "require": "./dist/cjs/promise/retry.js"
+    },
+    "./promise/series": {
+      "types": "./dist/types/promise/series.d.ts",
+      "import": "./dist/esm/promise/series.js",
+      "require": "./dist/cjs/promise/series.js"
+    },
+    "./promise/timeout": {
+      "types": "./dist/types/promise/timeout.d.ts",
+      "import": "./dist/esm/promise/timeout.js",
+      "require": "./dist/cjs/promise/timeout.js"
+    },
+    "./string": {
+      "types": "./dist/types/string/index.d.ts",
+      "import": "./dist/esm/string/index.js",
+      "require": "./dist/cjs/string/index.js"
+    },
+    "./string/camelCase": {
+      "types": "./dist/types/string/camelCase.d.ts",
+      "import": "./dist/esm/string/camelCase.js",
+      "require": "./dist/cjs/string/camelCase.js"
+    },
+    "./string/capitalize": {
+      "types": "./dist/types/string/capitalize.d.ts",
+      "import": "./dist/esm/string/capitalize.js",
+      "require": "./dist/cjs/string/capitalize.js"
+    },
+    "./string/kebabCase": {
+      "types": "./dist/types/string/kebabCase.d.ts",
+      "import": "./dist/esm/string/kebabCase.js",
+      "require": "./dist/cjs/string/kebabCase.js"
+    },
+    "./string/lowerFirst": {
+      "types": "./dist/types/string/lowerFirst.d.ts",
+      "import": "./dist/esm/string/lowerFirst.js",
+      "require": "./dist/cjs/string/lowerFirst.js"
+    },
+    "./string/padEnd": {
+      "types": "./dist/types/string/padEnd.d.ts",
+      "import": "./dist/esm/string/padEnd.js",
+      "require": "./dist/cjs/string/padEnd.js"
+    },
+    "./string/padStart": {
+      "types": "./dist/types/string/padStart.d.ts",
+      "import": "./dist/esm/string/padStart.js",
+      "require": "./dist/cjs/string/padStart.js"
+    },
+    "./string/pascalCase": {
+      "types": "./dist/types/string/pascalCase.d.ts",
+      "import": "./dist/esm/string/pascalCase.js",
+      "require": "./dist/cjs/string/pascalCase.js"
+    },
+    "./string/repeat": {
+      "types": "./dist/types/string/repeat.d.ts",
+      "import": "./dist/esm/string/repeat.js",
+      "require": "./dist/cjs/string/repeat.js"
+    },
+    "./string/snakeCase": {
+      "types": "./dist/types/string/snakeCase.d.ts",
+      "import": "./dist/esm/string/snakeCase.js",
+      "require": "./dist/cjs/string/snakeCase.js"
+    },
+    "./string/template": {
+      "types": "./dist/types/string/template.d.ts",
+      "import": "./dist/esm/string/template.js",
+      "require": "./dist/cjs/string/template.js"
+    },
+    "./string/trim": {
+      "types": "./dist/types/string/trim.d.ts",
+      "import": "./dist/esm/string/trim.js",
+      "require": "./dist/cjs/string/trim.js"
+    },
+    "./string/trimEnd": {
+      "types": "./dist/types/string/trimEnd.d.ts",
+      "import": "./dist/esm/string/trimEnd.js",
+      "require": "./dist/cjs/string/trimEnd.js"
+    },
+    "./string/trimStart": {
+      "types": "./dist/types/string/trimStart.d.ts",
+      "import": "./dist/esm/string/trimStart.js",
+      "require": "./dist/cjs/string/trimStart.js"
+    },
+    "./string/truncate": {
+      "types": "./dist/types/string/truncate.d.ts",
+      "import": "./dist/esm/string/truncate.js",
+      "require": "./dist/cjs/string/truncate.js"
+    },
+    "./string/upperFirst": {
+      "types": "./dist/types/string/upperFirst.d.ts",
+      "import": "./dist/esm/string/upperFirst.js",
+      "require": "./dist/cjs/string/upperFirst.js"
     }
   },
   "publishConfig": {
