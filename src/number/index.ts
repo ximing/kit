@@ -3,7 +3,13 @@
  * @module number
  */
 
-// Number functions will be implemented in Phase 7
-// This is a placeholder to satisfy module exports
-
-export {};
+export { clamp } from './clamp';
+export { random } from './random';
+export { round } from './round';
+export { ceil } from './ceil';
+export { floor } from './floor';
+export { sum } from './sum';
+export { mean } from './mean';
+export { median } from './median';
+export { range } from './range';
+export { inRange } from './inRange';

@@ -3,7 +3,9 @@
  * @module math
  */
 
-// Math functions will be implemented in Phase 7
-// This is a placeholder to satisfy module exports
-
-export {};
+export { max } from './max';
+export { min } from './min';
+export { maxBy } from './maxBy';
+export { minBy } from './minBy';
+export { sumBy } from './sumBy';
+export { meanBy } from './meanBy';

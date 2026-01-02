@@ -3,7 +3,11 @@
  * @module promise
  */
 
-// Promise functions will be implemented in Phase 9
-// This is a placeholder to satisfy module exports
-
-export {};
+export { delay } from './delay';
+export { retry } from './retry';
+export { timeout } from './timeout';
+export { parallel } from './parallel';
+export { series } from './series';
+export { map } from './map';
+export { filter } from './filter';
+export { reduce } from './reduce';

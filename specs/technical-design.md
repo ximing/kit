@@ -551,46 +551,46 @@ module.exports = {
 
 ### 阶段七：数字和数学工具（预计 1 天）
 
-- [ ] 实现 number 模块（10个函数）
-  - [ ] clamp, random
-  - [ ] round, ceil, floor
-  - [ ] sum, mean, median
-  - [ ] range, inRange
-- [ ] 实现 math 模块（6个函数）
-  - [ ] max, min
-  - [ ] maxBy, minBy
-  - [ ] sumBy, meanBy
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 number 模块（10个函数）
+  - [x] clamp, random
+  - [x] round, ceil, floor
+  - [x] sum, mean, median
+  - [x] range, inRange
+- [x] 实现 math 模块（6个函数）
+  - [x] max, min
+  - [x] maxBy, minBy
+  - [x] sumBy, meanBy
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段八：日期工具（预计 1 天）
 
-- [ ] 实现 date 模块（10个函数）
-  - [ ] format, parse
-  - [ ] addDays, addMonths, addYears
-  - [ ] diffDays, diffMonths, diffYears
-  - [ ] startOfDay, endOfDay
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 date 模块（10个函数）
+  - [x] format, parse
+  - [x] addDays, addMonths, addYears
+  - [x] diffDays, diffMonths, diffYears
+  - [x] startOfDay, endOfDay
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段九：Promise 工具（预计 1-2 天）
 
-- [ ] 实现 promise 模块（8个函数）
-  - [ ] delay, retry, timeout
-  - [ ] parallel, series
-  - [ ] map, filter, reduce
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 promise 模块（8个函数）
+  - [x] delay, retry, timeout
+  - [x] parallel, series
+  - [x] map, filter, reduce
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段十：集合操作（预计 1 天）
 
-- [ ] 实现 collection 模块（9个函数）
-  - [ ] groupBy, keyBy
-  - [ ] sortBy, orderBy
-  - [ ] partition, countBy
-  - [ ] sample, sampleSize, shuffle
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 collection 模块（9个函数）
+  - [x] groupBy, keyBy
+  - [x] sortBy, orderBy
+  - [x] partition, countBy
+  - [x] sample, sampleSize, shuffle
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段十一：集成和优化（预计 1-2 天）
 

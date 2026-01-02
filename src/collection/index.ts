@@ -3,7 +3,12 @@
  * @module collection
  */
 
-// Collection functions will be implemented in Phase 10
-// This is a placeholder to satisfy module exports
-
-export {};
+export { groupBy } from './groupBy';
+export { keyBy } from './keyBy';
+export { sortBy } from './sortBy';
+export { orderBy } from './orderBy';
+export { partition } from './partition';
+export { countBy } from './countBy';
+export { sample } from './sample';
+export { sampleSize } from './sampleSize';
+export { shuffle } from './shuffle';

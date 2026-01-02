@@ -3,7 +3,13 @@
  * @module date
  */
 
-// Date functions will be implemented in Phase 8
-// This is a placeholder to satisfy module exports
-
-export {};
+export { format } from './format';
+export { parse } from './parse';
+export { addDays } from './addDays';
+export { addMonths } from './addMonths';
+export { addYears } from './addYears';
+export { diffDays } from './diffDays';
+export { diffMonths } from './diffMonths';
+export { diffYears } from './diffYears';
+export { startOfDay } from './startOfDay';
+export { endOfDay } from './endOfDay';
