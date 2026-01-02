@@ -495,26 +495,26 @@ module.exports = {
 
 ### 阶段二：类型判断工具（预计 1 天）
 
-- [ ] 实现 is 模块（20个函数）
-  - [ ] isArray, isObject, isPlainObject
-  - [ ] isString, isNumber, isBoolean
-  - [ ] isFunction, isNull, isUndefined, isNil
-  - [ ] isEmpty, isDate, isRegExp, isError
-  - [ ] isPromise, isSymbol
-  - [ ] isMap, isSet, isWeakMap, isWeakSet
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 is 模块（20个函数）
+  - [x] isArray, isObject, isPlainObject
+  - [x] isString, isNumber, isBoolean
+  - [x] isFunction, isNull, isUndefined, isNil
+  - [x] isEmpty, isDate, isRegExp, isError
+  - [x] isPromise, isSymbol
+  - [x] isMap, isSet, isWeakMap, isWeakSet
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段三：数组工具（预计 2 天）
 
-- [ ] 实现 array 模块（14个函数）
-  - [ ] chunk, compact, flatten, flattenDeep
-  - [ ] uniq, uniqBy
-  - [ ] difference, intersection, union
-  - [ ] zip, take, drop
-  - [ ] findIndex, remove
-- [ ] 编写测试用例（覆盖率 >= 90%）
-- [ ] 编写 API 文档
+- [x] 实现 array 模块（14个函数）
+  - [x] chunk, compact, flatten, flattenDeep
+  - [x] uniq, uniqBy
+  - [x] difference, intersection, union
+  - [x] zip, take, drop
+  - [x] findIndex, remove
+- [x] 编写测试用例（覆盖率 >= 90%）
+- [x] 编写 API 文档
 
 ### 阶段四：对象工具（预计 2 天）
 
