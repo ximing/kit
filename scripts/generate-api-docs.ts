@@ -134,7 +134,85 @@ async function extractFunctionDoc(sourceFile: any): Promise<FunctionDoc | null> 
   };
 }
 
-async function generateFunctionDoc(func: FunctionDoc, category: string, locale: 'en' | 'zh-CN'): Promise<string> {
+/**
+ * Load interactive examples from the interactive-examples directory
+ * Returns a Map of example key to example code
+ */
+async function loadInteractiveExamples(examplesDir: string): Promise<Map<string, string>> {
+  const examples = new Map<string, string>();
+
+  try {
+    for (const category of CATEGORIES) {
+      const categoryPath = path.join(examplesDir, category);
+
+      try {
+        const files = await fs.readdir(categoryPath);
+
+        for (const file of files) {
+          if (!file.endsWith('.tsx')) continue;
+
+          const filePath = path.join(categoryPath, file);
+          const content = await fs.readFile(filePath, 'utf-8');
+
+          // Extract the component code (remove imports and metadata comments)
+          const componentCode = extractComponentCode(content);
+          const functionName = file.replace('.tsx', '');
+
+          examples.set(`${category}/${functionName}`, componentCode);
+        }
+      } catch (error) {
+        // Category directory might not exist yet, skip it
+        continue;
+      }
+    }
+  } catch (error) {
+    console.error('Error loading interactive examples:', error);
+  }
+
+  return examples;
+}
+
+/**
+ * Extract the component code from a file and remove TypeScript type annotations
+ * React Live doesn't support TypeScript, so we need to remove all type annotations
+ * Also removes 'export default' since React Live expects just the function declaration
+ * The ReactLiveScope (website/src/theme/ReactLiveScope/index.ts) makes React and all @rabjs/kit functions available globally
+ */
+function extractComponentCode(fileContent: string): string {
+  const lines = fileContent.split('\n');
+
+  // Find the line where the export default function starts
+  const startIdx = lines.findIndex((line) => line.includes('export default function'));
+
+  if (startIdx === -1) {
+    return fileContent;
+  }
+
+  // Get the component code
+  let componentCode = lines.slice(startIdx).join('\n');
+
+  // Remove 'export default' keyword from the function declaration
+  componentCode = componentCode.replace(/export\s+default\s+/, '');
+
+  // Remove TypeScript type annotations
+  // Remove function parameter types: (param: type) => ...
+  componentCode = componentCode.replace(/:\s*[\w\[\]<>,\s|&]+\s*(?=[,\)\]=>])/g, '');
+
+  // Remove variable/const type annotations: const x: type = ...
+  componentCode = componentCode.replace(/:\s*[\w\[\]<>,\s|&]+\s*(?=[=;])/g, '');
+
+  // Remove function return type annotations: ): type => ...
+  componentCode = componentCode.replace(/\):\s*[\w\[\]<>,\s|&]+\s*(?=\s*[=>{])/g, ')');
+
+  return componentCode;
+}
+
+async function generateFunctionDoc(
+  func: FunctionDoc,
+  category: string,
+  locale: 'en' | 'zh-CN',
+  interactiveExamples?: Map<string, string>,
+): Promise<string> {
   const isZh = locale === 'zh-CN';
 
   const descText = isZh ? '描述' : 'Description';
@@ -198,8 +276,22 @@ ${example}
 
 `;
     }
+  }
 
-    // Add interactive example
+  // Add interactive example section
+  const exampleKey = `${category}/${func.name}`;
+  const interactiveCode = interactiveExamples?.get(exampleKey);
+
+  if (interactiveCode) {
+    content += `## ${interactiveText}
+
+\`\`\`tsx live
+${interactiveCode}
+\`\`\`
+
+`;
+  } else {
+    // Fallback: show a placeholder if no interactive example is available
     content += `## ${interactiveText}
 
 \`\`\`tsx live
@@ -207,7 +299,7 @@ function ${func.name}Example() {
   return (
     <div style={{padding: '20px', background: '#f5f5f5', borderRadius: '8px'}}>
       <h4>\`${func.name}\` Example</h4>
-      <p>${func.description || 'Try the function in the editor above!'}</p>
+      <p>${isZh ? '交互式示例即将推出，敬请期待。' : 'Interactive example coming soon!'}</p>
     </div>
   );
 }
@@ -251,6 +343,12 @@ async function getAllFunctionsInCategory(category: string): Promise<FunctionDoc[
 
 async function generateApiDocs() {
   console.log('🚀 Starting API documentation generation...\n');
+
+  // Load pre-generated interactive examples
+  console.log('📦 Loading interactive examples...');
+  const examplesDir = path.resolve(__dirname, '../interactive-examples');
+  const interactiveExamples = await loadInteractiveExamples(examplesDir);
+  console.log(`   ✅ Loaded ${interactiveExamples.size} interactive examples\n`);
 
   // Generate docs for each category
   for (const category of CATEGORIES) {
@@ -317,12 +415,12 @@ ${CATEGORY_DESCRIPTIONS[category].zh}
     // Generate individual function docs
     for (const func of functions) {
       // English
-      const enContent = await generateFunctionDoc(func, category, 'en');
+      const enContent = await generateFunctionDoc(func, category, 'en', interactiveExamples);
       const enPath = path.join(enCategoryPath, `${func.name}.md`);
       await fs.writeFile(enPath, enContent);
 
       // Chinese
-      const zhContent = await generateFunctionDoc(func, category, 'zh-CN');
+      const zhContent = await generateFunctionDoc(func, category, 'zh-CN', interactiveExamples);
       const zhPath = path.join(zhCategoryPath, `${func.name}.md`);
       await fs.writeFile(zhPath, zhContent);
 

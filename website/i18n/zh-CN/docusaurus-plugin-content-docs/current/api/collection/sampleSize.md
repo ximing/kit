@@ -1,7 +1,7 @@
 ---
 id: sampleSize
 title: sampleSize
-description: 'Gets n random elements at unique keys from collection up to the size of collection'
+description: "Gets n random elements at unique keys from collection up to the size of collection"
 ---
 
 # `sampleSize`
@@ -10,10 +10,10 @@ Gets n random elements at unique keys from collection up to the size of collecti
 
 ## 参数
 
-| 参数         | 类型  | 描述                               |
-| ------------ | ----- | ---------------------------------- |
-| `collection` | `any` | - The collection to sample         |
-| `n`          | `any` | - The number of elements to sample |
+| 参数 | 类型 | 描述 |
+|---------|------|---------|
+| `collection` | `any` | - The collection to sample |
+| `n` | `any` | - The number of elements to sample |
 
 ## 返回值
 
@@ -30,12 +30,78 @@ Gets n random elements at unique keys from collection up to the size of collecti
 ## 交互式示例
 
 ```tsx live
-function sampleSizeExample() {
+function SampleSizeExample() {
+  const [sampleCount, setSampleCount] = useState(3);
+  const [samples, setSamples] = useState<number[]>([]);
+  
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const handleSample = () => {
+    const newSamples = sampleSize(items, sampleCount);
+    setSamples(newSamples);
+  };
+
+  const handleClear = () => {
+    setSamples([]);
+  };
+
   return (
-    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>`sampleSize` Example</h4>
-      <p>Gets n random elements at unique keys from collection up to the size of collection</p>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h3>Collection SampleSize Example</h3>
+      <div style={{ marginBottom: '15px' }}>
+        <p>
+          <strong>Items:</strong> {JSON.stringify(items)}
+        </p>
+      </div>
+      <div style={{ marginBottom: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <label>
+          Sample size="number"
+            min="1"
+            max={items.length}
+            value={sampleCount}
+            onChange={(e) => setSampleCount(Math.max(1, Number(e.target.value)))}
+            style={{ marginLeft: '8px', padding: '5px', fontSize: '14px', width: '60px' }}
+          />
+        </label>
+        <button
+          onClick={handleSample}
+          style={{
+            padding: '8px 16px',
+            fontSize: '14px',
+            backgroundColor: '#2196F3',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Get Samples
+        </button>
+        <button
+          onClick={handleClear}
+          style={{
+            padding: '8px 16px',
+            fontSize: '14px',
+            backgroundColor: '#f44336',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Clear
+        </button>
+      </div>
+      <div style={{ marginTop: '15px' }}>
+        <p>
+          <strong>Samples ({samples.length}):</strong>
+        </p>
+        <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#2196F3' }}>
+          {samples.length > 0 ? samples.join(', ') : 'Click "Get Samples" to start'}
+        </p>
+      </div>
     </div>
   );
 }
 ```
+

@@ -1,7 +1,7 @@
 ---
 id: addYears
 title: addYears
-description: 'Adds the specified number of years to the given date.'
+description: "Adds the specified number of years to the given date."
 ---
 
 # `addYears`
@@ -10,10 +10,10 @@ Adds the specified number of years to the given date.
 
 ## Parameters
 
-| Parameter | Type  | Description                                    |
-| --------- | ----- | ---------------------------------------------- |
-| `date`    | `any` | - The date to modify                           |
-| `amount`  | `any` | - The number of years to add (can be negative) |
+| Parameter | Type | Description |
+|---------|------|---------|
+| `date` | `any` | - The date to modify |
+| `amount` | `any` | - The number of years to add (can be negative) |
 
 ## Returns
 
@@ -30,12 +30,37 @@ Adds the specified number of years to the given date.
 ## Interactive Example
 
 ```tsx live
-function addYearsExample() {
+function AddYearsExample() {
+  const [yearsToAdd, setYearsToAdd] = useState(1);
+  
+  const baseDate = new Date('2024-01-15');
+  const resultDate = addYears(baseDate, yearsToAdd);
+
   return (
-    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>`addYears` Example</h4>
-      <p>Adds the specified number of years to the given date.</p>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h3>Date AddYears Example</h3>
+      <div style={{ marginBottom: '15px' }}>
+        <label style={{ marginRight: '10px' }}>Years to add: </label>
+        <input
+          type="number"
+          value={yearsToAdd}
+          onChange={(e) => setYearsToAdd(Number(e.target.value))}
+          style={{ padding: '5px', fontSize: '14px', width: '80px' }}
+        />
+      </div>
+      <div style={{ marginTop: '15px' }}>
+        <p>
+          <strong>Base Date:</strong> {format(baseDate, 'YYYY-MM-DD')}
+        </p>
+        <p>
+          <strong>Years to Add:</strong> {yearsToAdd}
+        </p>
+        <p>
+          <strong>Result Date:</strong> {format(resultDate, 'YYYY-MM-DD')}
+        </p>
+      </div>
     </div>
   );
 }
 ```
+

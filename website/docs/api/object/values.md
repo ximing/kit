@@ -1,7 +1,7 @@
 ---
 id: values
 title: values
-description: 'Creates an array of the own enumerable property values of object'
+description: "Creates an array of the own enumerable property values of object"
 ---
 
 # `values`
@@ -10,9 +10,9 @@ Creates an array of the own enumerable property values of object
 
 ## Parameters
 
-| Parameter | Type  | Description           |
-| --------- | ----- | --------------------- |
-| `obj`     | `any` | - The object to query |
+| Parameter | Type | Description |
+|---------|------|---------|
+| `obj` | `any` | - The object to query |
 
 ## Returns
 
@@ -28,12 +28,33 @@ Creates an array of the own enumerable property values of object
 ## Interactive Example
 
 ```tsx live
-function valuesExample() {
+function ValuesExample() {
+  const [obj] = useState({ a, b, c: 3 });
+  const [result] = useState(() => values(obj));
+
   return (
-    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>`values` Example</h4>
-      <p>Creates an array of the own enumerable property values of object</p>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h3>values Example</h3>
+      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>
+        Creates an array of all enumerable property values in an object.
+      </p>
+      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
+        <p>
+          <strong>Input Object:</strong> {JSON.stringify(obj)}
+        </p>
+        <p>
+          <strong>Values:</strong> {JSON.stringify(result)}
+        </p>
+        <div style={{ marginTop: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          {result.map((val, index) => (
+            <div key={index} style={{ marginBottom: '5px', fontSize: '14px' }}>
+              [{index}] {JSON.stringify(val)}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 ```
+

@@ -1,7 +1,7 @@
 ---
 id: partial
 title: partial
-description: 'Creates a function that invokes func with partialArgs prepended to the arguments it receives. This method is like bind except it does not alter the this binding.'
+description: "Creates a function that invokes func with partialArgs prepended to the arguments it receives. This method is like bind except it does not alter the this binding."
 ---
 
 # `partial`
@@ -11,10 +11,10 @@ This method is like bind except it does not alter the this binding.
 
 ## 参数
 
-| 参数          | 类型  | 描述                                           |
-| ------------- | ----- | ---------------------------------------------- |
-| `func`        | `any` | - The function to partially apply arguments to |
-| `partialArgs` | `any` | - The arguments to be partially applied        |
+| 参数 | 类型 | 描述 |
+|---------|------|---------|
+| `func` | `any` | - The function to partially apply arguments to |
+| `partialArgs` | `any` | - The arguments to be partially applied |
 
 ## 返回值
 
@@ -41,15 +41,63 @@ This method is like bind except it does not alter the this binding.
 ## 交互式示例
 
 ```tsx live
-function partialExample() {
+function PartialExample() {
+  const [greeting, setGreeting] = useState('Hello');
+  const [name, setName] = useState('Alice');
+
+  // Define a function that takes multiple arguments
+  const greet = (greeting, name) => `${greeting}, ${name}!`;
+
+  // Create a partial function with greeting pre-filled
+  const sayHelloTo = partial(greet, greeting);
+
+  // Test with different names
+  const result1 = sayHelloTo(name);
+  const result2 = sayHelloTo('Bob');
+  const result3 = sayHelloTo('Charlie');
+
   return (
-    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>`partial` Example</h4>
-      <p>
-        Creates a function that invokes func with partialArgs prepended to the arguments it receives. This method is
-        like bind except it does not alter the this binding.
-      </p>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h3>Function Partial Example</h3>
+      <div style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
+        <div>
+          <label style={{ marginRight: '5px' }}>Greeting: </label>
+          <input
+            type="text"
+            value={greeting}
+            onChange={(e) => setGreeting(e.target.value)}
+            style={{ padding: '5px', fontSize: '14px' }}
+          />
+        </div>
+        <div>
+          <label style={{ marginRight: '5px' }}>Name: </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{ padding: '5px', fontSize: '14px' }}
+          />
+        </div>
+      </div>
+      <div style={{ marginTop: '15px' }}>
+        <p>
+          <strong>Original Function:</strong> greet(greeting, name)
+        </p>
+        <p>
+          <strong>Partial Function:</strong> sayHelloTo = partial(greet, '{greeting}')
+        </p>
+        <p>
+          <strong>sayHelloTo('{name}'):</strong> {result1}
+        </p>
+        <p>
+          <strong>sayHelloTo('Bob'):</strong> {result2}
+        </p>
+        <p>
+          <strong>sayHelloTo('Charlie'):</strong> {result3}
+        </p>
+      </div>
     </div>
   );
 }
 ```
+

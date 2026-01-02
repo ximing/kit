@@ -1,7 +1,7 @@
 ---
 id: diffDays
 title: diffDays
-description: 'Calculates the number of days between two dates.'
+description: "Calculates the number of days between two dates."
 ---
 
 # `diffDays`
@@ -10,9 +10,9 @@ Calculates the number of days between two dates.
 
 ## 参数
 
-| 参数    | 类型  | 描述              |
-| ------- | ----- | ----------------- |
-| `date1` | `any` | - The first date  |
+| 参数 | 类型 | 描述 |
+|---------|------|---------|
+| `date1` | `any` | - The first date |
 | `date2` | `any` | - The second date |
 
 ## 返回值
@@ -30,12 +30,32 @@ Calculates the number of days between two dates.
 ## 交互式示例
 
 ```tsx live
-function diffDaysExample() {
+function DiffDaysExample() {
+  const [daysDiff, setDaysDiff] = useState(5);
+  
+  const date1 = new Date('2024-01-20');
+  const date2 = new Date('2024-01-15');
+  const result = diffDays(date1, date2);
+
   return (
-    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>`diffDays` Example</h4>
-      <p>Calculates the number of days between two dates.</p>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h3>Date DiffDays Example</h3>
+      <div style={{ marginTop: '15px' }}>
+        <p>
+          <strong>Date 1:</strong> {format(date1, 'YYYY-MM-DD')}
+        </p>
+        <p>
+          <strong>Date 2:</strong> {format(date2, 'YYYY-MM-DD')}
+        </p>
+        <p>
+          <strong>Days Difference (Date1 - Date2):</strong> {result} days
+        </p>
+        <p style={{ fontSize: '12px', color: '#666' }}>
+          (Positive means Date 1 is later than Date 2)
+        </p>
+      </div>
     </div>
   );
 }
 ```
+

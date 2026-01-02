@@ -1,7 +1,7 @@
 ---
 id: once
 title: once
-description: 'Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation.'
+description: "Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation."
 ---
 
 # `once`
@@ -11,9 +11,9 @@ Repeat calls to the function return the value of the first invocation.
 
 ## Parameters
 
-| Parameter | Type  | Description                |
-| --------- | ----- | -------------------------- |
-| `func`    | `any` | - The function to restrict |
+| Parameter | Type | Description |
+|---------|------|---------|
+| `func` | `any` | - The function to restrict |
 
 ## Returns
 
@@ -41,15 +41,54 @@ Repeat calls to the function return the value of the first invocation.
 ## Interactive Example
 
 ```tsx live
-function onceExample() {
+function OnceExample() {
+  const [count, setCount] = useState(0);
+  const [clickCount, setClickCount] = useState(0);
+
+  // Create a function that increments count
+  const increment = React.useMemo(() => {
+    return once(() => {
+      setCount((c) => c + 1);
+    });
+  }, []);
+
+  const handleClick = () => {
+    setClickCount((c) => c + 1);
+    increment();
+  };
+
   return (
-    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>`once` Example</h4>
-      <p>
-        Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of
-        the first invocation.
-      </p>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h3>Function Once Example</h3>
+      <div style={{ marginBottom: '15px' }}>
+        <button
+          onClick={handleClick}
+          style={{
+            padding: '8px 16px',
+            fontSize: '14px',
+            cursor: 'pointer',
+            backgroundColor: '#FF9800',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+          }}
+        >
+          Click Me
+        </button>
+      </div>
+      <div style={{ marginTop: '15px' }}>
+        <p>
+          <strong>Total Clicks:</strong> {clickCount}
+        </p>
+        <p>
+          <strong>Function Executed Count:</strong> {count}
+        </p>
+        <p style={{ fontSize: '12px', color: '#666' }}>
+          No matter how many times you click, the function will only execute once. All subsequent calls return the cached result.
+        </p>
+      </div>
     </div>
   );
 }
 ```
+
