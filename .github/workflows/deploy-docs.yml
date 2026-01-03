@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/**'
       - 'website/**'
       - 'src/**'
       - 'scripts/generate-api-docs.ts'
