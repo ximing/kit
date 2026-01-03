@@ -21,7 +21,7 @@ const config: Config = {
   // Set the production url of your site here
   url: 'https://ximing.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // For GitHub pages deployment, it is often '/<baseUrl>/'
   baseUrl: '/kit/',
 
   // GitHub pages deployment config.
@@ -34,17 +34,17 @@ const config: Config = {
   // Internationalization configuration
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh-CN'],
+    locales: ['en', 'zh-Hans'],
     localeConfigs: {
       en: {
         label: 'English',
         direction: 'ltr',
         htmlLang: 'en',
       },
-      'zh-CN': {
+      'zh-Hans': {
         label: '中文',
         direction: 'ltr',
-        htmlLang: 'zh-CN',
+        htmlLang: 'zh-Hans',
       },
     },
   },
