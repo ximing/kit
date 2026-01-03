@@ -95,7 +95,6 @@ sidebar_position: 7
    ```bash
    # 在本地运行相同的步骤
    pnpm install
-   pnpm run docs:generate
    cd website && pnpm run build
    ```
 
