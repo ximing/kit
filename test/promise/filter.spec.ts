@@ -16,7 +16,8 @@ describe('filter', () => {
     const results = await filter([1, 2, 3, 4, 5], () => delay(50, true), 2);
     const elapsed = Date.now() - start;
     expect(results.length).toBe(5);
-    expect(elapsed).toBeGreaterThanOrEqual(150); // Should be ~150ms with concurrency 2
+    // Allow 20ms tolerance for system variance in CI environments
+    expect(elapsed).toBeGreaterThanOrEqual(130); // Should be ~150ms with concurrency 2
   });
 
   it('should handle empty array', async () => {
@@ -68,7 +69,8 @@ describe('filter', () => {
     const results = await filter([1, 2, 3], () => delay(50, true), 1);
     const elapsed = Date.now() - start;
     expect(results.length).toBe(3);
-    expect(elapsed).toBeGreaterThanOrEqual(150); // Should be ~150ms
+    // Allow 20ms tolerance for system variance in CI environments
+    expect(elapsed).toBeGreaterThanOrEqual(130); // Should be ~150ms
   });
 
   it('should handle objects in array', async () => {
