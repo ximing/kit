@@ -1,73 +1,63 @@
 ---
 id: isSet
 title: isSet
-description: 'Checks if value is a Set object.'
+description: '检查值是否为 Set 对象'
 ---
 
 # `isSet`
 
-Checks if value is a Set object.
+检查一个值是否为 Set 对象。
+
+## 语法
+
+```typescript
+function isSet(value: unknown): value is Set<any>;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is a Set object, else false
+- **类型**: `value is Set<any>`（类型守卫）
+- **描述**: 如果值是 Set 对象返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isSet(new Set()) // => true
- * isSet(new Set([1, 2, 3])) // => true
- * isSet([]) // => false
- * isSet(new WeakSet()) // => false
+import { isSet } from '@rabjs/kit';
+
+console.log(isSet(new Set()));           // true
+console.log(isSet(new Set([1, 2, 3])); // true
+console.log(isSet([]));                  // false
+console.log(isSet(new WeakSet()));       // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsSetExample() {
-  const [testValues] = useState([
-    { value: new Set(), label: 'new Set()' },
-    { value: new Set([1, 2, 3]), label: 'new Set([1, 2, 3])' },
-    { value, label: '[]' },
-    { value: new WeakSet(), label: 'new WeakSet()' },
-  ]);
+```typescript
+function getUnique(data: unknown): any[] {
+  if (isSet(data)) {
+    return Array.from(data);
+  }
+  return [];
+}
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isSet Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Set object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isSet(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isSet(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// 去重处理
+function deduplicateArray(arr: any[]) {
+  const uniqueSet = new Set(arr);
+  if (isSet(uniqueSet)) {
+    return Array.from(uniqueSet);
+  }
+  return arr;
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

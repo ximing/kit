@@ -1,71 +1,63 @@
 ---
 id: isWeakMap
 title: isWeakMap
-description: 'Checks if value is a WeakMap object.'
+description: 'Checks if a value is a WeakMap object'
 ---
 
 # `isWeakMap`
 
-Checks if value is a WeakMap object.
+检查一个值是否为 WeakMap 对象。
 
-## Parameters
-
-| Parameter | Type  | Description          |
-| --------- | ----- | -------------------- |
-| `value`   | `any` | - The value to check |
-
-## Returns
-
-- **Type**: `any`
-- **Description**: Returns true if value is a WeakMap object, else false
-
-## Examples
+## 语法
 
 ```typescript
-* isWeakMap(new WeakMap()) // => true
- * isWeakMap(new Map()) // => false
- * isWeakMap({}) // => false
+function isWeakMap(value: unknown): value is WeakMap<any, any>;
 ```
 
-## Interactive Example
+## 参数
 
-```tsx live
-function IsWeakMapExample() {
-  const [testValues] = useState([
-    { value: new WeakMap(), label: 'new WeakMap()' },
-    { value: new Map(), label: 'new Map()' },
-    { value: {}, label: '{}' },
-  ]);
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isWeakMap Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a WeakMap object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isWeakMap(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isWeakMap(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+## 返回值
+
+- **类型**: `value is WeakMap<any, any>`（类型守卫）
+- **描述**: 如果值是 WeakMap 对象返回 `true`，否则返回 `false`
+
+## 示例
+
+### 基础用法
+
+```typescript
+import { isWeakMap } from '@rabjs/kit';
+
+console.log(isWeakMap(new WeakMap())); // true
+console.log(isWeakMap(new Map())); // false
+console.log(isWeakMap({})); // false
+```
+
+### 实际应用场景
+
+```typescript
+// 私有数据存储
+class PrivateData {
+  private data = new WeakMap<object, any>();
+
+  set(obj: object, value: any) {
+    if (isWeakMap(this.data)) {
+      this.data.set(obj, value);
+    }
+  }
+
+  get(obj: object) {
+    if (isWeakMap(this.data)) {
+      return this.data.get(obj);
+    }
+  }
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

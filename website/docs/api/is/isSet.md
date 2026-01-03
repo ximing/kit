@@ -1,73 +1,63 @@
 ---
 id: isSet
 title: isSet
-description: 'Checks if value is a Set object.'
+description: 'Checks if a value is a Set object'
 ---
 
 # `isSet`
 
-Checks if value is a Set object.
+检查一个值是否为 Set 对象。
 
-## Parameters
-
-| Parameter | Type  | Description          |
-| --------- | ----- | -------------------- |
-| `value`   | `any` | - The value to check |
-
-## Returns
-
-- **Type**: `any`
-- **Description**: Returns true if value is a Set object, else false
-
-## Examples
+## 语法
 
 ```typescript
-* isSet(new Set()) // => true
- * isSet(new Set([1, 2, 3])) // => true
- * isSet([]) // => false
- * isSet(new WeakSet()) // => false
+function isSet(value: unknown): value is Set<any>;
 ```
 
-## Interactive Example
+## 参数
 
-```tsx live
-function IsSetExample() {
-  const [testValues] = useState([
-    { value: new Set(), label: 'new Set()' },
-    { value: new Set([1, 2, 3]), label: 'new Set([1, 2, 3])' },
-    { value, label: '[]' },
-    { value: new WeakSet(), label: 'new WeakSet()' },
-  ]);
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isSet Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Set object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isSet(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isSet(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+## 返回值
+
+- **类型**: `value is Set<any>`（类型守卫）
+- **描述**: 如果值是 Set 对象返回 `true`，否则返回 `false`
+
+## 示例
+
+### 基础用法
+
+```typescript
+import { isSet } from '@rabjs/kit';
+
+console.log(isSet(new Set()));           // true
+console.log(isSet(new Set([1, 2, 3])); // true
+console.log(isSet([]));                  // false
+console.log(isSet(new WeakSet()));       // false
+```
+
+### 实际应用场景
+
+```typescript
+function getUnique(data: unknown): any[] {
+  if (isSet(data)) {
+    return Array.from(data);
+  }
+  return [];
+}
+
+// 去重处理
+function deduplicateArray(arr: any[]) {
+  const uniqueSet = new Set(arr);
+  if (isSet(uniqueSet)) {
+    return Array.from(uniqueSet);
+  }
+  return arr;
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

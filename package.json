@@ -4,6 +4,10 @@
   "description": "A comprehensive TypeScript utility library with 100+ helper functions for arrays, objects, strings, functions, numbers, dates, promises, and more. Similar to lodash but with full TypeScript support and tree-shaking friendly.",
   "author": "TypeStack contributors",
   "license": "MIT",
+  "engines": {
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@10.22.0",
   "sideEffects": false,
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -80,7 +84,6 @@
     "rollup": "^4.54.0",
     "rollup-plugin-dts": "^6.3.0",
     "ts-jest": "^29.2.5",
-    "ts-morph": "^21.0.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "tsx": "^4.7.0",

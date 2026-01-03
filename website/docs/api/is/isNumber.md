@@ -1,77 +1,62 @@
 ---
 id: isNumber
 title: isNumber
-description: 'Checks if value is classified as a Number primitive or object.'
+description: 'Checks if a value is a number'
 ---
 
 # `isNumber`
 
-Checks if value is classified as a Number primitive or object.
+检查一个值是否为数字类型。包括整数、浮点数、`NaN` 和 `Infinity`。
 
-## Parameters
-
-| Parameter | Type  | Description          |
-| --------- | ----- | -------------------- |
-| `value`   | `any` | - The value to check |
-
-## Returns
-
-- **Type**: `any`
-- **Description**: Returns true if value is a number, else false
-
-## Examples
+## 语法
 
 ```typescript
-* isNumber(3) // => true
- * isNumber(new Number(3)) // => true
- * isNumber(NaN) // => true
- * isNumber(Infinity) // => true
- * isNumber('3') // => false
+function isNumber(value: unknown): value is number;
 ```
 
-## Interactive Example
+## 参数
 
-```tsx live
-function IsNumberExample() {
-  const [testValues] = useState([
-    { value, label: '3' },
-    { value: new Number(3), label: 'new Number(3)' },
-    { value, label: 'NaN' },
-    { value, label: 'Infinity' },
-    { value: '3', label: "'3'" },
-  ]);
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isNumber Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>
-        Checks if a value is a Number primitive or object.
-      </p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isNumber(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isNumber(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+## 返回值
+
+- **类型**: `value is number`（类型守卫）
+- **描述**: 如果值是数字类型返回 `true`，否则返回 `false`
+
+## 示例
+
+### 基础用法
+
+```typescript
+import { isNumber } from '@rabjs/kit';
+
+console.log(isNumber(3)); // true
+console.log(isNumber(-3.14)); // true
+console.log(isNumber(NaN)); // true
+console.log(isNumber(Infinity)); // true
+console.log(isNumber('3')); // false
+```
+
+### 实际应用场景
+
+```typescript
+function calculatePercentage(value: unknown): number | null {
+  if (isNumber(value) && !isNaN(value) && isFinite(value)) {
+    return Math.min(100, Math.max(0, value));
+  }
+  return null;
+}
+
+// 参数验证
+function setWidth(width: unknown) {
+  if (isNumber(width) && width > 0) {
+    document.body.style.width = width + 'px';
+  }
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

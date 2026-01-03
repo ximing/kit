@@ -5,6 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
 
 import styles from './index.module.css';
 
@@ -21,13 +22,21 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Get Started 🚀
+            <Translate
+              id="homepage.button.getStarted"
+              description="Get started button on homepage">
+              Get Started 🚀
+            </Translate>
           </Link>
           <Link
             className="button button--outline button--secondary button--lg"
             to="/docs/api/array"
             style={{marginLeft: '1rem'}}>
-            Browse API 📚
+            <Translate
+              id="homepage.button.browseAPI"
+              description="Browse API button on homepage">
+              Browse API 📚
+            </Translate>
           </Link>
         </div>
       </div>

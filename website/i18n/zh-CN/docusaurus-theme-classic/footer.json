@@ -1,0 +1,42 @@
+{
+  "link.title.Docs": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "更多",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "快速开始",
+    "description": "The label of footer link with label=Getting Started linking to /docs/intro"
+  },
+  "link.item.label.Installation": {
+    "message": "安装",
+    "description": "The label of footer link with label=Installation linking to /docs/installation"
+  },
+  "link.item.label.GitHub Issues": {
+    "message": "GitHub 问题",
+    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/ximing/kit/issues"
+  },
+  "link.item.label.GitHub Discussions": {
+    "message": "GitHub 讨论",
+    "description": "The label of footer link with label=GitHub Discussions linking to https://github.com/ximing/kit/discussions"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/ximing/kit"
+  },
+  "link.item.label.NPM": {
+    "message": "NPM",
+    "description": "The label of footer link with label=NPM linking to https://www.npmjs.com/package/@rabjs/kit"
+  },
+  "copyright": {
+    "message": "版权所有 © 2026 @rabjs/kit。使用 Docusaurus 构建。",
+    "description": "The footer copyright"
+  }
+}

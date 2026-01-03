@@ -1,73 +1,62 @@
 ---
 id: isDate
 title: isDate
-description: 'Checks if value is a Date object.'
+description: 'Checks if a value is a Date object'
 ---
 
 # `isDate`
 
-Checks if value is a Date object.
+检查一个值是否为 Date 对象。
 
-## Parameters
-
-| Parameter | Type  | Description          |
-| --------- | ----- | -------------------- |
-| `value`   | `any` | - The value to check |
-
-## Returns
-
-- **Type**: `any`
-- **Description**: Returns true if value is a Date object, else false
-
-## Examples
+## 语法
 
 ```typescript
-* isDate(new Date()) // => true
- * isDate(Date.now()) // => false
- * isDate('2023-01-01') // => false
+function isDate(value: unknown): value is Date;
 ```
 
-## Interactive Example
+## 参数
 
-```tsx live
-function IsDateExample() {
-  const [testValues] = useState([
-    { value: new Date(), label: 'new Date()' },
-    { value: Date.now(), label: 'Date.now()' },
-    { value: '2023-01-01', label: "'2023-01-01'" },
-    { value: new Date('2023-01-01'), label: "new Date('2023-01-01')" },
-    { value: {}, label: '{}' },
-  ]);
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isDate Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Date object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isDate(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isDate(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+## 返回值
+
+- **类型**: `value is Date`（类型守卫）
+- **描述**: 如果值是 Date 对象返回 `true`，否则返回 `false`
+
+## 示例
+
+### 基础用法
+
+```typescript
+import { isDate } from '@rabjs/kit';
+
+console.log(isDate(new Date())); // true
+console.log(isDate(Date.now())); // false
+console.log(isDate('2023-01-01')); // false
+console.log(isDate(null)); // false
+```
+
+### 实际应用场景
+
+```typescript
+function formatDate(value: unknown): string {
+  if (isDate(value)) {
+    return value.toISOString();
+  }
+  return String(value);
+}
+
+// API 响应处理
+function processResponse(data: unknown) {
+  if (isDate(data)) {
+    return data.getTime();
+  }
+  return data;
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

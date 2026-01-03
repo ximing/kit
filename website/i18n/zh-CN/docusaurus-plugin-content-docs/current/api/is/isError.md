@@ -1,74 +1,69 @@
 ---
 id: isError
 title: isError
-description: 'Checks if value is an Error object.'
+description: '检查值是否为错误对象'
 ---
 
 # `isError`
 
-Checks if value is an Error object.
+检查一个值是否为 Error 对象或其子类。
+
+## 语法
+
+```typescript
+function isError(value: unknown): value is Error;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is an Error object, else false
+- **类型**: `value is Error`（类型守卫）
+- **描述**: 如果值是 Error 对象返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isError(new Error()) // => true
- * isError(new TypeError()) // => true
- * isError('error') // => false
- * isError({ message: 'error' }) // => false
+import { isError } from '@rabjs/kit';
+
+console.log(isError(new Error())); // true
+console.log(isError(new TypeError())); // true
+console.log(isError(new ReferenceError())); // true
+console.log(isError('error')); // false
+console.log(isError({ message: 'error' })); // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsErrorExample() {
-  const [testValues] = useState([
-    { value: new Error(), label: 'new Error()' },
-    { value: new TypeError(), label: 'new TypeError()' },
-    { value: new RangeError(), label: 'new RangeError()' },
-    { value: 'error', label: "'error'" },
-    { value: { message: 'error' }, label: "{ message: 'error' }" },
-  ]);
+```typescript
+function handleException(error: unknown) {
+  if (isError(error)) {
+    console.error('错误信息:', error.message);
+    console.error('堆栈:', error.stack);
+  } else {
+    console.error('未知错误:', error);
+  }
+}
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isError Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is an Error object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isError(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isError(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// Promise 错误处理
+async function safeExecute(fn: () => Promise<any>) {
+  try {
+    return await fn();
+  } catch (error) {
+    if (isError(error)) {
+      console.error(`执行失败: ${error.message}`);
+    }
+    throw error;
+  }
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

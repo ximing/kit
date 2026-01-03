@@ -1,80 +1,64 @@
 ---
 id: isPlainObject
 title: isPlainObject
-description: 'Checks if value is a plain object, that is, an object created by the Object constructor or one with a [[Prototype]] of null.'
+description: '检查值是否为普通对象'
 ---
 
 # `isPlainObject`
 
-Checks if value is a plain object, that is, an object created by the Object constructor
-or one with a [[Prototype]] of null.
+检查一个值是否为普通对象。普通对象是由 Object 构造函数创建的对象或原型链为 null 的对象。
+
+## 语法
+
+```typescript
+function isPlainObject(value: unknown): value is Record<string, any>;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is a plain object, else false
+- **类型**: `value is Record<string, any>`（类型守卫）
+- **描述**: 如果值是普通对象返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isPlainObject({}) // => true
- * isPlainObject({ a: 1 }) // => true
- * isPlainObject(Object.create(null)) // => true
- * isPlainObject([]) // => false
- * isPlainObject(() => {}) // => false
- * isPlainObject(new Date()) // => false
+import { isPlainObject } from '@rabjs/kit';
+
+console.log(isPlainObject({})); // true
+console.log(isPlainObject({ a: 1 })); // true
+console.log(isPlainObject(Object.create(null))); // true
+console.log(isPlainObject([])); // false
+console.log(isPlainObject(() => {})); // false
+console.log(isPlainObject(new Date())); // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsPlainObjectExample() {
-  const [testValues] = useState([
-    { value: {}, label: '{}' },
-    { value: { a: 1 }, label: '{ a: 1 }' },
-    { value: Object.create(null), label: 'Object.create(null)' },
-    { value, label: '[]' },
-    { value: () => {}, label: '() => {}' },
-    { value: new Date(), label: 'new Date()' },
-  ]);
+```typescript
+function deepMerge(target: unknown, source: unknown) {
+  if (isPlainObject(target) && isPlainObject(source)) {
+    return Object.assign({}, target, source);
+  }
+  return source;
+}
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isPlainObject Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>
-        Checks if a value is a plain object (created by Object constructor or with null prototype).
-      </p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isPlainObject(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isPlainObject(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// 配置验证
+function validateConfig(config: unknown) {
+  if (!isPlainObject(config)) {
+    throw new Error('配置必须是普通对象');
+  }
+  return config as Record<string, any>;
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

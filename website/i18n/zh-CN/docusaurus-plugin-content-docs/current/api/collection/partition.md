@@ -1,109 +1,150 @@
 ---
 id: partition
 title: partition
-description: 'Creates an array of elements split into two groups, the first of which contains elements predicate returns truthy for, the second of which contains elements predicate returns falsy for'
+description: '按条件将集合分为两组'
 ---
 
 # `partition`
 
-Creates an array of elements split into two groups, the first of which contains elements predicate returns truthy for, the second of which contains elements predicate returns falsy for
+按条件将集合分为两组，第一组包含满足条件的元素，第二组包含不满足条件的元素。
+
+## 语法
+
+```typescript
+function partition<T>(collection: T[], predicate: ((item: T, index: number) => boolean) | string): [T[], T[]];
+```
 
 ## 参数
 
-| 参数         | 类型  | 描述                                 |
-| ------------ | ----- | ------------------------------------ |
-| `collection` | `any` | - The collection to iterate over     |
-| `predicate`  | `any` | - The function invoked per iteration |
+| 参数名       | 类型                                              | 必填 | 默认值 | 描述                 |
+| ------------ | ------------------------------------------------- | ---- | ------ | -------------------- |
+| `collection` | `T[]`                                             | ✅   | -      | 要分割的集合         |
+| `predicate`  | `(item: T, index: number) => boolean` \| `string` | ✅   | -      | 条件函数或布尔属性名 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns the array of grouped elements
+- **类型**: `[T[], T[]]`
+- **描述**: 一个包含两个数组的元组，第一个是满足条件的元素，第二个是不满足条件的元素
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* const users = [
- *   { name: 'John', active: true },
- *   { name: 'Jane', active: false },
- *   { name: 'Bob', active: true }
- * ];
- * partition(users, 'active');
- * // => [[{name: 'John', active: true}, {name: 'Bob', active: true}], [{name: 'Jane', active: false}]]
+import { partition } from '@rabjs/kit';
+
+// 示例1: 按属性分割
+const users = [
+  { name: '张三', active: true },
+  { name: '李四', active: false },
+  { name: '王五', active: true },
+  { name: '赵六', active: false },
+];
+
+const [activeUsers, inactiveUsers] = partition(users, 'active');
+console.log(activeUsers);
+// => [{ name: '张三', active: true }, { name: '王五', active: true }]
+console.log(inactiveUsers);
+// => [{ name: '李四', active: false }, { name: '赵六', active: false }]
+
+// 示例2: 按函数条件分割
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const [evenNumbers, oddNumbers] = partition(numbers, (n) => n % 2 === 0);
+console.log(evenNumbers);
+// => [2, 4, 6, 8, 10]
+console.log(oddNumbers);
+// => [1, 3, 5, 7, 9]
+```
+
+### 高级用法
+
+```typescript
+// 示例3: 分割订单
+const orders = [
+  { id: 1, status: '已完成', amount: 100 },
+  { id: 2, status: '待处理', amount: 200 },
+  { id: 3, status: '已完成', amount: 150 },
+  { id: 4, status: '已取消', amount: 50 },
+];
+
+// 分离已完成和未完成的订单
+const [completed, notCompleted] = partition(orders, (order) => order.status === '已完成');
+console.log(completed);
+// => [{ id: 1, status: '已完成', amount: 100 }, { id: 3, status: '已完成', amount: 150 }]
 ```
 
 ## 交互式示例
 
 ```tsx live
 function PartitionExample() {
-  const [partitionBy, setPartitionBy] = useState('active');
+  const [conditionType, setConditionType] = React.useState('active');
+  const [result, setResult] = React.useState(null);
 
   const users = [
-    { name: 'John', active, age: 30 },
-    { name: 'Jane', active, age: 25 },
-    { name: 'Bob', active, age: 35 },
-    { name: 'Alice', active, age: 28 },
-    { name: 'Charlie', active, age: 32 },
+    { id: 1, name: '张三', active: true, role: '管理员' },
+    { id: 2, name: '李四', active: false, role: '用户' },
+    { id: 3, name: '王五', active: true, role: '用户' },
+    { id: 4, name: '赵六', active: false, role: '管理员' },
   ];
 
-  const [trueGroup, falseGroup] = partition(users, partitionBy as any);
+  const handlePartition = () => {
+    let partitioned;
+    if (conditionType === 'active') {
+      partitioned = partition(users, 'active');
+    } else if (conditionType === 'admin') {
+      partitioned = partition(users, (u) => u.role === '管理员');
+    }
+    setResult(partitioned);
+  };
+
+  React.useEffect(() => {
+    handlePartition();
+  }, [conditionType]);
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>Collection Partition Example</h3>
-      <div style={{ marginBottom: '15px' }}>
-        <label style={{ marginRight: '10px' }}>Partition by: </label>
+    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
+      <h4>partition 交互式示例</h4>
+      <div style={{ marginBottom: '10px' }}>
+        <label>分割条件: </label>
         <select
-          value={partitionBy}
-          onChange={(e) => setPartitionBy(e.target.value)}
-          style={{ padding: '5px', fontSize: '14px' }}
+          value={conditionType}
+          onChange={(e) => setConditionType(e.target.value)}
+          style={{ padding: '5px', marginLeft: '10px' }}
         >
-          <option value="active">Active</option>
+          <option value="active">活跃用户</option>
+          <option value="admin">管理员</option>
         </select>
       </div>
-      <div style={{ marginTop: '15px' }}>
-        <p>
-          <strong>Original Users:</strong>
-        </p>
-        <pre style={{ backgroundColor: '#f5f5f5', padding: '10px', borderRadius: '4px', overflow: 'auto' }}>
-          {JSON.stringify(users, null, 2)}
+      <div>
+        <strong>结果:</strong>
+        <pre style={{ background: 'white', padding: '10px', marginTop: '5px', overflow: 'auto', maxHeight: '300px' }}>
+          {result &&
+            JSON.stringify(
+              {
+                trueGroup: result[0],
+                falseGroup: result[1],
+              },
+              null,
+              2,
+            )}
         </pre>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginTop: '15px' }}>
-          <div>
-            <p>
-              <strong>True Group (active=true):</strong>
-            </p>
-            <pre
-              style={{
-                backgroundColor: '#e8f5e9',
-                padding: '10px',
-                borderRadius: '4px',
-                overflow: 'auto',
-                maxHeight: '200px',
-              }}
-            >
-              {JSON.stringify(trueGroup, null, 2)}
-            </pre>
-          </div>
-          <div>
-            <p>
-              <strong>False Group (active=false):</strong>
-            </p>
-            <pre
-              style={{
-                backgroundColor: '#ffebee',
-                padding: '10px',
-                borderRadius: '4px',
-                overflow: 'auto',
-                maxHeight: '200px',
-              }}
-            >
-              {JSON.stringify(falseGroup, null, 2)}
-            </pre>
-          </div>
-        </div>
       </div>
     </div>
   );
 }
 ```
+
+## 注意事项
+
+- ⚠️ **返回结构**: 总是返回两个数组的元组，即使其中一个为空
+- 💡 **性能提示**: 时间复杂度为 O(n)
+- 📚 **最佳实践**: 使用解构赋值获取两个分组，代码更清晰
+
+## 相关函数
+
+- [`groupBy`](./groupBy) - 按条件分组集合
+- [`sortBy`](./sortBy) - 按条件排序集合
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

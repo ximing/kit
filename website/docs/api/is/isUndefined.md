@@ -1,73 +1,43 @@
 ---
 id: isUndefined
 title: isUndefined
-description: 'Checks if value is undefined.'
+description: 'Checks if a value is undefined'
 ---
 
 # `isUndefined`
 
-Checks if value is undefined.
+检查一个值是否为 `undefined`。
 
-## Parameters
-
-| Parameter | Type  | Description          |
-| --------- | ----- | -------------------- |
-| `value`   | `any` | - The value to check |
-
-## Returns
-
-- **Type**: `any`
-- **Description**: Returns true if value is undefined, else false
-
-## Examples
+## 语法
 
 ```typescript
-* isUndefined(undefined) // => true
- * isUndefined(void 0) // => true
- * isUndefined(null) // => false
- * isUndefined(0) // => false
+function isUndefined(value: unknown): value is undefined;
 ```
 
-## Interactive Example
+## 参数
 
-```tsx live
-function IsUndefinedExample() {
-  const [testValues] = useState([
-    { value, label: 'undefined' },
-    { value, label: 'void 0' },
-    { value, label: 'null' },
-    { value, label: '0' },
-  ]);
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isUndefined Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is undefined.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isUndefined(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isUndefined(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+## 返回值
+
+- **类型**: `value is undefined`（类型守卫）
+- **描述**: 如果值是 `undefined` 返回 `true`，否则返回 `false`
+
+## 示例
+
+### 基础用法
+
+```typescript
+import { isUndefined } from '@rabjs/kit';
+
+console.log(isUndefined(undefined)); // true
+console.log(isUndefined(void 0)); // true
+console.log(isUndefined(null)); // false
+console.log(isUndefined(0)); // false
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

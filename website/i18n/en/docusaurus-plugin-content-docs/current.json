@@ -1,0 +1,50 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Examples": {
+    "message": "Examples",
+    "description": "The label for category 'Examples' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.apiSidebar.category.Array": {
+    "message": "Array",
+    "description": "The label for category 'Array' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Object": {
+    "message": "Object",
+    "description": "The label for category 'Object' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.String ": {
+    "message": "String ",
+    "description": "The label for category 'String ' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Function": {
+    "message": "Function",
+    "description": "The label for category 'Function' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Number": {
+    "message": "Number",
+    "description": "The label for category 'Number' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Type checking": {
+    "message": "Type checking",
+    "description": "The label for category 'Type checking' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Date": {
+    "message": "Date",
+    "description": "The label for category 'Date' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Promise": {
+    "message": "Promise",
+    "description": "The label for category 'Promise' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Collection": {
+    "message": "Collection",
+    "description": "The label for category 'Collection' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Math": {
+    "message": "Math",
+    "description": "The label for category 'Math' in sidebar 'apiSidebar'"
+  }
+}

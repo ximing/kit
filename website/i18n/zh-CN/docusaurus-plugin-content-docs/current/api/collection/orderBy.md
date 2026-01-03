@@ -1,102 +1,135 @@
 ---
 id: orderBy
 title: orderBy
-description: 'This method is like sortBy except that it allows specifying the sort orders of the iteratees to sort by'
+description: '按条件将集合中的元素排列，支持指定升序或降序'
 ---
 
 # `orderBy`
 
-This method is like sortBy except that it allows specifying the sort orders of the iteratees to sort by
+按条件将集合中的元素排列，支持为每个排序条件指定升序或降序。
+
+## 语法
+
+```typescript
+function orderBy<T>(
+  collection: T[],
+  iteratees: ((item: T) => any) | string | (((item: T) => any) | string)[],
+  orders?: ('asc' | 'desc')[],
+): T[];
+```
 
 ## 参数
 
-| 参数         | 类型  | 描述                                             |
-| ------------ | ----- | ------------------------------------------------ |
-| `collection` | `any` | - The collection to iterate over                 |
-| `iteratees`  | `any` | - The iteratees to sort by                       |
-| `orders`     | `any` | - The sort orders of iteratees ('asc' or 'desc') |
+| 参数名       | 类型                                           | 必填 | 默认值  | 描述                 |
+| ------------ | ---------------------------------------------- | ---- | ------- | -------------------- |
+| `collection` | `T[]`                                          | ✅   | -       | 要排序的集合         |
+| `iteratees`  | `(item: T) => any` \| `string` \| `Array<...>` | ✅   | -       | 单个或多个排序迭代器 |
+| `orders`     | `('asc' \| 'desc')[]`                          | ❌   | `'asc'` | 对应迭代器的排序顺序 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns the new sorted array
+- **类型**: `T[]`
+- **描述**: 按指定顺序排列的新数组
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* const users = [
- *   { name: 'John', age: 30 },
- *   { name: 'Jane', age: 25 }
- * ];
- * orderBy(users, ['age'], ['desc']);
- * // => [{name: 'John', age: 30}, {name: 'Jane', age: 25}]
+import { orderBy } from '@rabjs/kit';
+
+// 示例1: 按属性降序排列
+const users = [
+  { name: '张三', age: 30 },
+  { name: '李四', age: 25 },
+  { name: '王五', age: 35 },
+];
+
+const sortedByAgeDesc = orderBy(users, 'age', ['desc']);
+console.log(sortedByAgeDesc);
+// => [
+//   { name: '王五', age: 35 },
+//   { name: '张三', age: 30 },
+//   { name: '李四', age: 25 }
+// ]
+```
+
+### 高级用法
+
+```typescript
+// 示例2: 多条件排序，不同顺序
+const employees = [
+  { name: '张三', department: '工程部', salary: 80000 },
+  { name: '李四', department: '销售部', salary: 60000 },
+  { name: '王五', department: '工程部', salary: 75000 },
+  { name: '赵六', department: '销售部', salary: 65000 },
+];
+
+// 先按部门升序，再按工资降序
+const sorted = orderBy(employees, ['department', 'salary'], ['asc', 'desc']);
+console.log(sorted);
+// => [
+//   { name: '张三', department: '工程部', salary: 80000 },
+//   { name: '王五', department: '工程部', salary: 75000 },
+//   { name: '赵六', department: '销售部', salary: 65000 },
+//   { name: '李四', department: '销售部', salary: 60000 }
+// ]
 ```
 
 ## 交互式示例
 
 ```tsx live
 function OrderByExample() {
-  const [sortField, setSortField] = useState('age');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [sortFields, setSortFields] = React.useState(['department']);
+  const [sortOrders, setSortOrders] = React.useState(['asc']);
+  const [result, setResult] = React.useState(null);
 
-  const users = [
-    { name: 'John', age, salary: 60000 },
-    { name: 'Jane', age, salary: 75000 },
-    { name: 'Bob', age, salary: 55000 },
-    { name: 'Alice', age, salary: 70000 },
+  const employees = [
+    { name: '张三', department: '工程部', salary: 80000 },
+    { name: '李四', department: '销售部', salary: 60000 },
+    { name: '王五', department: '工程部', salary: 75000 },
+    { name: '赵六', department: '销售部', salary: 65000 },
   ];
 
-  const result = orderBy(users, sortField as any, [sortOrder]);
+  const handleSort = () => {
+    const sorted = orderBy(employees, sortFields, sortOrders);
+    setResult(sorted);
+  };
+
+  React.useEffect(() => {
+    handleSort();
+  }, [sortFields, sortOrders]);
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>Collection OrderBy Example</h3>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
-        <div>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Sort by: </label>
+    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
+      <h4>orderBy 交互式示例</h4>
+      <div style={{ marginBottom: '10px' }}>
+        <div style={{ marginBottom: '10px' }}>
+          <label>主排序字段: </label>
           <select
-            value={sortField}
-            onChange={(e) => setSortField(e.target.value)}
-            style={{ width: '100%', padding: '5px', fontSize: '14px' }}
+            value={sortFields[0]}
+            onChange={(e) => setSortFields([e.target.value])}
+            style={{ padding: '5px', marginLeft: '10px' }}
           >
-            <option value="name">Name</option>
-            <option value="age">Age</option>
-            <option value="salary">Salary</option>
+            <option value="department">部门</option>
+            <option value="salary">薪资</option>
           </select>
         </div>
-        <div>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Order: </label>
+        <div style={{ marginBottom: '10px' }}>
+          <label>排序顺序: </label>
           <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
-            style={{ width: '100%', padding: '5px', fontSize: '14px' }}
+            value={sortOrders[0]}
+            onChange={(e) => setSortOrders([e.target.value])}
+            style={{ padding: '5px', marginLeft: '10px' }}
           >
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
+            <option value="asc">升序</option>
+            <option value="desc">降序</option>
           </select>
         </div>
       </div>
-      <div style={{ marginTop: '15px' }}>
-        <p>
-          <strong>Original Users:</strong>
-        </p>
-        <pre style={{ backgroundColor: '#f5f5f5', padding: '10px', borderRadius: '4px', overflow: 'auto' }}>
-          {JSON.stringify(users, null, 2)}
-        </pre>
-        <p>
-          <strong>
-            Ordered by {sortField} ({sortOrder}):
-          </strong>
-        </p>
-        <pre
-          style={{
-            backgroundColor: '#f5f5f5',
-            padding: '10px',
-            borderRadius: '4px',
-            overflow: 'auto',
-            maxHeight: '300px',
-          }}
-        >
+      <div>
+        <strong>结果:</strong>
+        <pre style={{ background: 'white', padding: '10px', marginTop: '5px', overflow: 'auto', maxHeight: '300px' }}>
           {JSON.stringify(result, null, 2)}
         </pre>
       </div>
@@ -104,3 +137,18 @@ function OrderByExample() {
   );
 }
 ```
+
+## 注意事项
+
+- ⚠️ **排序顺序数组**: 如果 `orders` 数组长度小于 `iteratees` 数组长度，不足部分默认为 `'asc'`
+- 💡 **性能提示**: 时间复杂度为 O(n log n)
+- 📚 **最佳实践**: 对于复杂排序需求，`orderBy` 比 `sortBy` 更灵活
+
+## 相关函数
+
+- [`sortBy`](./sortBy) - 升序排序集合
+- [`groupBy`](./groupBy) - 按条件分组集合
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

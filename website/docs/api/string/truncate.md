@@ -1,115 +1,194 @@
 ---
 id: truncate
 title: truncate
-description: "Truncates string if it's longer than the given maximum string length."
+description: "Truncates a string if it's longer than the specified maximum length"
 ---
 
 # `truncate`
 
-Truncates string if it's longer than the given maximum string length.
+Truncates a string if it's longer than the specified maximum length. Useful for displaying text summaries, previews, and limiting text in UI components.
+
+## Syntax
+
+```typescript
+function truncate(
+  str: string,
+  options?: {
+    length?: number;
+    omission?: string;
+  },
+): string;
+```
 
 ## Parameters
 
-| Parameter | Type  | Description                                                         |
-| --------- | ----- | ------------------------------------------------------------------- |
-| `str`     | `any` | - The string to truncate                                            |
-| `options` | `any` | - The options object                                                |
-| `options` | `any` | .length - The maximum string length (default: 30)                   |
-| `options` | `any` | .omission - The string to indicate text is omitted (default: '...') |
+| Parameter          | Type     | Required | Default | Description                                |
+| ------------------ | -------- | -------- | ------- | ------------------------------------------ |
+| `str`              | `string` | ✅       | -       | The string to truncate                     |
+| `options`          | `object` | ❌       | -       | Configuration options                      |
+| `options.length`   | `number` | ❌       | 30      | Maximum string length (including omission) |
+| `options.omission` | `string` | ❌       | '...'   | String to indicate text is omitted         |
 
-## Returns
+## Return Value
 
-- **Type**: `any`
-- **Description**: The truncated string
+- **Type**: `string`
+- **Description**: The truncated string. If the input is shorter than the specified length, returns it as-is. Non-string inputs return an empty string.
 
 ## Examples
 
+### Basic Usage
+
 ```typescript
-* truncate('Hi-Diddly-Ho there, Flanders!') // => 'Hi-Diddly-Ho there, Flanders!'
- * truncate('Hi-Diddly-Ho there, Flanders!', { length: 20 }) // => 'Hi-Diddly-Ho ther...'
- * truncate('Hi-Diddly-Ho there, Flanders!', { length: 20, omission: ' [...]' }) // => 'Hi-Diddly-Ho [...]'
+import { truncate } from '@rabjs/kit';
+
+// Example 1: Default truncation
+const str1 = truncate('Hi-Diddly-Ho there, Flanders!');
+console.log(str1); // 'Hi-Diddly-Ho there, Flanders!' (no truncation, 31 chars > 30)
+
+// Example 2: Truncate with custom length
+const str2 = truncate('Hi-Diddly-Ho there, Flanders!', { length: 20 });
+console.log(str2); // 'Hi-Diddly-Ho ther...'
+
+// Example 3: Custom omission string
+const str3 = truncate('Hi-Diddly-Ho there, Flanders!', { length: 20, omission: ' [...]' });
+console.log(str3); // 'Hi-Diddly-Ho [...]'
+```
+
+### Advanced Usage
+
+```typescript
+// Example 4: Truncate with different omission
+const str4 = truncate('The quick brown fox jumps over the lazy dog', {
+  length: 25,
+  omission: '...',
+});
+console.log(str4); // 'The quick brown fox ju...'
+
+// Example 5: Very short length
+const str5 = truncate('Hello World', { length: 5 });
+console.log(str5); // 'He...'
+
+// Example 6: Omission longer than length
+const str6 = truncate('Hello', { length: 3, omission: '[...]' });
+console.log(str6); // '' (length - omission.length = 3 - 5 = -2, max(0, -2) = 0)
+```
+
+### Practical Use Cases
+
+```typescript
+// Example 7: Truncate product descriptions
+function formatProductDescription(description: string, maxLength: number = 50): string {
+  return truncate(description, { length: maxLength });
+}
+
+console.log(formatProductDescription('This is a high-quality product with amazing features'));
+// 'This is a high-quality product with...'
+
+// Example 8: Tweet-like text preview
+function createTweetPreview(text: string): string {
+  return truncate(text, { length: 140, omission: '... (read more)' });
+}
+
+console.log(
+  createTweetPreview(
+    'This is a very long tweet that needs to be truncated for preview purposes on social media platforms',
+  ),
+);
+// 'This is a very long tweet that needs to be truncated for preview purposes on social... (read more)'
+
+// Example 9: Table cell content truncation
+function formatTableCell(content: string): string {
+  return truncate(content, { length: 25, omission: '...' });
+}
+
+const cells = [
+  'Very long product name that needs truncation',
+  'Short text',
+  'Another very long description for display',
+];
+
+const truncatedCells = cells.map(formatTableCell);
+console.log(truncatedCells);
+// ['Very long product name...', 'Short text', 'Another very long descrip...']
+
+// Example 10: Comment preview
+function getCommentPreview(comment: string): string {
+  return truncate(comment, { length: 100, omission: '... (see full comment)' });
+}
+
+const comment = 'This is a very long comment that provides detailed feedback about the product quality and features';
+console.log(getCommentPreview(comment));
+// 'This is a very long comment that provides detailed feedback about the product quality... (see full comment)'
 ```
 
 ## Interactive Example
 
 ```tsx live
 function TruncateExample() {
-  const [input, setInput] = useState('Hi-Diddly-Ho there, Flanders!');
-  const [length, setLength] = useState(20);
-  const [omission, setOmission] = useState('...');
-  const result = truncate(input, { length, omission });
+  const [input, setInput] = React.useState('Hi-Diddly-Ho there, Flanders! This is a long string.');
+  const [length, setLength] = React.useState(30);
+  const [omission, setOmission] = React.useState('...');
+  const [result, setResult] = React.useState('');
+
+  React.useEffect(() => {
+    setResult(truncate(input, { length: parseInt(length) || 30, omission }));
+  }, [input, length, omission]);
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input String:</label>
-        <textarea
+    <div style={{ padding: '20px', background: '#f5f5f5', borderRadius: '8px' }}>
+      <h4>truncate Interactive Example</h4>
+      <div style={{ marginBottom: '15px' }}>
+        <label style={{ display: 'block', marginBottom: '5px' }}>Input String:</label>
+        <input
+          type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          style={{
-            padding: '8px',
-            fontSize: '14px',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            width: '100%',
-            boxSizing: 'border-box',
-            fontFamily: 'monospace',
-            minHeight: '60px',
-          }}
           placeholder="Enter text to truncate"
+          style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginBottom: '10px' }}
         />
-      </div>
-
-      <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Max Length: {length}</label>
+        <label style={{ display: 'block', marginBottom: '5px' }}>Max Length:</label>
         <input
-          type="range"
-          min="5"
-          max={Math.max(50, input.length)}
+          type="number"
           value={length}
-          onChange={(e) => setLength(Number(e.target.value))}
-          style={{ width: '100%' }}
+          onChange={(e) => setLength(e.target.value)}
+          min="1"
+          style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginBottom: '10px' }}
         />
-      </div>
-
-      <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Omission String:</label>
+        <label style={{ display: 'block', marginBottom: '5px' }}>Omission String:</label>
         <input
           type="text"
           value={omission}
           onChange={(e) => setOmission(e.target.value)}
-          style={{
-            padding: '8px',
-            fontSize: '14px',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            width: '100%',
-            boxSizing: 'border-box',
-          }}
-          placeholder="e.g., '...' or ' [...]'"
+          placeholder="Enter omission string"
+          style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
         />
       </div>
-
-      <div style={{ marginBottom: '20px' }}>
-        <p style={{ marginBottom: '8px', fontWeight: 'bold' }}>Output:</p>
-        <div
-          style={{
-            padding: '12px',
-            backgroundColor: '#f5f5f5',
-            borderRadius: '4px',
-            fontFamily: 'monospace',
-            fontSize: '14px',
-            wordBreak: 'break-all',
-            border: '1px solid #ddd',
-          }}
-        >
+      <div>
+        <strong>Result:</strong>
+        <pre style={{ background: 'white', padding: '10px', marginTop: '5px', overflow: 'auto', borderRadius: '4px' }}>
           {result}
-        </div>
-        <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
-          Original: {input.length} chars → Result: {result.length} chars
-        </p>
+        </pre>
       </div>
     </div>
   );
 }
 ```
+
+## Notes
+
+- ⚠️ **Edge Cases**: If omission string is longer than the specified length, the result may be empty
+- ⚠️ **Edge Cases**: Non-string inputs return an empty string
+- 💡 **Performance Tip**: The function is efficient with O(n) complexity
+- 💡 **Optimal Omission**: Use '...' for general purposes, or customize for specific UI needs
+- 🔒 **Type Safety**: Maintains consistent string type throughout
+- 📚 **Best Practice**: Use for text previews, table cells, and UI components with space constraints
+
+## Related Functions
+
+- [`template`](./template) - Replace template placeholders with values
+- [`trim`](./trim) - Remove leading and trailing whitespace
+- [`camelCase`](./camelCase) - Convert to camelCase
+
+## Version History
+
+- **v1.0.0** - Initial version

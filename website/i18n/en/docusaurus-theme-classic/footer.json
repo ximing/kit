@@ -1,0 +1,42 @@
+{
+  "link.title.Docs": {
+    "message": "Docs",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "More",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label of footer link with label=Getting Started linking to /docs/intro"
+  },
+  "link.item.label.Installation": {
+    "message": "Installation",
+    "description": "The label of footer link with label=Installation linking to /docs/installation"
+  },
+  "link.item.label.GitHub Issues": {
+    "message": "GitHub Issues",
+    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/ximing/kit/issues"
+  },
+  "link.item.label.GitHub Discussions": {
+    "message": "GitHub Discussions",
+    "description": "The label of footer link with label=GitHub Discussions linking to https://github.com/ximing/kit/discussions"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/ximing/kit"
+  },
+  "link.item.label.NPM": {
+    "message": "NPM",
+    "description": "The label of footer link with label=NPM linking to https://www.npmjs.com/package/@rabjs/kit"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 @rabjs/kit. Built with Docusaurus.",
+    "description": "The footer copyright"
+  }
+}

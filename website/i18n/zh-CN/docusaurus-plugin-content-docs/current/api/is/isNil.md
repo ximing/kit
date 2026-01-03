@@ -1,75 +1,61 @@
 ---
 id: isNil
 title: isNil
-description: 'Checks if value is null or undefined.'
+description: '检查值是否为 null 或 undefined'
 ---
 
 # `isNil`
 
-Checks if value is null or undefined.
+检查一个值是否为 `null` 或 `undefined`。
+
+## 语法
+
+```typescript
+function isNil(value: unknown): value is null | undefined;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is null or undefined, else false
+- **类型**: `value is null | undefined`（类型守卫）
+- **描述**: 如果值是 `null` 或 `undefined` 返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isNil(null) // => true
- * isNil(undefined) // => true
- * isNil(void 0) // => true
- * isNil(0) // => false
- * isNil('') // => false
+import { isNil } from '@rabjs/kit';
+
+console.log(isNil(null)); // true
+console.log(isNil(undefined)); // true
+console.log(isNil(void 0)); // true
+console.log(isNil(0)); // false
+console.log(isNil('')); // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsNilExample() {
-  const [testValues] = useState([
-    { value, label: 'null' },
-    { value, label: 'undefined' },
-    { value, label: 'void 0' },
-    { value, label: '0' },
-    { value: '', label: "'' (empty string)" },
-  ]);
+```typescript
+function getOrDefault(value: unknown, defaultValue: any) {
+  return isNil(value) ? defaultValue : value;
+}
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isNil Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is null or undefined.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isNil(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isNil(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// 参数验证
+function processData(data: unknown) {
+  if (!isNil(data)) {
+    console.log('处理数据:', data);
+  } else {
+    console.log('数据为空');
+  }
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

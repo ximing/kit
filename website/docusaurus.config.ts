@@ -31,12 +31,22 @@ const config: Config = {
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Internationalization configuration
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'zh-CN'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en',
+      },
+      'zh-CN': {
+        label: '中文',
+        direction: 'ltr',
+        htmlLang: 'zh-CN',
+      },
+    },
   },
 
   presets: [
@@ -48,6 +58,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/ximing/kit/tree/main/website/',
+          editLocalizedFiles: true, // Enable locale-specific edit links
           showLastUpdateTime: true,
         },
         blog: false, // Disable blog functionality

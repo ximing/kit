@@ -1,71 +1,64 @@
 ---
 id: isWeakSet
 title: isWeakSet
-description: 'Checks if value is a WeakSet object.'
+description: '检查值是否为 WeakSet 对象'
 ---
 
 # `isWeakSet`
 
-Checks if value is a WeakSet object.
+检查一个值是否为 WeakSet 对象。
+
+## 语法
+
+```typescript
+function isWeakSet(value: unknown): value is WeakSet<any>;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is a WeakSet object, else false
+- **类型**: `value is WeakSet<any>`（类型守卫）
+- **描述**: 如果值是 WeakSet 对象返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isWeakSet(new WeakSet()) // => true
- * isWeakSet(new Set()) // => false
- * isWeakSet({}) // => false
+import { isWeakSet } from '@rabjs/kit';
+
+console.log(isWeakSet(new WeakSet())); // true
+console.log(isWeakSet(new Set())); // false
+console.log(isWeakSet({})); // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsWeakSetExample() {
-  const [testValues] = useState([
-    { value: new WeakSet(), label: 'new WeakSet()' },
-    { value: new Set(), label: 'new Set()' },
-    { value: {}, label: '{}' },
-  ]);
+```typescript
+// 对象追踪
+class ObjectTracker {
+  private tracked = new WeakSet<object>();
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isWeakSet Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a WeakSet object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isWeakSet(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isWeakSet(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  track(obj: object) {
+    if (isWeakSet(this.tracked)) {
+      this.tracked.add(obj);
+    }
+  }
+
+  isTracked(obj: object): boolean {
+    if (isWeakSet(this.tracked)) {
+      return this.tracked.has(obj);
+    }
+    return false;
+  }
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

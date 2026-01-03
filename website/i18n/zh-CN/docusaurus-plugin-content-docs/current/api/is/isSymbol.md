@@ -1,73 +1,63 @@
 ---
 id: isSymbol
 title: isSymbol
-description: 'Checks if value is classified as a Symbol primitive or object.'
+description: '检查值是否为 Symbol 类型'
 ---
 
 # `isSymbol`
 
-Checks if value is classified as a Symbol primitive or object.
+检查一个值是否为 Symbol 类型。
+
+## 语法
+
+```typescript
+function isSymbol(value: unknown): value is symbol;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is a symbol, else false
+- **类型**: `value is symbol`（类型守卫）
+- **描述**: 如果值是 Symbol 返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isSymbol(Symbol('test')) // => true
- * isSymbol(Symbol.iterator) // => true
- * isSymbol('test') // => false
- * isSymbol({}) // => false
+import { isSymbol } from '@rabjs/kit';
+
+console.log(isSymbol(Symbol('test'))); // true
+console.log(isSymbol(Symbol.iterator)); // true
+console.log(isSymbol('test')); // false
+console.log(isSymbol({})); // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsSymbolExample() {
-  const [testValues] = useState([
-    { value: Symbol('test'), label: "Symbol('test')" },
-    { value: Symbol.iterator, label: 'Symbol.iterator' },
-    { value: 'test', label: "'test'" },
-    { value: {}, label: '{}' },
-  ]);
+```typescript
+function getSymbolName(value: unknown): string {
+  if (isSymbol(value)) {
+    return value.toString();
+  }
+  return String(value);
+}
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isSymbol Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Symbol primitive.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isSymbol(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isSymbol(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// 对象键处理
+function processObjectKeys(obj: Record<string | symbol, any>) {
+  Object.keys(obj).forEach((key) => {
+    if (!isSymbol(key)) {
+      console.log(`字符串键: ${key}`);
+    }
+  });
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

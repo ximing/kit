@@ -1,79 +1,72 @@
 ---
 id: isMap
 title: isMap
-description: 'Checks if value is a Map object.'
+description: '检查值是否为 Map 对象'
 ---
 
 # `isMap`
 
-Checks if value is a Map object.
+检查一个值是否为 Map 对象。
+
+## 语法
+
+```typescript
+function isMap(value: unknown): value is Map<any, any>;
+```
 
 ## 参数
 
-| 参数    | 类型  | 描述                 |
-| ------- | ----- | -------------------- |
-| `value` | `any` | - The value to check |
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
 ## 返回值
 
-- **类型**: `any`
-- **描述**: Returns true if value is a Map object, else false
+- **类型**: `value is Map<any, any>`（类型守卫）
+- **描述**: 如果值是 Map 对象返回 `true`，否则返回 `false`
 
 ## 示例
 
+### 基础用法
+
 ```typescript
-* isMap(new Map()) // => true
- * isMap(new Map([['a', 1]])) // => true
- * isMap({}) // => false
- * isMap(new WeakMap()) // => false
+import { isMap } from '@rabjs/kit';
+
+console.log(isMap(new Map()));           // true
+console.log(isMap(new Map([['a', 1]])); // true
+console.log(isMap({}));                  // false
+console.log(isMap(new WeakMap()));       // false
 ```
 
-## 交互式示例
+### 实际应用场景
 
-```tsx live
-function IsMapExample() {
-  const [testValues] = useState([
-    { value: new Map(), label: 'new Map()' },
-    {
-      value: new Map([
-        ['a', 1],
-        ['b', 2],
-      ]),
-      label: "new Map([['a', 1], ['b', 2]])",
-    },
-    { value: {}, label: '{}' },
-    { value: new WeakMap(), label: 'new WeakMap()' },
-  ]);
+```typescript
+function processData(data: unknown) {
+  if (isMap(data)) {
+    data.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+  } else {
+    console.log('不是 Map 对象');
+  }
+}
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isMap Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Map object.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isMap(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isMap(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+// 缓存实现
+class Cache {
+  private store: Map<string, any> = new Map();
+
+  set(key: string, value: any) {
+    if (this.store instanceof Map) {
+      this.store.set(key, value);
+    }
+  }
+
+  get(key: string) {
+    return this.store.get(key);
+  }
 }
 ```
+
+## 版本历史
+
+- **v1.0.0** - 初始版本

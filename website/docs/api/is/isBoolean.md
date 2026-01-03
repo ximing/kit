@@ -1,74 +1,78 @@
 ---
 id: isBoolean
 title: isBoolean
-description: 'Checks if value is classified as a Boolean primitive or object.'
+description: 'Checks if a value is a boolean'
 ---
 
 # `isBoolean`
 
-Checks if value is classified as a Boolean primitive or object.
+检查一个值是否为布尔类型（`true` 或 `false`）。
 
-## Parameters
-
-| Parameter | Type  | Description          |
-| --------- | ----- | -------------------- |
-| `value`   | `any` | - The value to check |
-
-## Returns
-
-- **Type**: `any`
-- **Description**: Returns true if value is a boolean, else false
-
-## Examples
+## 语法
 
 ```typescript
-* isBoolean(false) // => true
- * isBoolean(true) // => true
- * isBoolean(new Boolean(true)) // => false (primitive check only)
- * isBoolean(1) // => false
+function isBoolean(value: unknown): value is boolean;
 ```
 
-## Interactive Example
+## 参数
 
-```tsx live
-function IsBooleanExample() {
-  const [testValues] = useState([
-    { value, label: 'true' },
-    { value, label: 'false' },
-    { value: new Boolean(true), label: 'new Boolean(true)' },
-    { value, label: '1' },
-    { value: 'true', label: "'true'" },
-  ]);
+| 参数名  | 类型      | 必填 | 默认值 | 描述       |
+| ------- | --------- | ---- | ------ | ---------- |
+| `value` | `unknown` | ✅   | -      | 要检查的值 |
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h3>isBoolean Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Boolean primitive.</p>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
-        {testValues.map((item, index) => (
-          <div
-            key={index}
-            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <code style={{ fontSize: '12px' }}>{item.label}</code>
-              <span
-                style={{
-                  padding: '4px 8px',
-                  backgroundColor: isBoolean(item.value) ? '#4CAF50' : '#f44336',
-                  color: 'white',
-                  borderRadius: '3px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {isBoolean(item.value) ? 'true' : 'false'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+## 返回值
+
+- **类型**: `value is boolean`（类型守卫）
+- **描述**: 如果值是布尔类型返回 `true`，否则返回 `false`
+
+## 示例
+
+### 基础用法
+
+```typescript
+import { isBoolean } from '@rabjs/kit';
+
+// 布尔值
+console.log(isBoolean(true)); // true
+console.log(isBoolean(false)); // true
+
+// 非布尔值
+console.log(isBoolean(1)); // false
+console.log(isBoolean(0)); // false
+console.log(isBoolean('true')); // false
+console.log(isBoolean(null)); // false
+```
+
+### 实际应用场景
+
+```typescript
+// 参数验证
+function setEnabled(value: unknown) {
+  if (isBoolean(value)) {
+    console.log('启用状态:', value);
+  } else {
+    console.error('必须是布尔值');
+  }
+}
+
+// 配置处理
+interface Config {
+  enabled?: unknown;
+  debug?: unknown;
+}
+
+function processConfig(config: Config) {
+  const enabled = isBoolean(config.enabled) ? config.enabled : true;
+  const debug = isBoolean(config.debug) ? config.debug : false;
+  return { enabled, debug };
 }
 ```
+
+## 注意事项
+
+- ⚠️ **不包括 Boolean 对象**: `isBoolean(new Boolean(true))` 返回 `false`
+- 💡 **原始类型检查**: 只检查原始布尔值，不检查包装对象
+
+## 版本历史
+
+- **v1.0.0** - 初始版本
