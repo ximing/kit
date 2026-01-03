@@ -1,7 +1,7 @@
 ---
 id: pascalCase
 title: pascalCase
-description: "Converts string to pascal case."
+description: 'Converts string to pascal case.'
 ---
 
 # `pascalCase`
@@ -10,9 +10,9 @@ Converts string to pascal case.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The string to convert |
+| Parameter | Type  | Description             |
+| --------- | ----- | ----------------------- |
+| `str`     | `any` | - The string to convert |
 
 ## Returns
 
@@ -39,9 +39,7 @@ function PascalCaseExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input:</label>
         <input
           type="text"
           value={input}
@@ -100,4 +98,3 @@ function PascalCaseExample() {
   );
 }
 ```
-

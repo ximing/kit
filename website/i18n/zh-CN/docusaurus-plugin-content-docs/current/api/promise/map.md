@@ -1,7 +1,7 @@
 ---
 id: map
 title: map
-description: "Iterates over an array and returns a promise that resolves with an array of mapped values. Supports concurrency limiting."
+description: 'Iterates over an array and returns a promise that resolves with an array of mapped values. Supports concurrency limiting.'
 ---
 
 # `map`
@@ -11,11 +11,11 @@ Supports concurrency limiting.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `array` | `any` | - The array to iterate over |
-| `mapper` | `any` | - The function to apply to each element (can be async or return a promise) |
-| `concurrency` | `any` | - The maximum number of concurrent operations (default: Infinity) |
+| 参数          | 类型  | 描述                                                                       |
+| ------------- | ----- | -------------------------------------------------------------------------- |
+| `array`       | `any` | - The array to iterate over                                                |
+| `mapper`      | `any` | - The function to apply to each element (can be async or return a promise) |
+| `concurrency` | `any` | - The maximum number of concurrent operations (default: Infinity)          |
 
 ## 返回值
 
@@ -58,17 +58,17 @@ function MapExample() {
       async (num) => {
         const msg = `Processing ${num}...`;
         setProgress((prev) => [...prev, msg]);
-        
+
         // Simulate async operation
         await delay(400);
-        
+
         const doubled = num * 2;
         const resultMsg = `${num} → ${doubled} ✓`;
         setProgress((prev) => [...prev, resultMsg]);
-        
+
         return doubled;
       },
-      concurrency
+      concurrency,
     );
 
     const elapsed = Date.now() - startTime;
@@ -92,9 +92,7 @@ function MapExample() {
             disabled={loading}
             style={{ padding: '5px', fontSize: '14px', width: '60px' }}
           />
-          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#666' }}>
-            (max {concurrency} at a time)
-          </span>
+          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#666' }}>(max {concurrency} at a time)</span>
         </div>
         <button
           onClick={handleExecute}
@@ -103,7 +101,7 @@ function MapExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Mapping...' : 'Double All Numbers'}
@@ -116,14 +114,16 @@ function MapExample() {
         {progress.length > 0 && (
           <div style={{ marginTop: '10px' }}>
             <strong>Progress:</strong>
-            <pre style={{
-              backgroundColor: '#f5f5f5',
-              padding: '10px',
-              borderRadius: '4px',
-              fontSize: '12px',
-              maxHeight: '200px',
-              overflow: 'auto'
-            }}>
+            <pre
+              style={{
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                maxHeight: '200px',
+                overflow: 'auto',
+              }}
+            >
               {progress.join('\n')}
             </pre>
           </div>
@@ -131,9 +131,7 @@ function MapExample() {
         {result && (
           <p style={{ marginTop: '10px' }}>
             <strong>Result:</strong>{' '}
-            <span style={{ color: '#1976d2', fontWeight: 'bold' }}>
-              {JSON.stringify(result)}
-            </span>
+            <span style={{ color: '#1976d2', fontWeight: 'bold' }}>{JSON.stringify(result)}</span>
           </p>
         )}
       </div>
@@ -141,4 +139,3 @@ function MapExample() {
   );
 }
 ```
-

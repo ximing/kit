@@ -1,7 +1,7 @@
 ---
 id: partition
 title: partition
-description: "Creates an array of elements split into two groups, the first of which contains elements predicate returns truthy for, the second of which contains elements predicate returns falsy for"
+description: 'Creates an array of elements split into two groups, the first of which contains elements predicate returns truthy for, the second of which contains elements predicate returns falsy for'
 ---
 
 # `partition`
@@ -10,10 +10,10 @@ Creates an array of elements split into two groups, the first of which contains 
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `collection` | `any` | - The collection to iterate over |
-| `predicate` | `any` | - The function invoked per iteration |
+| 参数         | 类型  | 描述                                 |
+| ------------ | ----- | ------------------------------------ |
+| `collection` | `any` | - The collection to iterate over     |
+| `predicate`  | `any` | - The function invoked per iteration |
 
 ## 返回值
 
@@ -37,7 +37,7 @@ Creates an array of elements split into two groups, the first of which contains 
 ```tsx live
 function PartitionExample() {
   const [partitionBy, setPartitionBy] = useState('active');
-  
+
   const users = [
     { name: 'John', active, age: 30 },
     { name: 'Jane', active, age: 25 },
@@ -73,7 +73,15 @@ function PartitionExample() {
             <p>
               <strong>True Group (active=true):</strong>
             </p>
-            <pre style={{ backgroundColor: '#e8f5e9', padding: '10px', borderRadius: '4px', overflow: 'auto', maxHeight: '200px' }}>
+            <pre
+              style={{
+                backgroundColor: '#e8f5e9',
+                padding: '10px',
+                borderRadius: '4px',
+                overflow: 'auto',
+                maxHeight: '200px',
+              }}
+            >
               {JSON.stringify(trueGroup, null, 2)}
             </pre>
           </div>
@@ -81,7 +89,15 @@ function PartitionExample() {
             <p>
               <strong>False Group (active=false):</strong>
             </p>
-            <pre style={{ backgroundColor: '#ffebee', padding: '10px', borderRadius: '4px', overflow: 'auto', maxHeight: '200px' }}>
+            <pre
+              style={{
+                backgroundColor: '#ffebee',
+                padding: '10px',
+                borderRadius: '4px',
+                overflow: 'auto',
+                maxHeight: '200px',
+              }}
+            >
               {JSON.stringify(falseGroup, null, 2)}
             </pre>
           </div>
@@ -91,4 +107,3 @@ function PartitionExample() {
   );
 }
 ```
-

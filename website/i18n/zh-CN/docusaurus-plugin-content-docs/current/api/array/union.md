@@ -1,7 +1,7 @@
 ---
 id: union
 title: union
-description: "Creates an array of unique values that are in any of the given arrays"
+description: 'Creates an array of unique values that are in any of the given arrays'
 ---
 
 # `union`
@@ -10,8 +10,8 @@ Creates an array of unique values that are in any of the given arrays
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数     | 类型  | 描述                  |
+| -------- | ----- | --------------------- |
 | `arrays` | `any` | The arrays to process |
 
 ## 返回值
@@ -35,7 +35,10 @@ function UnionExample() {
 
   const parseInput = (text) => {
     try {
-      return text.split(',').map((s) => Number(s.trim())).filter((n) => !isNaN(n));
+      return text
+        .split(',')
+        .map((s) => Number(s.trim()))
+        .filter((n) => !isNaN(n));
     } catch {
       return [];
     }
@@ -85,4 +88,3 @@ function UnionExample() {
   );
 }
 ```
-

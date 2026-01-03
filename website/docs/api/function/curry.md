@@ -1,7 +1,7 @@
 ---
 id: curry
 title: curry
-description: "Creates a function that accepts arguments of func and either invokes func returning its result, if at least arity number of arguments have been provided, or returns a function that accepts the remaining func arguments, and so on."
+description: 'Creates a function that accepts arguments of func and either invokes func returning its result, if at least arity number of arguments have been provided, or returns a function that accepts the remaining func arguments, and so on.'
 ---
 
 # `curry`
@@ -12,10 +12,10 @@ function that accepts the remaining func arguments, and so on.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `func` | `any` | - The function to curry |
-| `arity` | `any` | - The arity of func (default: func.length) |
+| Parameter | Type  | Description                                |
+| --------- | ----- | ------------------------------------------ |
+| `func`    | `any` | - The function to curry                    |
+| `arity`   | `any` | - The arity of func (default: func.length) |
 
 ## Returns
 
@@ -115,4 +115,3 @@ function CurryExample() {
   );
 }
 ```
-

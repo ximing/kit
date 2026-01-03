@@ -1,7 +1,7 @@
 ---
 id: isNumber
 title: isNumber
-description: "Checks if value is classified as a Number primitive or object."
+description: 'Checks if value is classified as a Number primitive or object.'
 ---
 
 # `isNumber`
@@ -10,9 +10,9 @@ Checks if value is classified as a Number primitive or object.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `value` | `any` | - The value to check |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `value`   | `any` | - The value to check |
 
 ## Returns
 
@@ -49,7 +49,10 @@ function IsNumberExample() {
       </p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         {testValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          <div
+            key={index}
+            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+          >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <code style={{ fontSize: '12px' }}>{item.label}</code>
               <span
@@ -72,4 +75,3 @@ function IsNumberExample() {
   );
 }
 ```
-

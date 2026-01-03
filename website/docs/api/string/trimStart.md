@@ -1,7 +1,7 @@
 ---
 id: trimStart
 title: trimStart
-description: "Removes leading whitespace or specified characters from string."
+description: 'Removes leading whitespace or specified characters from string.'
 ---
 
 # `trimStart`
@@ -10,10 +10,10 @@ Removes leading whitespace or specified characters from string.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The string to trim |
-| `chars` | `any` | - The characters to remove |
+| Parameter | Type  | Description                |
+| --------- | ----- | -------------------------- |
+| `str`     | `any` | - The string to trim       |
+| `chars`   | `any` | - The characters to remove |
 
 ## Returns
 
@@ -45,9 +45,7 @@ function TrimStartExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input String:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input String:</label>
         <input
           type="text"
           value={input}
@@ -132,4 +130,3 @@ function TrimStartExample() {
   );
 }
 ```
-

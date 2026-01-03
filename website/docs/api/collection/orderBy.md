@@ -1,7 +1,7 @@
 ---
 id: orderBy
 title: orderBy
-description: "This method is like sortBy except that it allows specifying the sort orders of the iteratees to sort by"
+description: 'This method is like sortBy except that it allows specifying the sort orders of the iteratees to sort by'
 ---
 
 # `orderBy`
@@ -10,11 +10,11 @@ This method is like sortBy except that it allows specifying the sort orders of t
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `collection` | `any` | - The collection to iterate over |
-| `iteratees` | `any` | - The iteratees to sort by |
-| `orders` | `any` | - The sort orders of iteratees ('asc' or 'desc') |
+| Parameter    | Type  | Description                                      |
+| ------------ | ----- | ------------------------------------------------ |
+| `collection` | `any` | - The collection to iterate over                 |
+| `iteratees`  | `any` | - The iteratees to sort by                       |
+| `orders`     | `any` | - The sort orders of iteratees ('asc' or 'desc') |
 
 ## Returns
 
@@ -38,7 +38,7 @@ This method is like sortBy except that it allows specifying the sort orders of t
 function OrderByExample() {
   const [sortField, setSortField] = useState('age');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-  
+
   const users = [
     { name: 'John', age, salary: 60000 },
     { name: 'Jane', age, salary: 75000 },
@@ -84,9 +84,19 @@ function OrderByExample() {
           {JSON.stringify(users, null, 2)}
         </pre>
         <p>
-          <strong>Ordered by {sortField} ({sortOrder}):</strong>
+          <strong>
+            Ordered by {sortField} ({sortOrder}):
+          </strong>
         </p>
-        <pre style={{ backgroundColor: '#f5f5f5', padding: '10px', borderRadius: '4px', overflow: 'auto', maxHeight: '300px' }}>
+        <pre
+          style={{
+            backgroundColor: '#f5f5f5',
+            padding: '10px',
+            borderRadius: '4px',
+            overflow: 'auto',
+            maxHeight: '300px',
+          }}
+        >
           {JSON.stringify(result, null, 2)}
         </pre>
       </div>
@@ -94,4 +104,3 @@ function OrderByExample() {
   );
 }
 ```
-

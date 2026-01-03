@@ -532,6 +532,7 @@ export default function DelayExample() {
 ### 阶段二：AI 生成代码块（预计 2-3 天）
 
 #### 2.1 array 模块代码块生成
+
 - [x] 收集 array 模块所有函数信息
   - [x] 为每个 array 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -547,6 +548,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.2 collection 模块代码块生成
+
 - [x] 收集 collection 模块所有函数信息
   - [x] 为每个 collection 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -562,6 +564,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.3 date 模块代码块生成
+
 - [x] 收集 date 模块所有函数信息
   - [x] 为每个 date 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -577,6 +580,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.4 function 模块代码块生成
+
 - [x] 收集 function 模块所有函数信息
   - [x] 为每个 function 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -592,6 +596,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.5 is 模块代码块生成
+
 - [x] 收集 is 模块所有函数信息
   - [x] 为每个 is 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -607,6 +612,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.6 math 模块代码块生成
+
 - [x] 收集 math 模块所有函数信息
   - [x] 为每个 math 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -622,6 +628,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.7 number 模块代码块生成
+
 - [x] 收集 number 模块所有函数信息
   - [x] 为每个 number 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -637,6 +644,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.8 object 模块代码块生成
+
 - [x] 收集 object 模块所有函数信息
   - [x] 为每个 object 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -652,6 +660,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.9 promise 模块代码块生成
+
 - [x] 收集 promise 模块所有函数信息
   - [x] 为每个 promise 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -667,6 +676,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.10 string 模块代码块生成
+
 - [x] 收集 string 模块所有函数信息
   - [x] 为每个 string 函数准备信息文档
   - [x] 组织成 AI 可处理的格式
@@ -682,6 +692,7 @@ export default function DelayExample() {
   - [x] 更新索引文件
 
 #### 2.11 types 模块代码块生成
+
 - [x] 收集 types 模块所有函数信息
   - [x] 确认 types 模块只包含 TypeScript 类型定义
   - [x] 验证 types 模块不在文档生成流程中
@@ -745,7 +756,6 @@ export default function DelayExample() {
   - [x] 交互代码块在浏览器中可运行
   - [x] Chrome 70+ 正常运行
   - [x] Safari 12+ 正常运行
-
 
 ## 5. 预期成果
 

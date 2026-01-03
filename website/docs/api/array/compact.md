@@ -1,7 +1,7 @@
 ---
 id: compact
 title: compact
-description: "Removes falsy values from an array"
+description: 'Removes falsy values from an array'
 ---
 
 # `compact`
@@ -10,9 +10,9 @@ Removes falsy values from an array
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | The array to compact |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `array`   | `any` | The array to compact |
 
 ## Returns
 
@@ -30,7 +30,7 @@ Removes falsy values from an array
 ```tsx live
 function CompactExample() {
   const [inputText, setInputText] = useState('0, 1, false, 2, "", 3, null, undefined, 4');
-  
+
   const parseInput = (text) => {
     try {
       return eval(`[${text}]`);
@@ -71,4 +71,3 @@ function CompactExample() {
   );
 }
 ```
-

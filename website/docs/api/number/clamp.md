@@ -1,7 +1,7 @@
 ---
 id: clamp
 title: clamp
-description: "Clamps number within the inclusive lower and upper bounds."
+description: 'Clamps number within the inclusive lower and upper bounds.'
 ---
 
 # `clamp`
@@ -10,11 +10,11 @@ Clamps number within the inclusive lower and upper bounds.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `number` | `any` | - The number to clamp |
-| `lower` | `any` | - The lower bound |
-| `upper` | `any` | - The upper bound |
+| Parameter | Type  | Description           |
+| --------- | ----- | --------------------- |
+| `number`  | `any` | - The number to clamp |
+| `lower`   | `any` | - The lower bound     |
+| `upper`   | `any` | - The upper bound     |
 
 ## Returns
 
@@ -36,7 +36,7 @@ function ClampExample() {
   const [number, setNumber] = useState(10);
   const [lower, setLower] = useState(5);
   const [upper, setUpper] = useState(15);
-  
+
   let result;
   let error = false;
   try {
@@ -87,7 +87,9 @@ function ClampExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>clamp(10, 5, 15) → 10 (within bounds)</li>
           <li>clamp(3, 5, 15) → 5 (below lower)</li>
@@ -98,4 +100,3 @@ function ClampExample() {
   );
 }
 ```
-

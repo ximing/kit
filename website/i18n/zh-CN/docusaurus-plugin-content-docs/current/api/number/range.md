@@ -1,7 +1,7 @@
 ---
 id: range
 title: range
-description: "Creates an array of numbers progressing from start up to, but not including, end. If step is negative, the array will be in descending order."
+description: 'Creates an array of numbers progressing from start up to, but not including, end. If step is negative, the array will be in descending order.'
 ---
 
 # `range`
@@ -11,11 +11,11 @@ If step is negative, the array will be in descending order.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `start` | `any` | - The start of the range |
-| `end` | `any` | - The end of the range (not included) |
-| `step` | `any` | - The value to increment or decrement by (default: 1) |
+| 参数    | 类型  | 描述                                                  |
+| ------- | ----- | ----------------------------------------------------- |
+| `start` | `any` | - The start of the range                              |
+| `end`   | `any` | - The end of the range (not included)                 |
+| `step`  | `any` | - The value to increment or decrement by (default: 1) |
 
 ## 返回值
 
@@ -37,7 +37,7 @@ function RangeExample() {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(5);
   const [step, setStep] = useState(1);
-  
+
   let result] | string;
   let error = false;
   try {
@@ -105,4 +105,3 @@ function RangeExample() {
   );
 }
 ```
-

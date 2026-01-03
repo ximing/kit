@@ -1,7 +1,7 @@
 ---
 id: shuffle
 title: shuffle
-description: "Creates an array of shuffled values, using a version of the Fisher-Yates shuffle"
+description: 'Creates an array of shuffled values, using a version of the Fisher-Yates shuffle'
 ---
 
 # `shuffle`
@@ -10,8 +10,8 @@ Creates an array of shuffled values, using a version of the Fisher-Yates shuffle
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数         | 类型  | 描述                        |
+| ------------ | ----- | --------------------------- |
 | `collection` | `any` | - The collection to shuffle |
 
 ## 返回值
@@ -31,7 +31,7 @@ Creates an array of shuffled values, using a version of the Fisher-Yates shuffle
 ```tsx live
 function ShuffleExample() {
   const [shuffled, setShuffled] = useState<number[]>([]);
-  
+
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const handleShuffle = () => {
@@ -93,4 +93,3 @@ function ShuffleExample() {
   );
 }
 ```
-

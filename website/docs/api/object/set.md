@@ -10,11 +10,11 @@ Sets the value at path of object. If a portion of path doesn't exist, it's creat
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The object to modify |
-| `path` | `any` | - The path of the property to set (can be string or array) |
-| `value` | `any` | - The value to set |
+| Parameter | Type  | Description                                                |
+| --------- | ----- | ---------------------------------------------------------- |
+| `obj`     | `any` | - The object to modify                                     |
+| `path`    | `any` | - The path of the property to set (can be string or array) |
+| `value`   | `any` | - The value to set                                         |
 
 ## Returns
 
@@ -96,4 +96,3 @@ function SetExample() {
   );
 }
 ```
-

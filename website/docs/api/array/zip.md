@@ -1,7 +1,7 @@
 ---
 id: zip
 title: zip
-description: "Creates an array of grouped elements, the first of which contains the first elements of the given arrays"
+description: 'Creates an array of grouped elements, the first of which contains the first elements of the given arrays'
 ---
 
 # `zip`
@@ -10,9 +10,9 @@ Creates an array of grouped elements, the first of which contains the first elem
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `arrays` | `any` | The arrays to process |
+| Parameter | Type  | Description           |
+| --------- | ----- | --------------------- |
+| `arrays`  | `any` | The arrays to process |
 
 ## Returns
 
@@ -85,4 +85,3 @@ function ZipExample() {
   );
 }
 ```
-

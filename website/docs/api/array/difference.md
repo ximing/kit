@@ -1,7 +1,7 @@
 ---
 id: difference
 title: difference
-description: "Creates an array of unique values that are in the first array but not in the other arrays"
+description: 'Creates an array of unique values that are in the first array but not in the other arrays'
 ---
 
 # `difference`
@@ -10,10 +10,10 @@ Creates an array of unique values that are in the first array but not in the oth
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | The array to process |
-| `arrays` | `any` | The arrays to exclude |
+| Parameter | Type  | Description           |
+| --------- | ----- | --------------------- |
+| `array`   | `any` | The array to process  |
+| `arrays`  | `any` | The arrays to exclude |
 
 ## Returns
 
@@ -36,7 +36,10 @@ function DifferenceExample() {
 
   const parseInput = (text) => {
     try {
-      return text.split(',').map((s) => Number(s.trim())).filter((n) => !isNaN(n));
+      return text
+        .split(',')
+        .map((s) => Number(s.trim()))
+        .filter((n) => !isNaN(n));
     } catch {
       return [];
     }
@@ -86,4 +89,3 @@ function DifferenceExample() {
   );
 }
 ```
-

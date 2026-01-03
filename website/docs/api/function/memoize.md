@@ -1,7 +1,7 @@
 ---
 id: memoize
 title: memoize
-description: "Creates a function that memoizes the result of func. If resolver is provided, it determines the cache key for storing the result based on the arguments provided to the memoized function."
+description: 'Creates a function that memoizes the result of func. If resolver is provided, it determines the cache key for storing the result based on the arguments provided to the memoized function.'
 ---
 
 # `memoize`
@@ -12,9 +12,9 @@ based on the arguments provided to the memoized function.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `func` | `any` | - The function to have its output memoized |
+| Parameter  | Type  | Description                                        |
+| ---------- | ----- | -------------------------------------------------- |
+| `func`     | `any` | - The function to have its output memoized         |
 | `resolver` | `any` | - The function to resolve the cache key (optional) |
 
 ## Returns
@@ -56,7 +56,7 @@ function MemoizeExample() {
   const fibonacci = React.useMemo(() => {
     let internalCallCount = 0;
 
-    const fib = memoize((num)=> {
+    const fib = memoize((num) => {
       internalCallCount++;
       if (num <= 1) return num;
       return fib(num - 1) + fib(num - 2);
@@ -121,4 +121,3 @@ function MemoizeExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: sortBy
 title: sortBy
-description: "Creates an array of elements, sorted in ascending order by the results of running each element thru iteratee"
+description: 'Creates an array of elements, sorted in ascending order by the results of running each element thru iteratee'
 ---
 
 # `sortBy`
@@ -10,10 +10,10 @@ Creates an array of elements, sorted in ascending order by the results of runnin
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter    | Type  | Description                      |
+| ------------ | ----- | -------------------------------- |
 | `collection` | `any` | - The collection to iterate over |
-| `iteratees` | `any` | - The iteratees to sort by |
+| `iteratees`  | `any` | - The iteratees to sort by       |
 
 ## Returns
 
@@ -36,7 +36,7 @@ Creates an array of elements, sorted in ascending order by the results of runnin
 ```tsx live
 function SortByExample() {
   const [sortField, setSortField] = useState('age');
-  
+
   const users = [
     { name: 'John', age, salary: 60000 },
     { name: 'Jane', age, salary: 75000 },
@@ -71,7 +71,15 @@ function SortByExample() {
         <p>
           <strong>Sorted by {sortField} (ascending):</strong>
         </p>
-        <pre style={{ backgroundColor: '#f5f5f5', padding: '10px', borderRadius: '4px', overflow: 'auto', maxHeight: '300px' }}>
+        <pre
+          style={{
+            backgroundColor: '#f5f5f5',
+            padding: '10px',
+            borderRadius: '4px',
+            overflow: 'auto',
+            maxHeight: '300px',
+          }}
+        >
           {JSON.stringify(result, null, 2)}
         </pre>
       </div>
@@ -79,4 +87,3 @@ function SortByExample() {
   );
 }
 ```
-

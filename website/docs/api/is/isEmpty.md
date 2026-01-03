@@ -1,12 +1,13 @@
 ---
 id: isEmpty
 title: isEmpty
-description: "Checks if value is empty. A value is considered empty if it is one of the following: - null or undefined - empty string - empty array - empty object (no enumerable properties) - NaN"
+description: 'Checks if value is empty. A value is considered empty if it is one of the following: - null or undefined - empty string - empty array - empty object (no enumerable properties) - NaN'
 ---
 
 # `isEmpty`
 
 Checks if value is empty. A value is considered empty if it is one of the following:
+
 - null or undefined
 - empty string
 - empty array
@@ -15,9 +16,9 @@ Checks if value is empty. A value is considered empty if it is one of the follow
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `value` | `any` | - The value to check |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `value`   | `any` | - The value to check |
 
 ## Returns
 
@@ -63,7 +64,10 @@ function IsEmptyExample() {
       </p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         {testValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          <div
+            key={index}
+            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+          >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <code style={{ fontSize: '12px' }}>{item.label}</code>
               <span
@@ -86,4 +90,3 @@ function IsEmptyExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: maxBy
 title: maxBy
-description: "This method is like max except that it accepts iteratee which is invoked for each element in array to generate the criterion by which the value is ranked. The iteratee is invoked with one argument: (value)."
+description: 'This method is like max except that it accepts iteratee which is invoked for each element in array to generate the criterion by which the value is ranked. The iteratee is invoked with one argument: (value).'
 ---
 
 # `maxBy`
@@ -12,9 +12,9 @@ The iteratee is invoked with one argument: (value).
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | - The array to iterate over |
+| Parameter  | Type  | Description                        |
+| ---------- | ----- | ---------------------------------- |
+| `array`    | `any` | - The array to iterate over        |
 | `iteratee` | `any` | - The iteratee invoked per element |
 
 ## Returns
@@ -82,4 +82,3 @@ function MaxByExample() {
   );
 }
 ```
-

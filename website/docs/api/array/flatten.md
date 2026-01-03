@@ -1,7 +1,7 @@
 ---
 id: flatten
 title: flatten
-description: "Flattens an array to a specified depth"
+description: 'Flattens an array to a specified depth'
 ---
 
 # `flatten`
@@ -10,10 +10,10 @@ Flattens an array to a specified depth
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | The array to flatten |
-| `depth` | `any` | The depth to flatten to (default: 1) |
+| Parameter | Type  | Description                          |
+| --------- | ----- | ------------------------------------ |
+| `array`   | `any` | The array to flatten                 |
+| `depth`   | `any` | The depth to flatten to (default: 1) |
 
 ## Returns
 
@@ -64,4 +64,3 @@ function FlattenExample() {
   );
 }
 ```
-

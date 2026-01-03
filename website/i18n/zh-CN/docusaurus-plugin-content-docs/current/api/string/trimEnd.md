@@ -1,7 +1,7 @@
 ---
 id: trimEnd
 title: trimEnd
-description: "Removes trailing whitespace or specified characters from string."
+description: 'Removes trailing whitespace or specified characters from string.'
 ---
 
 # `trimEnd`
@@ -10,9 +10,9 @@ Removes trailing whitespace or specified characters from string.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `str` | `any` | - The string to trim |
+| 参数    | 类型  | 描述                       |
+| ------- | ----- | -------------------------- |
+| `str`   | `any` | - The string to trim       |
 | `chars` | `any` | - The characters to remove |
 
 ## 返回值
@@ -45,9 +45,7 @@ function TrimEndExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input String:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input String:</label>
         <input
           type="text"
           value={input}
@@ -132,4 +130,3 @@ function TrimEndExample() {
   );
 }
 ```
-

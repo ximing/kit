@@ -1,7 +1,7 @@
 ---
 id: snakeCase
 title: snakeCase
-description: "Converts string to snake case."
+description: 'Converts string to snake case.'
 ---
 
 # `snakeCase`
@@ -10,9 +10,9 @@ Converts string to snake case.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The string to convert |
+| Parameter | Type  | Description             |
+| --------- | ----- | ----------------------- |
+| `str`     | `any` | - The string to convert |
 
 ## Returns
 
@@ -39,9 +39,7 @@ function SnakeCaseExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input:</label>
         <input
           type="text"
           value={input}
@@ -100,4 +98,3 @@ function SnakeCaseExample() {
   );
 }
 ```
-

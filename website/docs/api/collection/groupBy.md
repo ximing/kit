@@ -1,7 +1,7 @@
 ---
 id: groupBy
 title: groupBy
-description: "Creates an object composed from the elements of collection grouped by the results of running each element thru iteratee"
+description: 'Creates an object composed from the elements of collection grouped by the results of running each element thru iteratee'
 ---
 
 # `groupBy`
@@ -10,10 +10,10 @@ Creates an object composed from the elements of collection grouped by the result
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter    | Type  | Description                      |
+| ------------ | ----- | -------------------------------- |
 | `collection` | `any` | - The collection to iterate over |
-| `iteratee` | `any` | - The iteratee to transform keys |
+| `iteratee`   | `any` | - The iteratee to transform keys |
 
 ## Returns
 
@@ -37,7 +37,7 @@ Creates an object composed from the elements of collection grouped by the result
 ```tsx live
 function GroupByExample() {
   const [groupBy, setGroupBy] = useState('age');
-  
+
   const users = [
     { name: 'John', age, dept: 'Engineering' },
     { name: 'Jane', age, dept: 'Marketing' },
@@ -71,7 +71,15 @@ function GroupByExample() {
         <p>
           <strong>Grouped by {groupBy}:</strong>
         </p>
-        <pre style={{ backgroundColor: '#f5f5f5', padding: '10px', borderRadius: '4px', overflow: 'auto', maxHeight: '300px' }}>
+        <pre
+          style={{
+            backgroundColor: '#f5f5f5',
+            padding: '10px',
+            borderRadius: '4px',
+            overflow: 'auto',
+            maxHeight: '300px',
+          }}
+        >
           {JSON.stringify(result, null, 2)}
         </pre>
       </div>
@@ -79,4 +87,3 @@ function GroupByExample() {
   );
 }
 ```
-

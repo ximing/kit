@@ -1,7 +1,7 @@
 ---
 id: negate
 title: negate
-description: "Creates a function that negates the result of the predicate func."
+description: 'Creates a function that negates the result of the predicate func.'
 ---
 
 # `negate`
@@ -10,8 +10,8 @@ Creates a function that negates the result of the predicate func.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter   | Type  | Description               |
+| ----------- | ----- | ------------------------- |
 | `predicate` | `any` | - The predicate to negate |
 
 ## Returns
@@ -85,4 +85,3 @@ function NegateExample() {
   );
 }
 ```
-

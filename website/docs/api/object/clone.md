@@ -1,7 +1,7 @@
 ---
 id: clone
 title: clone
-description: "Creates a shallow copy of value"
+description: 'Creates a shallow copy of value'
 ---
 
 # `clone`
@@ -10,9 +10,9 @@ Creates a shallow copy of value
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `value` | `any` | - The value to clone |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `value`   | `any` | - The value to clone |
 
 ## Returns
 
@@ -78,11 +78,11 @@ function CloneExample() {
           <strong>Cloned Object:</strong> {JSON.stringify(clonedObj)}
         </p>
         <p style={{ fontSize: '12px', color: '#666', marginTop: '10px' }}>
-          Note: Nested objects are shared (shallow copy). Modifying clonedObj.a changes the clone, but originalObj.a remains unchanged.
+          Note: Nested objects are shared (shallow copy). Modifying clonedObj.a changes the clone, but originalObj.a
+          remains unchanged.
         </p>
       </div>
     </div>
   );
 }
 ```
-

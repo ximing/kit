@@ -10,10 +10,10 @@ Returns a promise that rejects if the given promise doesn't settle within the sp
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `promise` | `any` | - The promise to wrap with a timeout |
-| `ms` | `any` | - The timeout in milliseconds |
+| Parameter | Type  | Description                                                                 |
+| --------- | ----- | --------------------------------------------------------------------------- |
+| `promise` | `any` | - The promise to wrap with a timeout                                        |
+| `ms`      | `any` | - The timeout in milliseconds                                               |
 | `message` | `any` | - The error message to use when timeout occurs (default: 'Promise timeout') |
 
 ## Returns
@@ -55,13 +55,9 @@ function TimeoutExample() {
     try {
       // Simulate an async operation
       const operation = delay(operationMs, 'Operation completed successfully!');
-      
+
       // Wrap it with timeout
-      const data = await timeout(
-        operation,
-        timeoutMs,
-        `Operation timed out after ${timeoutMs}ms`
-      );
+      const data = await timeout(operation, timeoutMs, `Operation timed out after ${timeoutMs}ms`);
 
       setResult(data as string);
     } catch (err) {
@@ -103,13 +99,15 @@ function TimeoutExample() {
             style={{ padding: '5px', fontSize: '14px', width: '100px' }}
           />
         </div>
-        <div style={{
-          padding: '10px',
-          marginBottom: '10px',
-          borderRadius: '4px',
-          backgroundColor: willTimeout ? '#ffebee' : '#e8f5e9',
-          border: `1px solid ${willTimeout ? '#ef5350' : '#66bb6a'}`
-        }}>
+        <div
+          style={{
+            padding: '10px',
+            marginBottom: '10px',
+            borderRadius: '4px',
+            backgroundColor: willTimeout ? '#ffebee' : '#e8f5e9',
+            border: `1px solid ${willTimeout ? '#ef5350' : '#66bb6a'}`,
+          }}
+        >
           <strong>Prediction:</strong>{' '}
           {willTimeout ? (
             <span style={{ color: '#d32f2f' }}>
@@ -128,31 +126,18 @@ function TimeoutExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Running...' : 'Test Timeout'}
         </button>
       </div>
       <div style={{ marginTop: '15px' }}>
-        {loading && (
-          <p style={{ color: '#ff9800' }}>
-            ⏳ Operation in progress...
-          </p>
-        )}
-        {result && (
-          <p style={{ marginTop: '10px', color: '#4caf50', fontWeight: 'bold' }}>
-            ✓ Success: {result}
-          </p>
-        )}
-        {error && (
-          <p style={{ marginTop: '10px', color: '#f44336', fontWeight: 'bold' }}>
-            ✗ Error: {error}
-          </p>
-        )}
+        {loading && <p style={{ color: '#ff9800' }}>⏳ Operation in progress...</p>}
+        {result && <p style={{ marginTop: '10px', color: '#4caf50', fontWeight: 'bold' }}>✓ Success: {result}</p>}
+        {error && <p style={{ marginTop: '10px', color: '#f44336', fontWeight: 'bold' }}>✗ Error: {error}</p>}
       </div>
     </div>
   );
 }
 ```
-

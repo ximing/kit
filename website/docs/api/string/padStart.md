@@ -10,11 +10,11 @@ Pads string on the left side if it's shorter than length.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The string to pad |
-| `length` | `any` | - The padding length |
-| `chars` | `any` | - The string used as padding (default: ' ') |
+| Parameter | Type  | Description                                 |
+| --------- | ----- | ------------------------------------------- |
+| `str`     | `any` | - The string to pad                         |
+| `length`  | `any` | - The padding length                        |
+| `chars`   | `any` | - The string used as padding (default: ' ') |
 
 ## Returns
 
@@ -41,9 +41,7 @@ function PadStartExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input String:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input String:</label>
         <input
           type="text"
           value={input}
@@ -60,9 +58,7 @@ function PadStartExample() {
       </div>
 
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Pad Length: {length}
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Pad Length: {length}</label>
         <input
           type="range"
           min="1"
@@ -74,9 +70,7 @@ function PadStartExample() {
       </div>
 
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Padding Characters:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Padding Characters:</label>
         <input
           type="text"
           value={chars}
@@ -108,12 +102,9 @@ function PadStartExample() {
         >
           "{result}"
         </div>
-        <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
-          Length: {result.length}
-        </p>
+        <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Length: {result.length}</p>
       </div>
     </div>
   );
 }
 ```
-

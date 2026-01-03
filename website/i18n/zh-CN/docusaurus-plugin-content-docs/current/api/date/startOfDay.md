@@ -1,7 +1,7 @@
 ---
 id: startOfDay
 title: startOfDay
-description: "Returns a new Date object set to the start of the day (00:00:00.000)."
+description: 'Returns a new Date object set to the start of the day (00:00:00.000).'
 ---
 
 # `startOfDay`
@@ -10,8 +10,8 @@ Returns a new Date object set to the start of the day (00:00:00.000).
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数   | 类型  | 描述                 |
+| ------ | ----- | -------------------- |
 | `date` | `any` | - The date to modify |
 
 ## 返回值
@@ -48,4 +48,3 @@ function StartOfDayExample() {
   );
 }
 ```
-

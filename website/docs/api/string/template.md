@@ -1,7 +1,7 @@
 ---
 id: template
 title: template
-description: "Replaces template placeholders with values from the data object."
+description: 'Replaces template placeholders with values from the data object.'
 ---
 
 # `template`
@@ -10,10 +10,10 @@ Replaces template placeholders with values from the data object.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The template string |
-| `data` | `any` | - The data object with placeholder values |
+| Parameter | Type  | Description                               |
+| --------- | ----- | ----------------------------------------- |
+| `str`     | `any` | - The template string                     |
+| `data`    | `any` | - The data object with placeholder values |
 
 ## Returns
 
@@ -34,7 +34,7 @@ function TemplateExample() {
   const [templateStr, setTemplateStr] = useState('Hello <%= name %>, you are <%= age %> years old');
   const [name, setName] = useState('John');
   const [age, setAge] = useState('30');
-  
+
   const result = template(templateStr, { name, age });
 
   const templates = [
@@ -47,9 +47,7 @@ function TemplateExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Template String:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Template String:</label>
         <textarea
           value={templateStr}
           onChange={(e) => setTemplateStr(e.target.value)}
@@ -72,9 +70,7 @@ function TemplateExample() {
 
       <div style={{ marginBottom: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
         <div>
-          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-            name:
-          </label>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>name:</label>
           <input
             type="text"
             value={name}
@@ -90,9 +86,7 @@ function TemplateExample() {
           />
         </div>
         <div>
-          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-            age:
-          </label>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>age:</label>
           <input
             type="text"
             value={age}
@@ -154,4 +148,3 @@ function TemplateExample() {
   );
 }
 ```
-

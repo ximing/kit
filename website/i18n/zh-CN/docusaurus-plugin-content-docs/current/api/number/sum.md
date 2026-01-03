@@ -1,7 +1,7 @@
 ---
 id: sum
 title: sum
-description: "Computes the sum of the values in array."
+description: 'Computes the sum of the values in array.'
 ---
 
 # `sum`
@@ -10,8 +10,8 @@ Computes the sum of the values in array.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数      | 类型  | 描述                          |
+| --------- | ----- | ----------------------------- |
 | `numbers` | `any` | - The array of numbers to sum |
 
 ## 返回值
@@ -32,14 +32,14 @@ Computes the sum of the values in array.
 ```tsx live
 function SumExample() {
   const [input, setInput] = useState('1, 2, 3, 4');
-  
+
   const numbers = input
     .split(',')
     .map((s) => s.trim())
     .filter((s) => s !== '')
     .map(Number)
     .filter((n) => !isNaN(n));
-  
+
   const result = sum(numbers);
 
   return (
@@ -69,7 +69,9 @@ function SumExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>sum([1, 2, 3, 4]) → 10</li>
           <li>sum([]) → 0</li>
@@ -80,4 +82,3 @@ function SumExample() {
   );
 }
 ```
-

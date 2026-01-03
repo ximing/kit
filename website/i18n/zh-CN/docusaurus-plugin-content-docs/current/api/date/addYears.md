@@ -1,7 +1,7 @@
 ---
 id: addYears
 title: addYears
-description: "Adds the specified number of years to the given date."
+description: 'Adds the specified number of years to the given date.'
 ---
 
 # `addYears`
@@ -10,9 +10,9 @@ Adds the specified number of years to the given date.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `date` | `any` | - The date to modify |
+| 参数     | 类型  | 描述                                           |
+| -------- | ----- | ---------------------------------------------- |
+| `date`   | `any` | - The date to modify                           |
 | `amount` | `any` | - The number of years to add (can be negative) |
 
 ## 返回值
@@ -32,7 +32,7 @@ Adds the specified number of years to the given date.
 ```tsx live
 function AddYearsExample() {
   const [yearsToAdd, setYearsToAdd] = useState(1);
-  
+
   const baseDate = new Date('2024-01-15');
   const resultDate = addYears(baseDate, yearsToAdd);
 
@@ -63,4 +63,3 @@ function AddYearsExample() {
   );
 }
 ```
-

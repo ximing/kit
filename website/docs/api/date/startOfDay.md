@@ -1,7 +1,7 @@
 ---
 id: startOfDay
 title: startOfDay
-description: "Returns a new Date object set to the start of the day (00:00:00.000)."
+description: 'Returns a new Date object set to the start of the day (00:00:00.000).'
 ---
 
 # `startOfDay`
@@ -10,9 +10,9 @@ Returns a new Date object set to the start of the day (00:00:00.000).
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `date` | `any` | - The date to modify |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `date`    | `any` | - The date to modify |
 
 ## Returns
 
@@ -48,4 +48,3 @@ function StartOfDayExample() {
   );
 }
 ```
-

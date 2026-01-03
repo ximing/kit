@@ -1,7 +1,7 @@
 ---
 id: values
 title: values
-description: "Creates an array of the own enumerable property values of object"
+description: 'Creates an array of the own enumerable property values of object'
 ---
 
 # `values`
@@ -10,9 +10,9 @@ Creates an array of the own enumerable property values of object
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The object to query |
+| Parameter | Type  | Description           |
+| --------- | ----- | --------------------- |
+| `obj`     | `any` | - The object to query |
 
 ## Returns
 
@@ -57,4 +57,3 @@ function ValuesExample() {
   );
 }
 ```
-

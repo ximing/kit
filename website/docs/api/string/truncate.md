@@ -10,11 +10,11 @@ Truncates string if it's longer than the given maximum string length.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The string to truncate |
-| `options` | `any` | - The options object |
-| `options` | `any` | .length - The maximum string length (default: 30) |
+| Parameter | Type  | Description                                                         |
+| --------- | ----- | ------------------------------------------------------------------- |
+| `str`     | `any` | - The string to truncate                                            |
+| `options` | `any` | - The options object                                                |
+| `options` | `any` | .length - The maximum string length (default: 30)                   |
 | `options` | `any` | .omission - The string to indicate text is omitted (default: '...') |
 
 ## Returns
@@ -42,9 +42,7 @@ function TruncateExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input String:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input String:</label>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -63,9 +61,7 @@ function TruncateExample() {
       </div>
 
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Max Length: {length}
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Max Length: {length}</label>
         <input
           type="range"
           min="5"
@@ -77,9 +73,7 @@ function TruncateExample() {
       </div>
 
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Omission String:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Omission String:</label>
         <input
           type="text"
           value={omission}
@@ -119,4 +113,3 @@ function TruncateExample() {
   );
 }
 ```
-

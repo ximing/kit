@@ -1,7 +1,7 @@
 ---
 id: diffMonths
 title: diffMonths
-description: "Calculates the number of months between two dates."
+description: 'Calculates the number of months between two dates.'
 ---
 
 # `diffMonths`
@@ -10,10 +10,10 @@ Calculates the number of months between two dates.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `date1` | `any` | - The first date |
-| `date2` | `any` | - The second date |
+| Parameter | Type  | Description       |
+| --------- | ----- | ----------------- |
+| `date1`   | `any` | - The first date  |
+| `date2`   | `any` | - The second date |
 
 ## Returns
 
@@ -48,12 +48,9 @@ function DiffMonthsExample() {
         <p>
           <strong>Months Difference (Date1 - Date2):</strong> {result} months
         </p>
-        <p style={{ fontSize: '12px', color: '#666' }}>
-          (Positive means Date 1 is later than Date 2)
-        </p>
+        <p style={{ fontSize: '12px', color: '#666' }}>(Positive means Date 1 is later than Date 2)</p>
       </div>
     </div>
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: minBy
 title: minBy
-description: "This method is like min except that it accepts iteratee which is invoked for each element in array to generate the criterion by which the value is ranked. The iteratee is invoked with one argument: (value)."
+description: 'This method is like min except that it accepts iteratee which is invoked for each element in array to generate the criterion by which the value is ranked. The iteratee is invoked with one argument: (value).'
 ---
 
 # `minBy`
@@ -12,9 +12,9 @@ The iteratee is invoked with one argument: (value).
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `array` | `any` | - The array to iterate over |
+| 参数       | 类型  | 描述                               |
+| ---------- | ----- | ---------------------------------- |
+| `array`    | `any` | - The array to iterate over        |
 | `iteratee` | `any` | - The iteratee invoked per element |
 
 ## 返回值
@@ -82,4 +82,3 @@ function MinByExample() {
   );
 }
 ```
-

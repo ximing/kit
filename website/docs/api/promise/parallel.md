@@ -1,7 +1,7 @@
 ---
 id: parallel
 title: parallel
-description: "Executes multiple promises in parallel with a concurrency limit."
+description: 'Executes multiple promises in parallel with a concurrency limit.'
 ---
 
 # `parallel`
@@ -10,9 +10,9 @@ Executes multiple promises in parallel with a concurrency limit.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `tasks` | `any` | - An array of functions that return promises |
+| Parameter     | Type  | Description                                                     |
+| ------------- | ----- | --------------------------------------------------------------- |
+| `tasks`       | `any` | - An array of functions that return promises                    |
 | `concurrency` | `any` | - The maximum number of concurrent promises (default: Infinity) |
 
 ## Returns
@@ -66,15 +66,15 @@ function ParallelExample() {
       tasks.map((task) => async () => {
         const msg = `Started: ${task.name} (${task.duration}ms)`;
         setProgress((prev) => [...prev, msg]);
-        
+
         await delay(task.duration);
-        
+
         const resultMsg = `Completed: ${task.name}`;
         setProgress((prev) => [...prev, resultMsg]);
-        
+
         return `${task.name} result`;
       }),
-      concurrency
+      concurrency,
     );
 
     const elapsed = Date.now() - startTime;
@@ -98,9 +98,7 @@ function ParallelExample() {
             disabled={loading}
             style={{ padding: '5px', fontSize: '14px', width: '60px' }}
           />
-          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#666' }}>
-            (max {concurrency} at a time)
-          </span>
+          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#666' }}>(max {concurrency} at a time)</span>
         </div>
         <div style={{ marginBottom: '10px' }}>
           <strong>Tasks:</strong>
@@ -119,7 +117,7 @@ function ParallelExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Executing...' : 'Execute Parallel Tasks'}
@@ -129,14 +127,16 @@ function ParallelExample() {
         {progress.length > 0 && (
           <div style={{ marginTop: '10px' }}>
             <strong>Progress:</strong>
-            <pre style={{
-              backgroundColor: '#f5f5f5',
-              padding: '10px',
-              borderRadius: '4px',
-              fontSize: '12px',
-              maxHeight: '200px',
-              overflow: 'auto'
-            }}>
+            <pre
+              style={{
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                maxHeight: '200px',
+                overflow: 'auto',
+              }}
+            >
               {progress.join('\n')}
             </pre>
           </div>
@@ -156,4 +156,3 @@ function ParallelExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: addDays
 title: addDays
-description: "Adds the specified number of days to the given date."
+description: 'Adds the specified number of days to the given date.'
 ---
 
 # `addDays`
@@ -10,10 +10,10 @@ Adds the specified number of days to the given date.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `date` | `any` | - The date to modify |
-| `amount` | `any` | - The number of days to add (can be negative) |
+| Parameter | Type  | Description                                   |
+| --------- | ----- | --------------------------------------------- |
+| `date`    | `any` | - The date to modify                          |
+| `amount`  | `any` | - The number of days to add (can be negative) |
 
 ## Returns
 
@@ -32,7 +32,7 @@ Adds the specified number of days to the given date.
 ```tsx live
 function AddDaysExample() {
   const [daysToAdd, setDaysToAdd] = useState(5);
-  
+
   const baseDate = new Date('2024-01-15');
   const resultDate = addDays(baseDate, daysToAdd);
 
@@ -63,4 +63,3 @@ function AddDaysExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: sample
 title: sample
-description: "Gets a random element from collection"
+description: 'Gets a random element from collection'
 ---
 
 # `sample`
@@ -10,8 +10,8 @@ Gets a random element from collection
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter    | Type  | Description                |
+| ------------ | ----- | -------------------------- |
 | `collection` | `any` | - The collection to sample |
 
 ## Returns
@@ -31,7 +31,7 @@ Gets a random element from collection
 ```tsx live
 function SampleExample() {
   const [samples, setSamples] = useState<number[]>([]);
-  
+
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const handleSample = () => {
@@ -95,4 +95,3 @@ function SampleExample() {
   );
 }
 ```
-

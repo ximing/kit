@@ -1,7 +1,7 @@
 ---
 id: pick
 title: pick
-description: "Creates an object composed of the picked object properties"
+description: 'Creates an object composed of the picked object properties'
 ---
 
 # `pick`
@@ -10,9 +10,9 @@ Creates an object composed of the picked object properties
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `obj` | `any` | - The source object |
+| 参数   | 类型  | 描述                        |
+| ------ | ----- | --------------------------- |
+| `obj`  | `any` | - The source object         |
 | `keys` | `any` | - The property keys to pick |
 
 ## 返回值
@@ -85,4 +85,3 @@ function PickExample() {
   );
 }
 ```
-

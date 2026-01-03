@@ -1,7 +1,7 @@
 ---
 id: delay
 title: delay
-description: "Returns a promise that resolves after a specified delay with an optional value."
+description: 'Returns a promise that resolves after a specified delay with an optional value.'
 ---
 
 # `delay`
@@ -10,10 +10,10 @@ Returns a promise that resolves after a specified delay with an optional value.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `ms` | `any` | - The number of milliseconds to delay |
-| `value` | `any` | - The optional value to resolve with (default: undefined) |
+| Parameter | Type  | Description                                               |
+| --------- | ----- | --------------------------------------------------------- |
+| `ms`      | `any` | - The number of milliseconds to delay                     |
+| `value`   | `any` | - The optional value to resolve with (default: undefined) |
 
 ## Returns
 
@@ -52,7 +52,7 @@ function DelayExample() {
     setStartTime(start);
 
     await delay(delayMs, message);
-    
+
     const elapsed = Date.now() - start;
     setElapsedTime(elapsed);
     setResult(message);
@@ -93,26 +93,18 @@ function DelayExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Waiting...' : 'Execute Delay'}
         </button>
       </div>
       <div style={{ marginTop: '15px' }}>
-        {loading && (
-          <p style={{ color: '#ff9800' }}>
-            ⏳ Waiting for {delayMs}ms...
-          </p>
-        )}
+        {loading && <p style={{ color: '#ff9800' }}>⏳ Waiting for {delayMs}ms...</p>}
         {result && (
           <div>
-            <p style={{ color: '#4caf50', fontWeight: 'bold' }}>
-              ✓ Resolved with: "{result}"
-            </p>
-            <p style={{ fontSize: '14px', color: '#666' }}>
-              Actual elapsed time: {elapsedTime}ms
-            </p>
+            <p style={{ color: '#4caf50', fontWeight: 'bold' }}>✓ Resolved with: "{result}"</p>
+            <p style={{ fontSize: '14px', color: '#666' }}>Actual elapsed time: {elapsedTime}ms</p>
           </div>
         )}
       </div>
@@ -120,4 +112,3 @@ function DelayExample() {
   );
 }
 ```
-

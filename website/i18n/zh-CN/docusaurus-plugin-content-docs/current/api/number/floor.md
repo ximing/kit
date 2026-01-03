@@ -1,7 +1,7 @@
 ---
 id: floor
 title: floor
-description: "Rounds number down to precision."
+description: 'Rounds number down to precision.'
 ---
 
 # `floor`
@@ -10,9 +10,9 @@ Rounds number down to precision.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `number` | `any` | - The number to round down |
+| 参数        | 类型  | 描述                                          |
+| ----------- | ----- | --------------------------------------------- |
+| `number`    | `any` | - The number to round down                    |
 | `precision` | `any` | - The precision to round down to (default: 0) |
 
 ## 返回值
@@ -69,7 +69,9 @@ function FloorExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>floor(4.006) → 4</li>
           <li>floor(4.006, 2) → 4.00</li>
@@ -80,4 +82,3 @@ function FloorExample() {
   );
 }
 ```
-

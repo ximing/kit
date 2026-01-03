@@ -1,7 +1,7 @@
 ---
 id: bind
 title: bind
-description: "Creates a function that invokes func with the this binding of thisArg and partialArgs prepended to the arguments it receives."
+description: 'Creates a function that invokes func with the this binding of thisArg and partialArgs prepended to the arguments it receives.'
 ---
 
 # `bind`
@@ -11,10 +11,10 @@ partialArgs prepended to the arguments it receives.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `func` | `any` | - The function to bind |
-| `thisArg` | `any` | - The this binding of func |
+| 参数          | 类型  | 描述                                    |
+| ------------- | ----- | --------------------------------------- |
+| `func`        | `any` | - The function to bind                  |
+| `thisArg`     | `any` | - The this binding of func              |
 | `partialArgs` | `any` | - The arguments to be partially applied |
 
 ## 返回值
@@ -91,4 +91,3 @@ function BindExample() {
   );
 }
 ```
-

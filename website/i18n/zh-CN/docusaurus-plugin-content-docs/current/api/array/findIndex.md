@@ -1,7 +1,7 @@
 ---
 id: findIndex
 title: findIndex
-description: "Finds the index of the first element that matches the predicate"
+description: 'Finds the index of the first element that matches the predicate'
 ---
 
 # `findIndex`
@@ -10,9 +10,9 @@ Finds the index of the first element that matches the predicate
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `array` | `any` | The array to search |
+| 参数        | 类型  | 描述                              |
+| ----------- | ----- | --------------------------------- |
+| `array`     | `any` | The array to search               |
 | `predicate` | `any` | The function to test each element |
 
 ## 返回值
@@ -67,4 +67,3 @@ function FindIndexExample() {
   );
 }
 ```
-

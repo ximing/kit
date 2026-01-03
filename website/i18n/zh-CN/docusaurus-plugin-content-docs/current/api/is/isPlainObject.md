@@ -1,7 +1,7 @@
 ---
 id: isPlainObject
 title: isPlainObject
-description: "Checks if value is a plain object, that is, an object created by the Object constructor or one with a [[Prototype]] of null."
+description: 'Checks if value is a plain object, that is, an object created by the Object constructor or one with a [[Prototype]] of null.'
 ---
 
 # `isPlainObject`
@@ -11,8 +11,8 @@ or one with a [[Prototype]] of null.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数    | 类型  | 描述                 |
+| ------- | ----- | -------------------- |
 | `value` | `any` | - The value to check |
 
 ## 返回值
@@ -52,7 +52,10 @@ function IsPlainObjectExample() {
       </p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         {testValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          <div
+            key={index}
+            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+          >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <code style={{ fontSize: '12px' }}>{item.label}</code>
               <span
@@ -75,4 +78,3 @@ function IsPlainObjectExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: chunk
 title: chunk
-description: "Splits an array into chunks of a specified size"
+description: 'Splits an array into chunks of a specified size'
 ---
 
 # `chunk`
@@ -10,10 +10,10 @@ Splits an array into chunks of a specified size
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `array` | `any` | The array to chunk |
-| `size` | `any` | The size of each chunk |
+| 参数    | 类型  | 描述                   |
+| ------- | ----- | ---------------------- |
+| `array` | `any` | The array to chunk     |
+| `size`  | `any` | The size of each chunk |
 
 ## 返回值
 
@@ -64,4 +64,3 @@ function ChunkExample() {
   );
 }
 ```
-

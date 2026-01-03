@@ -1,7 +1,7 @@
 ---
 id: cloneDeep
 title: cloneDeep
-description: "Creates a deep copy of value"
+description: 'Creates a deep copy of value'
 ---
 
 # `cloneDeep`
@@ -10,8 +10,8 @@ Creates a deep copy of value
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数    | 类型  | 描述                             |
+| ------- | ----- | -------------------------------- |
 | `value` | `any` | - The value to recursively clone |
 
 ## 返回值
@@ -85,4 +85,3 @@ function CloneDeepExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: merge
 title: merge
-description: "Merges source objects into target object (shallow merge)"
+description: 'Merges source objects into target object (shallow merge)'
 ---
 
 # `merge`
@@ -10,9 +10,9 @@ Merges source objects into target object (shallow merge)
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `target` | `any` | - The target object |
+| 参数      | 类型  | 描述                 |
+| --------- | ----- | -------------------- |
+| `target`  | `any` | - The target object  |
 | `sources` | `any` | - The source objects |
 
 ## 返回值
@@ -60,4 +60,3 @@ function MergeExample() {
   );
 }
 ```
-

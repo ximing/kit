@@ -1,7 +1,7 @@
 ---
 id: sampleSize
 title: sampleSize
-description: "Gets n random elements at unique keys from collection up to the size of collection"
+description: 'Gets n random elements at unique keys from collection up to the size of collection'
 ---
 
 # `sampleSize`
@@ -10,10 +10,10 @@ Gets n random elements at unique keys from collection up to the size of collecti
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `collection` | `any` | - The collection to sample |
-| `n` | `any` | - The number of elements to sample |
+| 参数         | 类型  | 描述                               |
+| ------------ | ----- | ---------------------------------- |
+| `collection` | `any` | - The collection to sample         |
+| `n`          | `any` | - The number of elements to sample |
 
 ## 返回值
 
@@ -33,7 +33,7 @@ Gets n random elements at unique keys from collection up to the size of collecti
 function SampleSizeExample() {
   const [sampleCount, setSampleCount] = useState(3);
   const [samples, setSamples] = useState<number[]>([]);
-  
+
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const handleSample = () => {
@@ -104,4 +104,3 @@ function SampleSizeExample() {
   );
 }
 ```
-

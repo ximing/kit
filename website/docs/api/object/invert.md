@@ -1,7 +1,7 @@
 ---
 id: invert
 title: invert
-description: "Creates an object composed of the inverted keys and values of object"
+description: 'Creates an object composed of the inverted keys and values of object'
 ---
 
 # `invert`
@@ -10,9 +10,9 @@ Creates an object composed of the inverted keys and values of object
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The object to invert |
+| Parameter | Type  | Description            |
+| --------- | ----- | ---------------------- |
+| `obj`     | `any` | - The object to invert |
 
 ## Returns
 
@@ -53,4 +53,3 @@ function InvertExample() {
   );
 }
 ```
-

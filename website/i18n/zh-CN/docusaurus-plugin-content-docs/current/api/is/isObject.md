@@ -11,8 +11,8 @@ Checks if value is the language type of Object.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数    | 类型  | 描述                 |
+| ------- | ----- | -------------------- |
 | `value` | `any` | - The value to check |
 
 ## 返回值
@@ -52,7 +52,10 @@ function IsObjectExample() {
       </p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         {testValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          <div
+            key={index}
+            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+          >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <code style={{ fontSize: '12px' }}>{item.label}</code>
               <span
@@ -75,4 +78,3 @@ function IsObjectExample() {
   );
 }
 ```
-

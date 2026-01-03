@@ -1,7 +1,7 @@
 ---
 id: retry
 title: retry
-description: "Retries a function until it succeeds or max attempts are reached."
+description: 'Retries a function until it succeeds or max attempts are reached.'
 ---
 
 # `retry`
@@ -10,13 +10,13 @@ Retries a function until it succeeds or max attempts are reached.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `fn` | `any` | - The function to retry (can be async or return a promise) |
-| `options` | `any` | - The options object |
-| `options` | `any` | .maxAttempts - Maximum number of attempts (default: 3) |
-| `options` | `any` | .delay - Delay between attempts in milliseconds (default: 1000) |
-| `options` | `any` | .backoff - Backoff multiplier for exponential backoff (default: 1, no backoff) |
+| 参数      | 类型  | 描述                                                                                |
+| --------- | ----- | ----------------------------------------------------------------------------------- |
+| `fn`      | `any` | - The function to retry (can be async or return a promise)                          |
+| `options` | `any` | - The options object                                                                |
+| `options` | `any` | .maxAttempts - Maximum number of attempts (default: 3)                              |
+| `options` | `any` | .delay - Delay between attempts in milliseconds (default: 1000)                     |
+| `options` | `any` | .backoff - Backoff multiplier for exponential backoff (default: 1, no backoff)      |
 | `options` | `any` | .onRetry - Callback function called on each retry with the attempt number and error |
 
 ## 返回值
@@ -65,11 +65,11 @@ function RetryExample() {
       const mockFetch = () => {
         attemptCount++;
         const shouldFail = Math.random() < failureRate;
-        
+
         if (shouldFail) {
           throw new Error(`Request failed (attempt ${attemptCount})`);
         }
-        
+
         return 'Success! Data fetched';
       };
 
@@ -80,7 +80,7 @@ function RetryExample() {
           const waitTime = delayMs * Math.pow(backoff, attempt - 1);
           const msg = `Attempt ${attempt} failed: ${error.message}\nRetrying in ${waitTime}ms...`;
           setLogs((prev) => [...prev, msg]);
-        }
+        },
       });
 
       setResult(data);
@@ -134,9 +134,7 @@ function RetryExample() {
             disabled={loading}
             style={{ padding: '5px', fontSize: '14px', width: '60px' }}
           />
-          <span style={{ marginLeft: '5px', fontSize: '12px', color: '#666' }}>
-            (1=no backoff, 2=exponential)
-          </span>
+          <span style={{ marginLeft: '5px', fontSize: '12px', color: '#666' }}>(1=no backoff, 2=exponential)</span>
         </div>
         <div style={{ marginBottom: '10px' }}>
           <label style={{ marginRight: '10px' }}>Failure Rate: </label>
@@ -159,7 +157,7 @@ function RetryExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Retrying...' : 'Test Retry Logic'}
@@ -169,32 +167,25 @@ function RetryExample() {
         {logs.length > 0 && (
           <div style={{ marginTop: '10px' }}>
             <strong>Logs:</strong>
-            <pre style={{
-              backgroundColor: '#f5f5f5',
-              padding: '10px',
-              borderRadius: '4px',
-              fontSize: '12px',
-              maxHeight: '200px',
-              overflow: 'auto',
-              whiteSpace: 'pre-wrap'
-            }}>
+            <pre
+              style={{
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                maxHeight: '200px',
+                overflow: 'auto',
+                whiteSpace: 'pre-wrap',
+              }}
+            >
               {logs.join('\n\n')}
             </pre>
           </div>
         )}
-        {result && (
-          <p style={{ marginTop: '10px', color: '#4caf50', fontWeight: 'bold' }}>
-            ✓ Result: {result}
-          </p>
-        )}
-        {error && (
-          <p style={{ marginTop: '10px', color: '#f44336', fontWeight: 'bold' }}>
-            ✗ Error: {error}
-          </p>
-        )}
+        {result && <p style={{ marginTop: '10px', color: '#4caf50', fontWeight: 'bold' }}>✓ Result: {result}</p>}
+        {error && <p style={{ marginTop: '10px', color: '#f44336', fontWeight: 'bold' }}>✗ Error: {error}</p>}
       </div>
     </div>
   );
 }
 ```
-

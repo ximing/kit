@@ -1,7 +1,7 @@
 ---
 id: partial
 title: partial
-description: "Creates a function that invokes func with partialArgs prepended to the arguments it receives. This method is like bind except it does not alter the this binding."
+description: 'Creates a function that invokes func with partialArgs prepended to the arguments it receives. This method is like bind except it does not alter the this binding.'
 ---
 
 # `partial`
@@ -11,10 +11,10 @@ This method is like bind except it does not alter the this binding.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `func` | `any` | - The function to partially apply arguments to |
-| `partialArgs` | `any` | - The arguments to be partially applied |
+| Parameter     | Type  | Description                                    |
+| ------------- | ----- | ---------------------------------------------- |
+| `func`        | `any` | - The function to partially apply arguments to |
+| `partialArgs` | `any` | - The arguments to be partially applied        |
 
 ## Returns
 
@@ -100,4 +100,3 @@ function PartialExample() {
   );
 }
 ```
-

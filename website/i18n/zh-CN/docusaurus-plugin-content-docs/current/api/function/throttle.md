@@ -1,7 +1,7 @@
 ---
 id: throttle
 title: throttle
-description: "Creates a throttled function that only invokes func at most once per every wait milliseconds."
+description: 'Creates a throttled function that only invokes func at most once per every wait milliseconds.'
 ---
 
 # `throttle`
@@ -10,12 +10,12 @@ Creates a throttled function that only invokes func at most once per every wait 
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `func` | `any` | - The function to throttle |
-| `wait` | `any` | - The number of milliseconds to throttle invocations to (default: 0) |
-| `options` | `any` | - The options object |
-| `options` | `any` | .leading - Specify invoking on the leading edge of the timeout (default: true) |
+| 参数      | 类型  | 描述                                                                             |
+| --------- | ----- | -------------------------------------------------------------------------------- |
+| `func`    | `any` | - The function to throttle                                                       |
+| `wait`    | `any` | - The number of milliseconds to throttle invocations to (default: 0)             |
+| `options` | `any` | - The options object                                                             |
+| `options` | `any` | .leading - Specify invoking on the leading edge of the timeout (default: true)   |
 | `options` | `any` | .trailing - Specify invoking on the trailing edge of the timeout (default: true) |
 
 ## 返回值
@@ -57,7 +57,7 @@ function ThrottleExample() {
         setLastCallTime(new Date().toLocaleTimeString());
       },
       wait,
-      { leading, trailing: true }
+      { leading, trailing: true },
     );
   }, [wait]);
 
@@ -116,4 +116,3 @@ function ThrottleExample() {
   );
 }
 ```
-

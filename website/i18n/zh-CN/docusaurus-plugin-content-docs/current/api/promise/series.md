@@ -1,7 +1,7 @@
 ---
 id: series
 title: series
-description: "Executes multiple promises in series (one after another)."
+description: 'Executes multiple promises in series (one after another).'
 ---
 
 # `series`
@@ -10,8 +10,8 @@ Executes multiple promises in series (one after another).
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数    | 类型  | 描述                                         |
+| ------- | ----- | -------------------------------------------- |
 | `tasks` | `any` | - An array of functions that return promises |
 
 ## 返回值
@@ -64,14 +64,14 @@ function SeriesExample() {
       tasks.map((task) => async () => {
         const msg = `Started: ${task.name} (${task.duration}ms)`;
         setProgress((prev) => [...prev, msg]);
-        
+
         await delay(task.duration);
-        
+
         const resultMsg = `Completed: ${task.name}`;
         setProgress((prev) => [...prev, resultMsg]);
-        
+
         return `${task.name} result`;
-      })
+      }),
     );
 
     const elapsed = Date.now() - startTime;
@@ -104,7 +104,7 @@ function SeriesExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Executing...' : 'Execute Series Tasks'}
@@ -114,14 +114,16 @@ function SeriesExample() {
         {progress.length > 0 && (
           <div style={{ marginTop: '10px' }}>
             <strong>Progress:</strong>
-            <pre style={{
-              backgroundColor: '#f5f5f5',
-              padding: '10px',
-              borderRadius: '4px',
-              fontSize: '12px',
-              maxHeight: '200px',
-              overflow: 'auto'
-            }}>
+            <pre
+              style={{
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                maxHeight: '200px',
+                overflow: 'auto',
+              }}
+            >
               {progress.join('\n')}
             </pre>
           </div>
@@ -141,4 +143,3 @@ function SeriesExample() {
   );
 }
 ```
-

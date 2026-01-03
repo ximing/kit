@@ -1,7 +1,7 @@
 ---
 id: reduce
 title: reduce
-description: "Iterates over an array and reduces it to a single value using an async reducer function."
+description: 'Iterates over an array and reduces it to a single value using an async reducer function.'
 ---
 
 # `reduce`
@@ -10,11 +10,11 @@ Iterates over an array and reduces it to a single value using an async reducer f
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | - The array to reduce |
-| `reducer` | `any` | - The function to reduce each element (can be async or return a promise) |
-| `initialValue` | `any` | - The initial value for the accumulator |
+| Parameter      | Type  | Description                                                              |
+| -------------- | ----- | ------------------------------------------------------------------------ |
+| `array`        | `any` | - The array to reduce                                                    |
+| `reducer`      | `any` | - The function to reduce each element (can be async or return a promise) |
+| `initialValue` | `any` | - The initial value for the accumulator                                  |
 
 ## Returns
 
@@ -65,17 +65,17 @@ function ReduceExample() {
       async (acc, num) => {
         const msg = `Adding ${num} to ${acc}...`;
         setProgress((prev) => [...prev, msg]);
-        
+
         // Simulate async operation
         await delay(300);
-        
+
         const newAcc = acc + num;
         const resultMsg = `${acc} + ${num} = ${newAcc}`;
         setProgress((prev) => [...prev, resultMsg]);
-        
+
         return newAcc;
       },
-      0
+      0,
     );
 
     const elapsed = Date.now() - startTime;
@@ -91,9 +91,7 @@ function ReduceExample() {
         <p>
           <strong>Input:</strong> {JSON.stringify(numbers)}
         </p>
-        <p style={{ fontSize: '14px', color: '#666' }}>
-          Operation: Sum all numbers (async)
-        </p>
+        <p style={{ fontSize: '14px', color: '#666' }}>Operation: Sum all numbers (async)</p>
         <button
           onClick={handleExecute}
           disabled={loading}
@@ -101,7 +99,7 @@ function ReduceExample() {
             padding: '8px 20px',
             fontSize: '14px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.6 : 1
+            opacity: loading ? 0.6 : 1,
           }}
         >
           {loading ? 'Reducing...' : 'Calculate Sum'}
@@ -111,14 +109,16 @@ function ReduceExample() {
         {progress.length > 0 && (
           <div style={{ marginTop: '10px' }}>
             <strong>Progress:</strong>
-            <pre style={{
-              backgroundColor: '#f5f5f5',
-              padding: '10px',
-              borderRadius: '4px',
-              fontSize: '12px',
-              maxHeight: '200px',
-              overflow: 'auto'
-            }}>
+            <pre
+              style={{
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                maxHeight: '200px',
+                overflow: 'auto',
+              }}
+            >
               {progress.join('\n')}
             </pre>
           </div>
@@ -126,9 +126,7 @@ function ReduceExample() {
         {result !== null && (
           <p style={{ marginTop: '10px' }}>
             <strong>Final Result:</strong>{' '}
-            <span style={{ fontSize: '18px', color: '#1976d2', fontWeight: 'bold' }}>
-              {result}
-            </span>
+            <span style={{ fontSize: '18px', color: '#1976d2', fontWeight: 'bold' }}>{result}</span>
           </p>
         )}
       </div>
@@ -136,4 +134,3 @@ function ReduceExample() {
   );
 }
 ```
-

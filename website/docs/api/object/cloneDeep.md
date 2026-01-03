@@ -1,7 +1,7 @@
 ---
 id: cloneDeep
 title: cloneDeep
-description: "Creates a deep copy of value"
+description: 'Creates a deep copy of value'
 ---
 
 # `cloneDeep`
@@ -10,9 +10,9 @@ Creates a deep copy of value
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `value` | `any` | - The value to recursively clone |
+| Parameter | Type  | Description                      |
+| --------- | ----- | -------------------------------- |
+| `value`   | `any` | - The value to recursively clone |
 
 ## Returns
 
@@ -85,4 +85,3 @@ function CloneDeepExample() {
   );
 }
 ```
-

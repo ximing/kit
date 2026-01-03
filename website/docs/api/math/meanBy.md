@@ -1,7 +1,7 @@
 ---
 id: meanBy
 title: meanBy
-description: "This method is like mean except that it accepts iteratee which is invoked for each element in array to generate the value to be averaged. The iteratee is invoked with one argument: (value)."
+description: 'This method is like mean except that it accepts iteratee which is invoked for each element in array to generate the value to be averaged. The iteratee is invoked with one argument: (value).'
 ---
 
 # `meanBy`
@@ -12,9 +12,9 @@ The iteratee is invoked with one argument: (value).
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | - The array to iterate over |
+| Parameter  | Type  | Description                        |
+| ---------- | ----- | ---------------------------------- |
+| `array`    | `any` | - The array to iterate over        |
 | `iteratee` | `any` | - The iteratee invoked per element |
 
 ## Returns
@@ -79,7 +79,7 @@ function MeanByExample() {
         </p>
         <p style={{ fontSize: '14px', color: '#666' }}>
           <em>
-            {selectBy === 'age' 
+            {selectBy === 'age'
               ? `Sum of ages: ${students.reduce((sum, s) => sum + s.age, 0)} ÷ ${students.length} students`
               : `Sum of scores: ${students.reduce((sum, s) => sum + s.score, 0)} ÷ ${students.length} students`}
           </em>
@@ -89,4 +89,3 @@ function MeanByExample() {
   );
 }
 ```
-

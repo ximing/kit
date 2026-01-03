@@ -1,7 +1,7 @@
 ---
 id: mean
 title: mean
-description: "Computes the mean (average) of the values in array."
+description: 'Computes the mean (average) of the values in array.'
 ---
 
 # `mean`
@@ -10,8 +10,8 @@ Computes the mean (average) of the values in array.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数      | 类型  | 描述                              |
+| --------- | ----- | --------------------------------- |
 | `numbers` | `any` | - The array of numbers to average |
 
 ## 返回值
@@ -32,14 +32,14 @@ Computes the mean (average) of the values in array.
 ```tsx live
 function MeanExample() {
   const [input, setInput] = useState('1, 2, 3, 4');
-  
+
   const numbers = input
     .split(',')
     .map((s) => s.trim())
     .filter((s) => s !== '')
     .map(Number)
     .filter((n) => !isNaN(n));
-  
+
   const result = mean(numbers);
 
   return (
@@ -69,7 +69,9 @@ function MeanExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>mean([1, 2, 3, 4]) → 2.5</li>
           <li>mean([]) → 0</li>
@@ -80,4 +82,3 @@ function MeanExample() {
   );
 }
 ```
-

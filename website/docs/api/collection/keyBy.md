@@ -1,7 +1,7 @@
 ---
 id: keyBy
 title: keyBy
-description: "Creates an object composed from the elements of collection keyed by the results of running each element thru iteratee"
+description: 'Creates an object composed from the elements of collection keyed by the results of running each element thru iteratee'
 ---
 
 # `keyBy`
@@ -10,10 +10,10 @@ Creates an object composed from the elements of collection keyed by the results 
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter    | Type  | Description                      |
+| ------------ | ----- | -------------------------------- |
 | `collection` | `any` | - The collection to iterate over |
-| `iteratee` | `any` | - The iteratee to transform keys |
+| `iteratee`   | `any` | - The iteratee to transform keys |
 
 ## Returns
 
@@ -36,7 +36,7 @@ Creates an object composed from the elements of collection keyed by the results 
 ```tsx live
 function KeyByExample() {
   const [keyField, setKeyField] = useState('id');
-  
+
   const users = [
     { id, name: 'John', email: 'john@example.com' },
     { id, name: 'Jane', email: 'jane@example.com' },
@@ -70,7 +70,15 @@ function KeyByExample() {
         <p>
           <strong>Keyed by {keyField}:</strong>
         </p>
-        <pre style={{ backgroundColor: '#f5f5f5', padding: '10px', borderRadius: '4px', overflow: 'auto', maxHeight: '300px' }}>
+        <pre
+          style={{
+            backgroundColor: '#f5f5f5',
+            padding: '10px',
+            borderRadius: '4px',
+            overflow: 'auto',
+            maxHeight: '300px',
+          }}
+        >
           {JSON.stringify(result, null, 2)}
         </pre>
       </div>
@@ -78,4 +86,3 @@ function KeyByExample() {
   );
 }
 ```
-

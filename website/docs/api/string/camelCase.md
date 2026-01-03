@@ -1,7 +1,7 @@
 ---
 id: camelCase
 title: camelCase
-description: "Converts string to camel case."
+description: 'Converts string to camel case.'
 ---
 
 # `camelCase`
@@ -10,9 +10,9 @@ Converts string to camel case.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `str` | `any` | - The string to convert |
+| Parameter | Type  | Description             |
+| --------- | ----- | ----------------------- |
+| `str`     | `any` | - The string to convert |
 
 ## Returns
 
@@ -34,21 +34,12 @@ function CamelCaseExample() {
   const [input, setInput] = useState('foo bar');
   const result = camelCase(input);
 
-  const examples = [
-    'foo bar',
-    'Foo Bar',
-    '--foo-bar--',
-    'foo_bar',
-    'fooBar',
-    'FOO_BAR',
-  ];
+  const examples = ['foo bar', 'Foo Bar', '--foo-bar--', 'foo_bar', 'fooBar', 'FOO_BAR'];
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input:</label>
         <input
           type="text"
           value={input}
@@ -107,4 +98,3 @@ function CamelCaseExample() {
   );
 }
 ```
-

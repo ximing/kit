@@ -1,7 +1,7 @@
 ---
 id: intersection
 title: intersection
-description: "Creates an array of unique values that are included in all given arrays"
+description: 'Creates an array of unique values that are included in all given arrays'
 ---
 
 # `intersection`
@@ -10,8 +10,8 @@ Creates an array of unique values that are included in all given arrays
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数     | 类型  | 描述                  |
+| -------- | ----- | --------------------- |
 | `arrays` | `any` | The arrays to process |
 
 ## 返回值
@@ -35,7 +35,10 @@ function IntersectionExample() {
 
   const parseInput = (text) => {
     try {
-      return text.split(',').map((s) => Number(s.trim())).filter((n) => !isNaN(n));
+      return text
+        .split(',')
+        .map((s) => Number(s.trim()))
+        .filter((n) => !isNaN(n));
     } catch {
       return [];
     }
@@ -85,4 +88,3 @@ function IntersectionExample() {
   );
 }
 ```
-

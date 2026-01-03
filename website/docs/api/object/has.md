@@ -1,7 +1,7 @@
 ---
 id: has
 title: has
-description: "Checks if path is a direct or inherited property of object"
+description: 'Checks if path is a direct or inherited property of object'
 ---
 
 # `has`
@@ -10,10 +10,10 @@ Checks if path is a direct or inherited property of object
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The object to query |
-| `path` | `any` | - The path to check (can be string or array) |
+| Parameter | Type  | Description                                  |
+| --------- | ----- | -------------------------------------------- |
+| `obj`     | `any` | - The object to query                        |
+| `path`    | `any` | - The path to check (can be string or array) |
 
 ## Returns
 
@@ -45,16 +45,17 @@ function HasExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>has Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>
-        Checks if a path exists in an object.
-      </p>
+      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a path exists in an object.</p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         <p style={{ marginBottom: '15px' }}>
           <strong>Object:</strong> {JSON.stringify(obj)}
         </p>
         <div>
           {testPaths.map((item, index) => (
-            <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+            <div
+              key={index}
+              style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+            >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <code style={{ fontSize: '12px' }}>has(obj, '{item.label}')</code>
                 <span
@@ -78,4 +79,3 @@ function HasExample() {
   );
 }
 ```
-

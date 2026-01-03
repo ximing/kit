@@ -1,7 +1,7 @@
 ---
 id: entries
 title: entries
-description: "Creates an array of own enumerable string keyed-value pairs for object"
+description: 'Creates an array of own enumerable string keyed-value pairs for object'
 ---
 
 # `entries`
@@ -10,9 +10,9 @@ Creates an array of own enumerable string keyed-value pairs for object
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The object to query |
+| Parameter | Type  | Description           |
+| --------- | ----- | --------------------- |
+| `obj`     | `any` | - The object to query |
 
 ## Returns
 
@@ -57,4 +57,3 @@ function EntriesExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: flatten
 title: flatten
-description: "Flattens an array to a specified depth"
+description: 'Flattens an array to a specified depth'
 ---
 
 # `flatten`
@@ -10,9 +10,9 @@ Flattens an array to a specified depth
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `array` | `any` | The array to flatten |
+| 参数    | 类型  | 描述                                 |
+| ------- | ----- | ------------------------------------ |
+| `array` | `any` | The array to flatten                 |
 | `depth` | `any` | The depth to flatten to (default: 1) |
 
 ## 返回值
@@ -64,4 +64,3 @@ function FlattenExample() {
   );
 }
 ```
-

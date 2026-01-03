@@ -1,7 +1,7 @@
 ---
 id: endOfDay
 title: endOfDay
-description: "Returns a new Date object set to the end of the day (23:59:59.999)."
+description: 'Returns a new Date object set to the end of the day (23:59:59.999).'
 ---
 
 # `endOfDay`
@@ -10,8 +10,8 @@ Returns a new Date object set to the end of the day (23:59:59.999).
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数   | 类型  | 描述                 |
+| ------ | ----- | -------------------- |
 | `date` | `any` | - The date to modify |
 
 ## 返回值
@@ -48,4 +48,3 @@ function EndOfDayExample() {
   );
 }
 ```
-

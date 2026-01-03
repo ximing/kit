@@ -1,7 +1,7 @@
 ---
 id: mergeDeep
 title: mergeDeep
-description: "Recursively merges source objects into target object (deep merge)"
+description: 'Recursively merges source objects into target object (deep merge)'
 ---
 
 # `mergeDeep`
@@ -10,9 +10,9 @@ Recursively merges source objects into target object (deep merge)
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `target` | `any` | - The target object |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `target`  | `any` | - The target object  |
 | `sources` | `any` | - The source objects |
 
 ## Returns
@@ -53,12 +53,11 @@ function MergeDeepExample() {
           <strong>Deep Merged Result:</strong> {JSON.stringify(result)}
         </p>
         <p style={{ fontSize: '12px', color: '#666', marginTop: '10px' }}>
-          Note, nested objects are merged recursively. The property 'c' from obj1.b is preserved,
-          while 'd' is updated and 'e' is added.
+          Note, nested objects are merged recursively. The property 'c' from obj1.b is preserved, while 'd' is updated
+          and 'e' is added.
         </p>
       </div>
     </div>
   );
 }
 ```
-

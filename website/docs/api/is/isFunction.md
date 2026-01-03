@@ -1,7 +1,7 @@
 ---
 id: isFunction
 title: isFunction
-description: "Checks if value is classified as a Function object."
+description: 'Checks if value is classified as a Function object.'
 ---
 
 # `isFunction`
@@ -10,9 +10,9 @@ Checks if value is classified as a Function object.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `value` | `any` | - The value to check |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `value`   | `any` | - The value to check |
 
 ## Returns
 
@@ -34,7 +34,7 @@ Checks if value is classified as a Function object.
 function IsFunctionExample() {
   const [testValues] = useState([
     { value: () => {}, label: '() => {}' },
-    { value: function() {}, label: 'function() {}' },
+    { value: function () {}, label: 'function() {}' },
     { value: class MyClass {}, label: 'class MyClass {}' },
     { value: {}, label: '{}' },
     { value: 'function', label: "'function'" },
@@ -43,12 +43,13 @@ function IsFunctionExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>isFunction Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>
-        Checks if a value is a Function object.
-      </p>
+      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Function object.</p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         {testValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          <div
+            key={index}
+            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+          >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <code style={{ fontSize: '12px' }}>{item.label}</code>
               <span
@@ -71,4 +72,3 @@ function IsFunctionExample() {
   );
 }
 ```
-

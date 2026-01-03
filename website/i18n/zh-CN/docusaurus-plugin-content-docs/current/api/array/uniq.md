@@ -1,7 +1,7 @@
 ---
 id: uniq
 title: uniq
-description: "Removes duplicate values from an array"
+description: 'Removes duplicate values from an array'
 ---
 
 # `uniq`
@@ -10,8 +10,8 @@ Removes duplicate values from an array
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数    | 类型  | 描述                     |
+| ------- | ----- | ------------------------ |
 | `array` | `any` | The array to deduplicate |
 
 ## 返回值
@@ -35,7 +35,10 @@ function UniqExample() {
 
   const parseInput = (text) => {
     try {
-      return text.split(',').map((s) => Number(s.trim())).filter((n) => !isNaN(n));
+      return text
+        .split(',')
+        .map((s) => Number(s.trim()))
+        .filter((n) => !isNaN(n));
     } catch {
       return [];
     }
@@ -59,11 +62,7 @@ function UniqExample() {
       </div>
       <div style={{ marginBottom: '15px' }}>
         <label style={{ marginRight: '10px' }}>
-          <input
-            type="checkbox"
-            checked={useUniqBy}
-            onChange={(e) => setUseUniqBy(e.target.checked)}
-          />
+          <input type="checkbox" checked={useUniqBy} onChange={(e) => setUseUniqBy(e.target.checked)} />
           Use uniqBy (by odd/even)
         </label>
       </div>
@@ -79,4 +78,3 @@ function UniqExample() {
   );
 }
 ```
-

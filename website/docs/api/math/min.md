@@ -1,7 +1,7 @@
 ---
 id: min
 title: min
-description: "Computes the minimum value of array. If array is empty or falsey, undefined is returned."
+description: 'Computes the minimum value of array. If array is empty or falsey, undefined is returned.'
 ---
 
 # `min`
@@ -11,8 +11,8 @@ If array is empty or falsey, undefined is returned.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter | Type  | Description                                    |
+| --------- | ----- | ---------------------------------------------- |
 | `numbers` | `any` | - The array of numbers to get the minimum from |
 
 ## Returns
@@ -64,16 +64,10 @@ function MinExample() {
           placeholder="Enter a number"
           style={{ padding: '5px', fontSize: '14px', marginRight: '10px' }}
         />
-        <button
-          onClick={handleAddNumber}
-          style={{ padding: '5px 15px', fontSize: '14px', marginRight: '10px' }}
-        >
+        <button onClick={handleAddNumber} style={{ padding: '5px 15px', fontSize: '14px', marginRight: '10px' }}>
           Add
         </button>
-        <button
-          onClick={handleReset}
-          style={{ padding: '5px 15px', fontSize: '14px' }}
-        >
+        <button onClick={handleReset} style={{ padding: '5px 15px', fontSize: '14px' }}>
           Reset
         </button>
       </div>
@@ -90,7 +84,7 @@ function MinExample() {
                   marginRight: '10px',
                   padding: '2px 8px',
                   fontSize: '12px',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
               >
                 ×
@@ -110,4 +104,3 @@ function MinExample() {
   );
 }
 ```
-

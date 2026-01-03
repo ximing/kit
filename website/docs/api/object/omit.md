@@ -1,7 +1,7 @@
 ---
 id: omit
 title: omit
-description: "Creates an object composed of properties that are not omitted"
+description: 'Creates an object composed of properties that are not omitted'
 ---
 
 # `omit`
@@ -10,10 +10,10 @@ Creates an object composed of properties that are not omitted
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The source object |
-| `keys` | `any` | - The property keys to omit |
+| Parameter | Type  | Description                 |
+| --------- | ----- | --------------------------- |
+| `obj`     | `any` | - The source object         |
+| `keys`    | `any` | - The property keys to omit |
 
 ## Returns
 
@@ -85,4 +85,3 @@ function OmitExample() {
   );
 }
 ```
-

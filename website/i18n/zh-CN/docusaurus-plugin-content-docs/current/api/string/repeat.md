@@ -1,7 +1,7 @@
 ---
 id: repeat
 title: repeat
-description: "Repeats the given string n times."
+description: 'Repeats the given string n times.'
 ---
 
 # `repeat`
@@ -10,10 +10,10 @@ Repeats the given string n times.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `str` | `any` | - The string to repeat |
-| `n` | `any` | - The number of times to repeat the string |
+| 参数  | 类型  | 描述                                       |
+| ----- | ----- | ------------------------------------------ |
+| `str` | `any` | - The string to repeat                     |
+| `n`   | `any` | - The number of times to repeat the string |
 
 ## 返回值
 
@@ -39,9 +39,7 @@ function RepeatExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          String to Repeat:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>String to Repeat:</label>
         <input
           type="text"
           value={input}
@@ -59,9 +57,7 @@ function RepeatExample() {
       </div>
 
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Repeat Count: {count}
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Repeat Count: {count}</label>
         <input
           type="range"
           min="0"
@@ -92,4 +88,3 @@ function RepeatExample() {
   );
 }
 ```
-

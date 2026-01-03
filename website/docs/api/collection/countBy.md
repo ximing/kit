@@ -1,7 +1,7 @@
 ---
 id: countBy
 title: countBy
-description: "Creates an object composed from the elements of collection grouped by the results of running each element thru iteratee, with counts"
+description: 'Creates an object composed from the elements of collection grouped by the results of running each element thru iteratee, with counts'
 ---
 
 # `countBy`
@@ -10,10 +10,10 @@ Creates an object composed from the elements of collection grouped by the result
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
+| Parameter    | Type  | Description                      |
+| ------------ | ----- | -------------------------------- |
 | `collection` | `any` | - The collection to iterate over |
-| `iteratee` | `any` | - The iteratee to transform keys |
+| `iteratee`   | `any` | - The iteratee to transform keys |
 
 ## Returns
 
@@ -37,7 +37,7 @@ Creates an object composed from the elements of collection grouped by the result
 ```tsx live
 function CountByExample() {
   const [groupBy, setGroupBy] = useState('age');
-  
+
   const users = [
     { name: 'John', age, dept: 'Engineering' },
     { name: 'Jane', age, dept: 'Marketing' },
@@ -80,4 +80,3 @@ function CountByExample() {
   );
 }
 ```
-

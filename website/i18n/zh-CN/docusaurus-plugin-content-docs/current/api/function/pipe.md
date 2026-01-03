@@ -1,7 +1,7 @@
 ---
 id: pipe
 title: pipe
-description: "Creates a function that is the composition of the provided functions, where each successive invocation is supplied the return value of the previous. Functions are executed from left to right."
+description: 'Creates a function that is the composition of the provided functions, where each successive invocation is supplied the return value of the previous. Functions are executed from left to right.'
 ---
 
 # `pipe`
@@ -12,8 +12,8 @@ Functions are executed from left to right.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数    | 类型  | 描述                    |
+| ------- | ----- | ----------------------- |
 | `funcs` | `any` | - The functions to pipe |
 
 ## 返回值
@@ -80,7 +80,7 @@ function PipeExample() {
           <strong>Step 2 (multiply):</strong> {input + 1} * 2 = {(input + 1) * 2}
         </p>
         <p>
-          <strong>Step 3 (square):</strong> {(input + 1) * 2}² = {((input + 1) * 2) * ((input + 1) * 2)}
+          <strong>Step 3 (square):</strong> {(input + 1) * 2}² = {(input + 1) * 2 * ((input + 1) * 2)}
         </p>
         <p>
           <strong>Result:</strong> {result}
@@ -90,4 +90,3 @@ function PipeExample() {
   );
 }
 ```
-

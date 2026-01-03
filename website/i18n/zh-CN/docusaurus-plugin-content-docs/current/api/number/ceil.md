@@ -1,7 +1,7 @@
 ---
 id: ceil
 title: ceil
-description: "Rounds number up to precision."
+description: 'Rounds number up to precision.'
 ---
 
 # `ceil`
@@ -10,9 +10,9 @@ Rounds number up to precision.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `number` | `any` | - The number to round up |
+| 参数        | 类型  | 描述                                        |
+| ----------- | ----- | ------------------------------------------- |
+| `number`    | `any` | - The number to round up                    |
 | `precision` | `any` | - The precision to round up to (default: 0) |
 
 ## 返回值
@@ -69,7 +69,9 @@ function CeilExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>ceil(4.006) → 5</li>
           <li>ceil(4.006, 2) → 4.01</li>
@@ -80,4 +82,3 @@ function CeilExample() {
   );
 }
 ```
-

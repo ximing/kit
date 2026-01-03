@@ -1,7 +1,7 @@
 ---
 id: sumBy
 title: sumBy
-description: "This method is like sum except that it accepts iteratee which is invoked for each element in array to generate the value to be summed. The iteratee is invoked with one argument: (value)."
+description: 'This method is like sum except that it accepts iteratee which is invoked for each element in array to generate the value to be summed. The iteratee is invoked with one argument: (value).'
 ---
 
 # `sumBy`
@@ -12,9 +12,9 @@ The iteratee is invoked with one argument: (value).
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `array` | `any` | - The array to iterate over |
+| Parameter  | Type  | Description                        |
+| ---------- | ----- | ---------------------------------- |
+| `array`    | `any` | - The array to iterate over        |
 | `iteratee` | `any` | - The iteratee invoked per element |
 
 ## Returns
@@ -97,4 +97,3 @@ function SumByExample() {
   );
 }
 ```
-

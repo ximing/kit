@@ -1,7 +1,7 @@
 ---
 id: once
 title: once
-description: "Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation."
+description: 'Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation.'
 ---
 
 # `once`
@@ -11,8 +11,8 @@ Repeat calls to the function return the value of the first invocation.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数   | 类型  | 描述                       |
+| ------ | ----- | -------------------------- |
 | `func` | `any` | - The function to restrict |
 
 ## 返回值
@@ -84,11 +84,11 @@ function OnceExample() {
           <strong>Function Executed Count:</strong> {count}
         </p>
         <p style={{ fontSize: '12px', color: '#666' }}>
-          No matter how many times you click, the function will only execute once. All subsequent calls return the cached result.
+          No matter how many times you click, the function will only execute once. All subsequent calls return the
+          cached result.
         </p>
       </div>
     </div>
   );
 }
 ```
-

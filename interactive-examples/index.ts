@@ -144,7 +144,7 @@ export const INTERACTIVE_EXAMPLES = {
   'array/union': UnionExample,
   'array/uniq': UniqExample,
   'array/zip': ZipExample,
-  
+
   // Collection examples
   'collection/countBy': CountByExample,
   'collection/groupBy': GroupByExample,
@@ -155,7 +155,7 @@ export const INTERACTIVE_EXAMPLES = {
   'collection/sampleSize': SampleSizeExample,
   'collection/shuffle': ShuffleExample,
   'collection/sortBy': SortByExample,
-  
+
   // Date examples
   'date/addDays': AddDaysExample,
   'date/addMonths': AddMonthsExample,

@@ -1,7 +1,7 @@
 ---
 id: pick
 title: pick
-description: "Creates an object composed of the picked object properties"
+description: 'Creates an object composed of the picked object properties'
 ---
 
 # `pick`
@@ -10,10 +10,10 @@ Creates an object composed of the picked object properties
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `obj` | `any` | - The source object |
-| `keys` | `any` | - The property keys to pick |
+| Parameter | Type  | Description                 |
+| --------- | ----- | --------------------------- |
+| `obj`     | `any` | - The source object         |
+| `keys`    | `any` | - The property keys to pick |
 
 ## Returns
 
@@ -85,4 +85,3 @@ function PickExample() {
   );
 }
 ```
-

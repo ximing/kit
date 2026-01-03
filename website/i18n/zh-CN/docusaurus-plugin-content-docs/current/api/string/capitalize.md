@@ -1,7 +1,7 @@
 ---
 id: capitalize
 title: capitalize
-description: "Converts the first character of string to upper case and the remainder to lower case."
+description: 'Converts the first character of string to upper case and the remainder to lower case.'
 ---
 
 # `capitalize`
@@ -10,8 +10,8 @@ Converts the first character of string to upper case and the remainder to lower 
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数  | 类型  | 描述                       |
+| ----- | ----- | -------------------------- |
 | `str` | `any` | - The string to capitalize |
 
 ## 返回值
@@ -38,9 +38,7 @@ function CapitalizeExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
-          Input:
-        </label>
+        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Input:</label>
         <input
           type="text"
           value={input}
@@ -99,4 +97,3 @@ function CapitalizeExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: median
 title: median
-description: "Computes the median of the values in array."
+description: 'Computes the median of the values in array.'
 ---
 
 # `median`
@@ -10,8 +10,8 @@ Computes the median of the values in array.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数      | 类型  | 描述                                      |
+| --------- | ----- | ----------------------------------------- |
 | `numbers` | `any` | - The array of numbers to get median from |
 
 ## 返回值
@@ -32,14 +32,14 @@ Computes the median of the values in array.
 ```tsx live
 function MedianExample() {
   const [input, setInput] = useState('1, 2, 3, 4, 5');
-  
+
   const numbers = input
     .split(',')
     .map((s) => s.trim())
     .filter((s) => s !== '')
     .map(Number)
     .filter((n) => !isNaN(n));
-  
+
   const result = median(numbers);
   const sorted = [...numbers].sort((a, b) => a - b);
 
@@ -75,7 +75,9 @@ function MedianExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>median([1, 2, 3, 4, 5]) → 3 (middle value)</li>
           <li>median([1, 2, 3, 4]) → 2.5 (average of two middle values)</li>
@@ -86,4 +88,3 @@ function MedianExample() {
   );
 }
 ```
-

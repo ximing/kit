@@ -146,6 +146,7 @@ Before submitting an example, ensure:
 ## Maintenance
 
 When a function is updated:
+
 1. Update the corresponding example component
 2. Review and test the example
 3. Update the metadata comment

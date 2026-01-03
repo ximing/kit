@@ -1,7 +1,7 @@
 ---
 id: parse
 title: parse
-description: "Parses a date string according to the given format string.  Supported format tokens: - YYYY: 4-digit year - MM: 2-digit month (01-12) - DD: 2-digit day (01-31) - HH: 2-digit hour (00-23) - mm: 2-digit minute (00-59) - ss: 2-digit second (00-59) - SSS: 3-digit millisecond (000-999)"
+description: 'Parses a date string according to the given format string.  Supported format tokens: - YYYY: 4-digit year - MM: 2-digit month (01-12) - DD: 2-digit day (01-31) - HH: 2-digit hour (00-23) - mm: 2-digit minute (00-59) - ss: 2-digit second (00-59) - SSS: 3-digit millisecond (000-999)'
 ---
 
 # `parse`
@@ -9,6 +9,7 @@ description: "Parses a date string according to the given format string.  Suppor
 Parses a date string according to the given format string.
 
 Supported format tokens:
+
 - YYYY: 4-digit year
 - MM: 2-digit month (01-12)
 - DD: 2-digit day (01-31)
@@ -19,9 +20,9 @@ Supported format tokens:
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `dateStr` | `any` | - The date string to parse |
+| 参数        | 类型  | 描述                                                 |
+| ----------- | ----- | ---------------------------------------------------- |
+| `dateStr`   | `any` | - The date string to parse                           |
 | `formatStr` | `any` | - The format string (default: 'YYYY-MM-DD HH:mm:ss') |
 
 ## 返回值
@@ -43,17 +44,11 @@ Supported format tokens:
 function ParseExample() {
   const [dateStr, setDateStr] = useState('2024-01-15 14:30:45');
   const [formatStr, setFormatStr] = useState('YYYY-MM-DD HH:mm:ss');
-  
+
   const parsedDate = parse(dateStr, formatStr);
   const isValid = parsedDate !== null && !isNaN(parsedDate.getTime());
 
-  const formatOptions = [
-    'YYYY-MM-DD HH:mm:ss',
-    'YYYY-MM-DD',
-    'YYYY/MM/DD',
-    'DD-MM-YYYY',
-    'MM/DD/YYYY HH:mm',
-  ];
+  const formatOptions = ['YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM/DD/YYYY HH:mm'];
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
@@ -104,4 +99,3 @@ function ParseExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: round
 title: round
-description: "Rounds number to precision."
+description: 'Rounds number to precision.'
 ---
 
 # `round`
@@ -10,9 +10,9 @@ Rounds number to precision.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `number` | `any` | - The number to round |
+| 参数        | 类型  | 描述                                     |
+| ----------- | ----- | ---------------------------------------- |
+| `number`    | `any` | - The number to round                    |
 | `precision` | `any` | - The precision to round to (default: 0) |
 
 ## 返回值
@@ -69,7 +69,9 @@ function RoundExample() {
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>round(4.006) → 4</li>
           <li>round(4.006, 2) → 4.01</li>
@@ -80,4 +82,3 @@ function RoundExample() {
   );
 }
 ```
-

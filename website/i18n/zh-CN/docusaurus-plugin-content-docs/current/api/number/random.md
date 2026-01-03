@@ -1,7 +1,7 @@
 ---
 id: random
 title: random
-description: "Produces a random number between the inclusive lower and upper bounds. If only one argument is provided, a number between 0 and the given number is returned."
+description: 'Produces a random number between the inclusive lower and upper bounds. If only one argument is provided, a number between 0 and the given number is returned.'
 ---
 
 # `random`
@@ -11,11 +11,11 @@ If only one argument is provided, a number between 0 and the given number is ret
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `lower` | `any` | - The lower bound or upper bound if upper is not provided |
-| `upper` | `any` | - The upper bound |
-| `floating` | `any` | - Specify returning a floating-point number |
+| 参数       | 类型  | 描述                                                      |
+| ---------- | ----- | --------------------------------------------------------- |
+| `lower`    | `any` | - The lower bound or upper bound if upper is not provided |
+| `upper`    | `any` | - The upper bound                                         |
+| `floating` | `any` | - Specify returning a floating-point number               |
 
 ## 返回值
 
@@ -68,12 +68,8 @@ function RandomExample() {
         </div>
         <div style={{ marginBottom: '10px' }}>
           <label style={{ marginRight: '10px' }}>
-            <input
-              type="checkbox"
-              checked={floating}
-              onChange={(e) => setFloating(e.target.checked)}
-            />
-            {' '}Floating-point number
+            <input type="checkbox" checked={floating} onChange={(e) => setFloating(e.target.checked)} /> Floating-point
+            number
           </label>
         </div>
         <button
@@ -97,13 +93,14 @@ function RandomExample() {
         </p>
         {result !== null && (
           <p>
-            <strong>Result:</strong>{' '}
-            <span style={{ fontSize: '18px', color: '#28a745' }}>{result}</span>
+            <strong>Result:</strong> <span style={{ fontSize: '18px', color: '#28a745' }}>{result}</span>
           </p>
         )}
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>random(5) → random integer between 0 and 5</li>
           <li>random(5, 10) → random integer between 5 and 10</li>
@@ -114,4 +111,3 @@ function RandomExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: curry
 title: curry
-description: "Creates a function that accepts arguments of func and either invokes func returning its result, if at least arity number of arguments have been provided, or returns a function that accepts the remaining func arguments, and so on."
+description: 'Creates a function that accepts arguments of func and either invokes func returning its result, if at least arity number of arguments have been provided, or returns a function that accepts the remaining func arguments, and so on.'
 ---
 
 # `curry`
@@ -12,9 +12,9 @@ function that accepts the remaining func arguments, and so on.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `func` | `any` | - The function to curry |
+| 参数    | 类型  | 描述                                       |
+| ------- | ----- | ------------------------------------------ |
+| `func`  | `any` | - The function to curry                    |
 | `arity` | `any` | - The arity of func (default: func.length) |
 
 ## 返回值
@@ -115,4 +115,3 @@ function CurryExample() {
   );
 }
 ```
-

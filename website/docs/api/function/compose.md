@@ -1,7 +1,7 @@
 ---
 id: compose
 title: compose
-description: "Creates a function that is the composition of the provided functions, where each successive invocation is supplied the return value of the previous. Functions are executed from right to left."
+description: 'Creates a function that is the composition of the provided functions, where each successive invocation is supplied the return value of the previous. Functions are executed from right to left.'
 ---
 
 # `compose`
@@ -12,9 +12,9 @@ Functions are executed from right to left.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `funcs` | `any` | - The functions to compose |
+| Parameter | Type  | Description                |
+| --------- | ----- | -------------------------- |
+| `funcs`   | `any` | - The functions to compose |
 
 ## Returns
 
@@ -80,7 +80,7 @@ function ComposeExample() {
           <strong>Step 2 (multiply):</strong> {input + 1} * 2 = {(input + 1) * 2}
         </p>
         <p>
-          <strong>Step 3 (square):</strong> {(input + 1) * 2}² = {((input + 1) * 2) * ((input + 1) * 2)}
+          <strong>Step 3 (square):</strong> {(input + 1) * 2}² = {(input + 1) * 2 * ((input + 1) * 2)}
         </p>
         <p>
           <strong>Result:</strong> {result}
@@ -90,4 +90,3 @@ function ComposeExample() {
   );
 }
 ```
-

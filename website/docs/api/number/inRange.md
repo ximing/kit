@@ -11,11 +11,11 @@ If end is not specified, it's set to start with start then set to 0.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `number` | `any` | - The number to check |
-| `start` | `any` | - The start of the range |
-| `end` | `any` | - The end of the range (not included) |
+| Parameter | Type  | Description                           |
+| --------- | ----- | ------------------------------------- |
+| `number`  | `any` | - The number to check                 |
+| `start`   | `any` | - The start of the range              |
+| `end`     | `any` | - The end of the range (not included) |
 
 ## Returns
 
@@ -77,16 +77,16 @@ function InRangeExample() {
         </p>
         <p>
           <strong>Result:</strong>{' '}
-          <span style={{ color: result ? 'green' : 'red', fontWeight: 'bold' }}>
-            {String(result)}
-          </span>
+          <span style={{ color: result ? 'green' : 'red', fontWeight: 'bold' }}>{String(result)}</span>
         </p>
         <p style={{ fontSize: '14px', color: '#666' }}>
           Range: [{start}, {end}) - Start is inclusive, end is exclusive
         </p>
       </div>
       <div style={{ marginTop: '15px', fontSize: '12px', color: '#666' }}>
-        <p><strong>Examples:</strong></p>
+        <p>
+          <strong>Examples:</strong>
+        </p>
         <ul>
           <li>inRange(3, 2, 4) → true (within range)</li>
           <li>inRange(4, 2, 4) → false (end is exclusive)</li>
@@ -97,4 +97,3 @@ function InRangeExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: get
 title: get
-description: "Gets the value at path of object. If the resolved value is undefined, the defaultValue is returned in its place."
+description: 'Gets the value at path of object. If the resolved value is undefined, the defaultValue is returned in its place.'
 ---
 
 # `get`
@@ -10,11 +10,11 @@ Gets the value at path of object. If the resolved value is undefined, the defaul
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `obj` | `any` | - The object to query |
-| `path` | `any` | - The path of the property to get (can be string or array) |
-| `defaultValue` | `any` | - The value returned if the resolved value is undefined |
+| 参数           | 类型  | 描述                                                       |
+| -------------- | ----- | ---------------------------------------------------------- |
+| `obj`          | `any` | - The object to query                                      |
+| `path`         | `any` | - The path of the property to get (can be string or array) |
+| `defaultValue` | `any` | - The value returned if the resolved value is undefined    |
 
 ## 返回值
 
@@ -90,4 +90,3 @@ function GetExample() {
   );
 }
 ```
-

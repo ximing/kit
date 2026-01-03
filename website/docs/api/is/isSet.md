@@ -1,7 +1,7 @@
 ---
 id: isSet
 title: isSet
-description: "Checks if value is a Set object."
+description: 'Checks if value is a Set object.'
 ---
 
 # `isSet`
@@ -10,9 +10,9 @@ Checks if value is a Set object.
 
 ## Parameters
 
-| Parameter | Type | Description |
-|---------|------|---------|
-| `value` | `any` | - The value to check |
+| Parameter | Type  | Description          |
+| --------- | ----- | -------------------- |
+| `value`   | `any` | - The value to check |
 
 ## Returns
 
@@ -42,12 +42,13 @@ function IsSetExample() {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h3>isSet Example</h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>
-        Checks if a value is a Set object.
-      </p>
+      <p style={{ fontSize: '14px', color: '#666', marginBottom: '15px' }}>Checks if a value is a Set object.</p>
       <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px' }}>
         {testValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}>
+          <div
+            key={index}
+            style={{ marginBottom: '10px', padding: '10px', backgroundColor: 'white', borderRadius: '3px' }}
+          >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <code style={{ fontSize: '12px' }}>{item.label}</code>
               <span
@@ -70,4 +71,3 @@ function IsSetExample() {
   );
 }
 ```
-

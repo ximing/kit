@@ -1,7 +1,7 @@
 ---
 id: invert
 title: invert
-description: "Creates an object composed of the inverted keys and values of object"
+description: 'Creates an object composed of the inverted keys and values of object'
 ---
 
 # `invert`
@@ -10,8 +10,8 @@ Creates an object composed of the inverted keys and values of object
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
+| 参数  | 类型  | 描述                   |
+| ----- | ----- | ---------------------- |
 | `obj` | `any` | - The object to invert |
 
 ## 返回值
@@ -53,4 +53,3 @@ function InvertExample() {
   );
 }
 ```
-

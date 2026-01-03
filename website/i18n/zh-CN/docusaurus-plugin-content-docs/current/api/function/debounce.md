@@ -1,7 +1,7 @@
 ---
 id: debounce
 title: debounce
-description: "Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked."
+description: 'Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked.'
 ---
 
 # `debounce`
@@ -11,14 +11,14 @@ have elapsed since the last time the debounced function was invoked.
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `func` | `any` | - The function to debounce |
-| `wait` | `any` | - The number of milliseconds to delay (default: 0) |
-| `options` | `any` | - The options object |
-| `options` | `any` | .leading - Specify invoking on the leading edge of the timeout (default: false) |
+| 参数      | 类型  | 描述                                                                             |
+| --------- | ----- | -------------------------------------------------------------------------------- |
+| `func`    | `any` | - The function to debounce                                                       |
+| `wait`    | `any` | - The number of milliseconds to delay (default: 0)                               |
+| `options` | `any` | - The options object                                                             |
+| `options` | `any` | .leading - Specify invoking on the leading edge of the timeout (default: false)  |
 | `options` | `any` | .trailing - Specify invoking on the trailing edge of the timeout (default: true) |
-| `options` | `any` | .maxWait - The maximum time func is allowed to be delayed before it's invoked |
+| `options` | `any` | .maxWait - The maximum time func is allowed to be delayed before it's invoked    |
 
 ## 返回值
 
@@ -58,7 +58,7 @@ function DebounceExample() {
         setLastCallTime(new Date().toLocaleTimeString());
       },
       wait,
-      { leading, trailing: true }
+      { leading, trailing: true },
     );
   }, [wait]);
 
@@ -117,4 +117,3 @@ function DebounceExample() {
   );
 }
 ```
-

@@ -1,7 +1,7 @@
 ---
 id: omit
 title: omit
-description: "Creates an object composed of properties that are not omitted"
+description: 'Creates an object composed of properties that are not omitted'
 ---
 
 # `omit`
@@ -10,9 +10,9 @@ Creates an object composed of properties that are not omitted
 
 ## 参数
 
-| 参数 | 类型 | 描述 |
-|---------|------|---------|
-| `obj` | `any` | - The source object |
+| 参数   | 类型  | 描述                        |
+| ------ | ----- | --------------------------- |
+| `obj`  | `any` | - The source object         |
 | `keys` | `any` | - The property keys to omit |
 
 ## 返回值
@@ -85,4 +85,3 @@ function OmitExample() {
   );
 }
 ```
-
