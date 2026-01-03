@@ -91,7 +91,7 @@ const config: Config = {
       },
       { name: 'author', content: '@rabjs/kit' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
-      { name: 'theme-color', content: '#2e8555' },
+      { name: 'theme-color', content: '#3b82f6' },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: '@rabjs/kit - TypeScript Utility Library' },
       {

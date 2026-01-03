@@ -14,11 +14,15 @@
   --ifm-color-primary-light: #60a5fa;
   --ifm-color-primary-lighter: #93c5fd;
   --ifm-color-primary-lightest: #dbeafe;
-  
+
+  /* Light mode link colors - close to text color */
+  --ifm-link-color: #374151;
+  --ifm-link-hover-color: #111827;
+
   /* Code highlighting */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.1);
-  
+
   /* Custom spacing and typography */
   --ifm-spacing-horizontal: 1.5rem;
   --ifm-font-size-base: 16px;
@@ -34,7 +38,7 @@
   --ifm-color-primary-light: #93c5fd;
   --ifm-color-primary-lighter: #bfdbfe;
   --ifm-color-primary-lightest: #dbeafe;
-  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.2);
+  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.2);
   
   /* Dark mode background improvements - better contrast */
   --ifm-background-color: #0d1117;
@@ -59,9 +63,9 @@
   --ifm-font-color-base-inverse: #0d1117;
   --ifm-font-color-secondary: #8b949e;
   
-  /* Dark mode link colors - better visibility */
-  --ifm-link-color: #58a6ff;
-  --ifm-link-hover-color: #79c0ff;
+  /* Dark mode link colors - close to text color */
+  --ifm-link-color: #d1d5db;
+  --ifm-link-hover-color: #f9fafb;
   
   /* Dark mode code colors */
   --ifm-code-background: #161b22;
@@ -72,8 +76,8 @@
   
   /* Dark mode menu colors */
   --ifm-menu-color: #c9d1d9;
-  --ifm-menu-color-active: #58a6ff;
-  --ifm-menu-color-background-active: rgba(56, 139, 253, 0.1);
+  --ifm-menu-color-active: #d1d5db;
+  --ifm-menu-color-background-active: rgba(209, 213, 219, 0.1);
   --ifm-menu-color-background-hover: rgba(177, 186, 196, 0.12);
 }
 
@@ -82,14 +86,27 @@
 /* Navbar customization */
 .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: var(--ifm-background-color);
+  background-color: var(--ifm-background-color) !important;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 1 !important;
 }
 
 [data-theme='dark'] .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  background-color: var(--ifm-background-surface-color);
+  background-color: var(--ifm-background-surface-color) !important;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Ensure navbar is never transparent */
+.navbar--fixed-top {
+  background-color: var(--ifm-background-color) !important;
+  opacity: 1 !important;
+}
+
+[data-theme='dark'] .navbar--fixed-top {
+  background-color: var(--ifm-background-surface-color) !important;
 }
 
 /* Dark mode navbar items */
@@ -97,19 +114,210 @@
   color: var(--ifm-font-color-base);
 }
 
-[data-theme='dark'] .navbar__link:hover,
+[data-theme='dark'] .navbar__link:hover {
+  color: var(--ifm-link-hover-color);
+}
+
 [data-theme='dark'] .navbar__link--active {
   color: var(--ifm-link-color);
 }
 
 /* Hero section styling */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
   color: white;
 }
 
 .hero--primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+}
+
+/* API page specific styling */
+.docusaurus-highlight-code-line {
+  background-color: var(--docusaurus-highlighted-code-line-bg);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+/* Fix API page headers and navigation */
+.navbar__item--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .navbar__item--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Improve navbar active state for API pages */
+.navbar__link[href*="/api"] {
+  position: relative;
+}
+
+.navbar__link--active[href*="/api"]::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ifm-color-primary);
+  border-radius: 1px;
+}
+
+[data-theme='dark'] .navbar__link--active[href*="/api"]::after {
+  background: var(--ifm-color-primary);
+}
+
+/* Improve API documentation styling */
+.markdown h1 {
+  color: var(--ifm-heading-color);
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+[data-theme='dark'] .markdown h1 {
+  border-bottom-color: var(--ifm-color-emphasis-300);
+}
+
+/* Better API page layout and typography */
+.markdown h2 {
+  color: var(--ifm-heading-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1rem;
+}
+
+[data-theme='dark'] .markdown h2 {
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* API function parameter tables */
+.markdown table {
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.markdown table th {
+  background-color: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .markdown table th {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--ifm-color-primary-lightest);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.markdown table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .markdown table td {
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* Improve API page breadcrumbs and navigation */
+.breadcrumbs__item:not(:last-child)::after {
+  content: '›';
+  margin: 0 0.5rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+/* Better API function signature styling */
+.markdown code {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.markdown pre code {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* API page sidebar improvements */
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+  border-radius: 4px;
+}
+
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* Ensure all sidebar categories are expanded by default */
+.menu__list .menu__list-item--collapsed {
+  /* Override collapsed state to be expanded */
+}
+
+.menu__list-item > .menu__link--sublist {
+  /* Ensure category links are visible */
+}
+
+/* Force all collapsible categories to be expanded */
+.menu__list-item--collapsed > .menu__list {
+  display: block !important;
+  height: auto !important;
+}
+
+.menu__list-item--collapsed > .menu__link--sublist::after {
+  transform: rotate(90deg) !important;
+}
+
+/* Interactive example containers */
+.markdown .live-editor {
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .markdown .live-editor {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* API function notes and warnings */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background-color: var(--ifm-color-primary-lightest);
+  border-radius: 0 6px 6px 0;
+}
+
+[data-theme='dark'] .markdown blockquote {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* API page title improvements */
+article header h1,
+.theme-doc-markdown h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color) !important;
+  margin-bottom: 1rem;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+[data-theme='dark'] article header h1,
+[data-theme='dark'] .theme-doc-markdown h1 {
+  color: var(--ifm-heading-color) !important;
 }
 
 /* Feature cards */
@@ -133,18 +341,11 @@
 }
 
 [data-theme='dark'] .feature:hover {
-  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.25);
-  border-color: var(--ifm-link-color);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  border-color: var(--ifm-color-primary);
 }
 
 /* Code block styling */
-.docusaurus-highlight-code-line {
-  background-color: var(--docusaurus-highlighted-code-line-bg);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-  border-left: 3px solid var(--ifm-color-primary);
-}
 
 /* Code block container */
 div[class^='codeBlockContainer'] {
@@ -343,14 +544,48 @@ code:not(pre > code) {
 
 /* Link styling */
 a {
-  color: var(--ifm-color-primary);
+  color: var(--ifm-link-color) !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--ifm-color-primary-dark);
-  text-decoration: underline;
+  color: var(--ifm-link-hover-color) !important;
+  text-decoration: none;
+}
+
+/* Ensure markdown content links use proper colors */
+.markdown a,
+article a,
+.docusaurus-content a {
+  color: var(--ifm-link-color) !important;
+}
+
+.markdown a:hover,
+article a:hover,
+.docusaurus-content a:hover {
+  color: var(--ifm-link-hover-color) !important;
+  text-decoration: none;
+}
+
+/* Exclude navbar links from global link styling */
+.navbar a,
+.navbar__link {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.navbar a:hover,
+.navbar__link:hover {
+  color: var(--ifm-navbar-link-hover-color) !important;
+}
+
+/* Exclude footer links from global link styling */
+.footer a {
+  color: var(--ifm-footer-link-color) !important;
+}
+
+.footer a:hover {
+  color: var(--ifm-footer-link-hover-color) !important;
 }
 
 /* Sidebar styling */
@@ -984,15 +1219,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ensure links have enough contrast */
 a {
-  color: var(--ifm-link-color);
+  color: var(--ifm-link-color) !important;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
 
 a:hover,
 a:focus {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
+  color: var(--ifm-link-hover-color) !important;
+  text-decoration: none;
 }
 
 /* Better visibility for selected text */
