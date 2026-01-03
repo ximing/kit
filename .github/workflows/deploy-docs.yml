@@ -45,6 +45,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build @rabjs/kit library
+        run: pnpm run build
+
       - name: Generate API documentation
         run: pnpm run docs:generate
 
