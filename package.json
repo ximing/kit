@@ -1,6 +1,6 @@
 {
   "name": "@rabjs/kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A comprehensive TypeScript utility library with 100+ helper functions for arrays, objects, strings, functions, numbers, dates, promises, and more. Similar to lodash but with full TypeScript support and tree-shaking friendly.",
   "author": "TypeStack contributors",
   "license": "MIT",
