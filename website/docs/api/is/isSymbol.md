@@ -60,4 +60,4 @@ function processObjectKeys(obj: Record<string | symbol, any>) {
 
 ## 版本历史
 
-- **v1.0.0** - 初始版本
+- **v0.0.1** - 初始版本

@@ -274,4 +274,4 @@ function SeriesExample() {
 
 ## Version History
 
-- **v1.0.0** - Initial version
+- **v0.0.1** - Initial version
