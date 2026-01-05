@@ -23,7 +23,7 @@
     "@rabjs/kit": "workspace:*",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
-    "react": "^18.3.1",
+    "react": "^19.2.3",
     "react-dom": "^18.3.1",
     "react-live": "^4.1.8"
   },
