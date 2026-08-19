@@ -1,10 +1,11 @@
+import { vi } from 'vitest';
 import { throttle } from '../../src/function';
 
 describe('throttle', () => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   afterEach(() => {
-    jest.clearAllTimers();
+    vi.clearAllTimers();
   });
 
   it('should throttle a function', () => {
@@ -19,7 +20,7 @@ describe('throttle', () => {
     throttled();
     throttled();
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(2); // trailing edge fires
 
     throttled();
@@ -43,7 +44,7 @@ describe('throttle', () => {
     throttled();
     expect(callCount).toBe(1);
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(1);
   });
 
@@ -60,7 +61,7 @@ describe('throttle', () => {
     throttled();
     expect(callCount).toBe(0);
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(1);
   });
 
@@ -78,7 +79,7 @@ describe('throttle', () => {
     expect(callCount).toBe(1);
 
     throttled();
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(2);
   });
 
@@ -94,7 +95,7 @@ describe('throttle', () => {
     throttled();
     throttled.cancel();
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(1);
   });
 
@@ -152,10 +153,10 @@ describe('throttle', () => {
       throttled();
     }
 
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
     expect(callCount).toBe(1);
 
-    jest.advanceTimersByTime(60);
+    vi.advanceTimersByTime(60);
     expect(callCount).toBe(2);
   });
 
@@ -170,7 +171,7 @@ describe('throttle', () => {
     );
 
     throttled();
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(0);
   });
 
@@ -191,10 +192,10 @@ describe('throttle', () => {
     );
 
     throttled();
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
 
     throttled();
-    jest.advanceTimersByTime(60);
+    vi.advanceTimersByTime(60);
 
     expect(callCount).toBe(1);
   });
@@ -208,13 +209,13 @@ describe('throttle', () => {
     throttled(); // First call
     expect(callCount).toBe(1);
 
-    jest.advanceTimersByTime(30);
+    vi.advanceTimersByTime(30);
     throttled(); // Should not invoke, timer restarts
 
-    jest.advanceTimersByTime(30);
+    vi.advanceTimersByTime(30);
     throttled(); // Should not invoke, timer restarts again
 
-    jest.advanceTimersByTime(50); // Total 110ms, timer expires
+    vi.advanceTimersByTime(50); // Total 110ms, timer expires
     expect(callCount).toBe(2);
   });
 });

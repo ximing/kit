@@ -1,10 +1,11 @@
+import { vi } from 'vitest';
 import { debounce } from '../../src/function';
 
 describe('debounce', () => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   afterEach(() => {
-    jest.clearAllTimers();
+    vi.clearAllTimers();
   });
 
   it('should debounce a function', () => {
@@ -19,7 +20,7 @@ describe('debounce', () => {
 
     expect(callCount).toBe(0);
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(1);
   });
 
@@ -40,7 +41,7 @@ describe('debounce', () => {
     debounced();
     expect(callCount).toBe(1);
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(1);
   });
 
@@ -57,7 +58,7 @@ describe('debounce', () => {
     debounced();
     expect(callCount).toBe(0);
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(1);
   });
 
@@ -72,13 +73,13 @@ describe('debounce', () => {
     );
 
     debounced();
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
 
     debounced();
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
 
     debounced();
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
 
     expect(callCount).toBe(1);
   });
@@ -92,7 +93,7 @@ describe('debounce', () => {
     debounced();
     debounced.cancel();
 
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(0);
   });
 
@@ -115,7 +116,7 @@ describe('debounce', () => {
     }, 100);
 
     debounced('hello');
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
 
     expect(result).toBe('hello');
   });
@@ -129,7 +130,7 @@ describe('debounce', () => {
     };
 
     obj.getValue();
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
 
     expect(obj.getValue()).toBe(42);
   });
@@ -148,7 +149,7 @@ describe('debounce', () => {
     expect(callCount).toBe(1);
 
     debounced();
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(2);
   });
 
@@ -163,13 +164,13 @@ describe('debounce', () => {
     );
 
     debounced();
-    jest.advanceTimersByTime(40);
+    vi.advanceTimersByTime(40);
 
     debounced();
-    jest.advanceTimersByTime(40);
+    vi.advanceTimersByTime(40);
 
     debounced();
-    jest.advanceTimersByTime(40);
+    vi.advanceTimersByTime(40);
 
     expect(callCount).toBeGreaterThan(0);
   });
@@ -178,7 +179,7 @@ describe('debounce', () => {
     const debounced = debounce(() => 'result', 100);
 
     debounced();
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
 
     expect(debounced()).toBe('result');
   });
@@ -205,7 +206,7 @@ describe('debounce', () => {
     );
 
     debounced();
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(callCount).toBe(0);
   });
 
@@ -216,14 +217,14 @@ describe('debounce', () => {
     }, 100);
 
     debounced();
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
 
     debounced();
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
 
     expect(callCount).toBe(0);
 
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
     expect(callCount).toBe(1);
   });
 });

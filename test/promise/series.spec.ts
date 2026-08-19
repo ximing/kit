@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { series, delay } from '../../src/promise';
 
 describe('series', () => {
@@ -40,9 +41,9 @@ describe('series', () => {
   });
 
   it('should not execute tasks after error', async () => {
-    const task1 = jest.fn().mockResolvedValue('a');
-    const task2 = jest.fn().mockRejectedValue(new Error('error'));
-    const task3 = jest.fn().mockResolvedValue('c');
+    const task1 = vi.fn().mockResolvedValue('a');
+    const task2 = vi.fn().mockRejectedValue(new Error('error'));
+    const task3 = vi.fn().mockResolvedValue('c');
     const tasks = [task1, task2, task3];
     await expect(series(tasks)).rejects.toThrow('error');
     expect(task1).toHaveBeenCalled();
@@ -62,14 +63,7 @@ describe('series', () => {
   });
 
   it('should pass previous result to next task', async () => {
-    let secondTaskInput: any;
-    const tasks = [
-      () => Promise.resolve('first'),
-      () => {
-        secondTaskInput = 'first';
-        return Promise.resolve('second');
-      },
-    ];
+    const tasks = [() => Promise.resolve('first'), () => Promise.resolve('second')];
     const results = await series(tasks);
     expect(results).toEqual(['first', 'second']);
   });
