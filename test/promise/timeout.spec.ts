@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { timeout, delay } from '../../src/promise';
 
 describe('timeout', () => {
@@ -58,5 +59,23 @@ describe('timeout', () => {
       return 'success';
     };
     await expect(timeout(asyncFn(), 50)).rejects.toThrow('Promise timeout');
+  });
+
+  it('rejects when the signal is already aborted', async () => {
+    const signal = AbortSignal.abort('stop');
+    const pending = new Promise<string>(() => undefined);
+    await expect(timeout(pending, 1000, undefined, signal)).rejects.toBe('stop');
+  });
+
+  it('rejects and does not wait when aborted during the timeout', async () => {
+    vi.useFakeTimers();
+    try {
+      const controller = new AbortController();
+      const pending = timeout(new Promise<string>(() => undefined), 5000, undefined, controller.signal);
+      controller.abort('late');
+      await expect(pending).rejects.toBe('late');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

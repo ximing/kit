@@ -62,8 +62,9 @@ export interface ThrottleOptions {
 export interface RetryOptions {
   maxAttempts?: number;
   delay?: number;
-  backoff?: 'linear' | 'exponential';
-  backoffFactor?: number;
+  backoff?: number;
+  onRetry?: (attempt: number, error: Error) => void;
+  signal?: AbortSignal;
 }
 
 /**

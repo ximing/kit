@@ -86,4 +86,43 @@ describe('retry', () => {
     const fn = vi.fn().mockRejectedValue({ code: 'ERR' });
     await expect(retry(fn, { maxAttempts: 2, delay: 10 })).rejects.toThrow();
   });
+
+  it('rejects when the signal is already aborted', async () => {
+    const signal = AbortSignal.abort('stop');
+    const fn = vi.fn().mockResolvedValue('ok');
+    await expect(retry(fn, { signal })).rejects.toBe('stop');
+    expect(fn).not.toHaveBeenCalled();
+  });
+
+  it('rejects and does not start the next attempt when aborted between attempts', async () => {
+    const controller = new AbortController();
+    const fn = vi.fn().mockRejectedValue(new Error('fail'));
+    await expect(
+      retry(fn, {
+        maxAttempts: 5,
+        delay: 10,
+        signal: controller.signal,
+        onRetry: () => {
+          controller.abort('late');
+        },
+      }),
+    ).rejects.toBe('late');
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it('rejects and does not wait when aborted during the delay between attempts', async () => {
+    vi.useFakeTimers();
+    try {
+      const controller = new AbortController();
+      const fn = vi.fn().mockRejectedValue(new Error('fail'));
+      const pending = retry(fn, { maxAttempts: 5, delay: 5000, signal: controller.signal });
+      await Promise.resolve();
+      await Promise.resolve();
+      controller.abort('late');
+      await expect(pending).rejects.toBe('late');
+      expect(fn).toHaveBeenCalledTimes(1);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });

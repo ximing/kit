@@ -1,3 +1,7 @@
+import type { RetryOptions } from '../types';
+import { abortError } from './abort';
+import { delay } from './delay';
+
 /**
  * Retries a function until it succeeds or max attempts are reached.
  *
@@ -8,6 +12,7 @@
  * @param options.delay - Delay between attempts in milliseconds (default: 1000)
  * @param options.backoff - Backoff multiplier for exponential backoff (default: 1, no backoff)
  * @param options.onRetry - Callback function called on each retry with the attempt number and error
+ * @param options.signal - Optional AbortSignal that cancels remaining attempts when aborted
  * @returns Returns a promise that resolves with the function result or rejects with the last error
  *
  * @example
@@ -21,21 +26,21 @@
  *   onRetry: (attempt, error) => console.log(`Attempt ${attempt} failed: ${error.message}`)
  * });
  */
-export function retry<T>(
-  fn: () => T | Promise<T>,
-  options: {
-    maxAttempts?: number;
-    delay?: number;
-    backoff?: number;
-    onRetry?: (attempt: number, error: Error) => void;
-  } = {},
-): Promise<T> {
-  const { maxAttempts = 3, delay: initialDelay = 1000, backoff = 1, onRetry } = options;
+export function retry<T>(fn: () => T | Promise<T>, options: RetryOptions = {}): Promise<T> {
+  const { maxAttempts = 3, delay: initialDelay = 1000, backoff = 1, onRetry, signal } = options;
+
+  if (signal?.aborted) {
+    return Promise.reject(abortError(signal));
+  }
 
   let lastError: Error;
   let attempt = 0;
 
   async function execute(): Promise<T> {
+    if (signal?.aborted) {
+      throw abortError(signal);
+    }
+
     attempt++;
 
     try {
@@ -47,12 +52,20 @@ export function retry<T>(
         throw lastError;
       }
 
+      if (signal?.aborted) {
+        throw abortError(signal);
+      }
+
       if (onRetry) {
         onRetry(attempt, lastError);
       }
 
+      if (signal?.aborted) {
+        throw abortError(signal);
+      }
+
       const waitTime = initialDelay * Math.pow(backoff, attempt - 1);
-      await new Promise((resolve) => setTimeout(resolve, waitTime));
+      await delay(waitTime, undefined, signal);
 
       return execute();
     }
@@ -60,4 +73,3 @@ export function retry<T>(
 
   return execute();
 }
-

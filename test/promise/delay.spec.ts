@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { delay } from '../../src/promise';
 
 describe('delay', () => {
@@ -44,5 +45,22 @@ describe('delay', () => {
   it('should be a promise', () => {
     const result = delay(100);
     expect(result).toBeInstanceOf(Promise);
+  });
+
+  it('rejects when the signal is already aborted', async () => {
+    const signal = AbortSignal.abort('stop');
+    await expect(delay(1000, undefined, signal)).rejects.toBe('stop');
+  });
+
+  it('rejects and does not wait when aborted during the delay', async () => {
+    vi.useFakeTimers();
+    try {
+      const controller = new AbortController();
+      const pending = delay(5000, 'x', controller.signal);
+      controller.abort('late');
+      await expect(pending).rejects.toBe('late');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
