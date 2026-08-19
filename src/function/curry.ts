@@ -1,3 +1,7 @@
+type Curried = {
+  (...args: unknown[]): Curried;
+};
+
 /**
  * Creates a function that accepts arguments of func and either invokes func returning
  * its result, if at least arity number of arguments have been provided, or returns a
@@ -23,10 +27,6 @@
  * sayHello('Alice'); // => 'Hello, Alice!'
  * sayHello('Bob'); // => 'Hello, Bob!'
  */
-type Curried = {
-  (...args: unknown[]): Curried;
-};
-
 export function curry<T extends (...args: never[]) => unknown>(func: T, arity: number = func.length): Curried {
   const call = (thisArg: unknown, args: unknown[]): unknown =>
     (func as (this: unknown, ...args: never[]) => unknown).apply(thisArg, args as never[]);
