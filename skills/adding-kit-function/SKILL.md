@@ -17,7 +17,7 @@ Consumer import styles and native-vs-kit guidance live in [`using-rabjs-kit`](..
 
 One public function per file. Named export only — no `export default`. Do not edit `package.json` `exports`; `pnpm build` (tsdown) writes that map.
 
-Do not re-export `src/promise/abort.ts` from public barrels. Do not hand-write `website/src/generated/catalog.ts` or `llms.txt`.
+Do not re-export `src/promise/abort.ts` from public barrels. Do not hand-write `website/src/generated/catalog.ts`, `llms.txt`, or the inventory block in [`using-rabjs-kit`](../using-rabjs-kit/SKILL.md).
 
 ## JSDoc
 
@@ -72,4 +72,4 @@ pnpm test
 pnpm build
 ```
 
-`pnpm docs:catalog` refreshes `website/src/generated/catalog.ts` and `llms.txt` from JSDoc. `pnpm changeset` records the version bump for the PR.
+`pnpm docs:catalog` refreshes `website/src/generated/catalog.ts`, `llms.txt`, and the function list in `skills/using-rabjs-kit/SKILL.md` from JSDoc. `pnpm changeset` records the version bump for the PR.

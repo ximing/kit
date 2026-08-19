@@ -1,5 +1,5 @@
 /**
- * Builds website/src/generated/catalog.ts and llms.txt from src/** JSDoc.
+ * Builds website/src/generated/catalog.ts, llms.txt, and the using-rabjs-kit inventory from src/** JSDoc.
  * Usage: tsx scripts/generate-catalog.ts [--check]
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -20,6 +20,9 @@ export interface CatalogItem {
 
 export const CATALOG_REL = 'website/src/generated/catalog.ts';
 export const LLMS_REL = 'llms.txt';
+export const SKILL_REL = 'skills/using-rabjs-kit/SKILL.md';
+export const SKILL_INVENTORY_START = '<!-- catalog-inventory:start -->';
+export const SKILL_INVENTORY_END = '<!-- catalog-inventory:end -->';
 
 const SKIP_REL = new Set(['src/promise/abort.ts']);
 
@@ -236,8 +239,27 @@ function llmsArgs(item: CatalogItem): string {
     .join(', ');
 }
 
+export function renderFunctionList(items: CatalogItem[], spaced = false): string {
+  const lines: string[] = [];
+  let currentCategory = '';
+  for (const item of items) {
+    if (item.category !== currentCategory) {
+      if (spaced && currentCategory !== '') {
+        lines.push('');
+      }
+      currentCategory = item.category;
+      lines.push(`### ${item.category}`);
+      if (spaced) {
+        lines.push('');
+      }
+    }
+    lines.push(`- ${item.name}(${llmsArgs(item)}): ${item.summary}`);
+  }
+  return lines.join('\n');
+}
+
 export function renderLlmsTxt(items: CatalogItem[]): string {
-  const lines = [
+  return [
     '# @rabjs/kit',
     'Typed lodash-shaped utilities. Named exports only. Immutable remove.',
     '',
@@ -246,18 +268,20 @@ export function renderLlmsTxt(items: CatalogItem[]): string {
     "import { chunk } from '@rabjs/kit/array/chunk'",
     '',
     '## Functions',
-  ];
+    renderFunctionList(items),
+    '',
+  ].join('\n');
+}
 
-  let currentCategory = '';
-  for (const item of items) {
-    if (item.category !== currentCategory) {
-      currentCategory = item.category;
-      lines.push(`### ${item.category}`);
-    }
-    lines.push(`- ${item.name}(${llmsArgs(item)}): ${item.summary}`);
+export function patchSkillInventory(markdown: string, items: CatalogItem[]): string {
+  const start = markdown.indexOf(SKILL_INVENTORY_START);
+  const end = markdown.indexOf(SKILL_INVENTORY_END);
+  if (start === -1 || end === -1 || end < start) {
+    throw new Error(`Missing ${SKILL_INVENTORY_START} / ${SKILL_INVENTORY_END} in ${SKILL_REL}`);
   }
-  lines.push('');
-  return lines.join('\n');
+  const before = markdown.slice(0, start + SKILL_INVENTORY_START.length);
+  const after = markdown.slice(end);
+  return `${before}\n\n${renderFunctionList(items, true)}\n\n${after}`;
 }
 
 async function formatCatalogTs(code: string, filepath: string): Promise<string> {
@@ -273,12 +297,17 @@ export async function writeOrCheck(options: {
   const items = options.items ?? collectCatalog(options.rootDir);
   const catalogPath = join(options.rootDir, CATALOG_REL);
   const llmsPath = join(options.rootDir, LLMS_REL);
+  const skillPath = join(options.rootDir, SKILL_REL);
   const catalogTs = await formatCatalogTs(renderCatalogTs(items), catalogPath);
   const llmsTxt = renderLlmsTxt(items);
+  const hasSkill = existsSync(skillPath);
+  const existingSkill = hasSkill ? readFileSync(skillPath, 'utf8') : null;
+  const nextSkill = existingSkill === null ? null : patchSkillInventory(existingSkill, items);
 
   const existingCatalog = existsSync(catalogPath) ? readFileSync(catalogPath, 'utf8') : null;
   const existingLlms = existsSync(llmsPath) ? readFileSync(llmsPath, 'utf8') : null;
-  const changed = existingCatalog !== catalogTs || existingLlms !== llmsTxt;
+  const changed =
+    existingCatalog !== catalogTs || existingLlms !== llmsTxt || (nextSkill !== null && existingSkill !== nextSkill);
 
   if (options.check || !changed) {
     return { changed, wrote: false };
@@ -287,6 +316,9 @@ export async function writeOrCheck(options: {
   mkdirSync(dirname(catalogPath), { recursive: true });
   writeFileSync(catalogPath, catalogTs);
   writeFileSync(llmsPath, llmsTxt);
+  if (nextSkill !== null) {
+    writeFileSync(skillPath, nextSkill);
+  }
   return { changed: true, wrote: true };
 }
 

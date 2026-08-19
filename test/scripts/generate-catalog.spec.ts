@@ -6,7 +6,12 @@ import {
   CATALOG_REL,
   collectCatalog,
   LLMS_REL,
+  SKILL_INVENTORY_END,
+  SKILL_INVENTORY_START,
+  SKILL_REL,
+  patchSkillInventory,
   renderCatalogTs,
+  renderFunctionList,
   renderLlmsTxt,
   writeOrCheck,
   type CatalogItem,
@@ -88,6 +93,32 @@ describe('generate-catalog', () => {
     expect(source).toContain('export const catalog: CatalogItem[]');
     expect(source.indexOf('array')).toBeLessThan(source.indexOf('collection'));
   });
+
+  it('renders a skill inventory listing every public function', () => {
+    const list = renderFunctionList(catalog);
+    expect(list).toContain('### array');
+    expect(renderFunctionList(catalog, true)).toContain('### array\n\n- chunk(');
+    expect(list).toContain('### promise');
+    expect(list).toContain('### string');
+    expect(list).toMatch(/^- chunk\(array, size\): Splits an array into chunks of a specified size$/m);
+    expect(list).toMatch(/^- remove\(array, predicate\):/m);
+    expect(list).toMatch(/^- retry\(fn, options\):/m);
+    expect(list.split('\n').filter((line) => line.startsWith('- '))).toHaveLength(117);
+  });
+
+  it('patches using-rabjs-kit between catalog inventory markers', () => {
+    const markdown = ['# Using', '', SKILL_INVENTORY_START, 'stale', SKILL_INVENTORY_END, ''].join('\n');
+    const patched = patchSkillInventory(markdown, catalog);
+    expect(patched).toContain(SKILL_INVENTORY_START);
+    expect(patched).toContain(SKILL_INVENTORY_END);
+    expect(patched).not.toContain('stale');
+    expect(patched).toContain('- chunk(array, size):');
+    expect(patched).toContain('- timeout(promise, ms, message, signal):');
+  });
+
+  it('throws when skill inventory markers are missing', () => {
+    expect(() => patchSkillInventory('# Using\n', catalog)).toThrow(/catalog-inventory/);
+  });
 });
 
 describe('writeOrCheck', () => {
@@ -128,6 +159,17 @@ describe('writeOrCheck', () => {
     expect(result.wrote).toBe(true);
     expect(readFileSync(join(root, CATALOG_REL), 'utf8')).toContain('export const catalog');
     expect(readFileSync(join(root, LLMS_REL), 'utf8')).toContain('Named exports only. Immutable remove.');
+  });
+
+  it('writes the using-rabjs-kit inventory when the skill file exists', async () => {
+    const root = tempRoot();
+    mkdirSync(join(root, 'skills/using-rabjs-kit'), { recursive: true });
+    writeFileSync(join(root, SKILL_REL), `# Using\n\n${SKILL_INVENTORY_START}\nstale\n${SKILL_INVENTORY_END}\n`);
+    await writeOrCheck({ rootDir: root, check: false, items });
+    const skill = readFileSync(join(root, SKILL_REL), 'utf8');
+    expect(skill).toContain('### array');
+    expect(skill).toContain('- chunk(array, size): Splits an array into chunks of a specified size');
+    expect(skill).not.toContain('stale');
   });
 
   it('exits check mode without writing when outputs would change', async () => {

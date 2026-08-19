@@ -13,7 +13,7 @@ Rules for coding agents working in this repository.
 1. Source file with JSDoc (`@param`, `@returns`, at least one `@example`).
 2. Re-export from `src/<category>/index.ts`.
 3. Vitest spec at `test/<category>/<name>.spec.ts`.
-4. Run `pnpm docs:catalog` (do not hand-write `website/src/generated/catalog.ts` or `llms.txt`).
+4. Run `pnpm docs:catalog` (do not hand-write `website/src/generated/catalog.ts`, `llms.txt`, or the inventory in `skills/using-rabjs-kit/SKILL.md`).
 5. Never edit `package.json` `exports` — tsdown generates that map.
 
 How-to: [`skills/adding-kit-function/SKILL.md`](./skills/adding-kit-function/SKILL.md).

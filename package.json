@@ -50,6 +50,7 @@
     "docs:catalog:check": "tsx scripts/generate-catalog.ts --check",
     "docs:dev": "pnpm --filter website dev",
     "docs:build": "pnpm docs:catalog && pnpm --filter website build",
+    "release": "changeset publish",
     "prepare": "husky"
   },
   "lint-staged": {
