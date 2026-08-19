@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-08-19
+
+### Breaking
+
+- **No default export.** Every module uses named exports only. `import kit from '@rabjs/kit'` no longer works; use `import { chunk } from '@rabjs/kit'` or `import * as kit from '@rabjs/kit'`.
+- **`remove` is immutable.** `remove(array, predicate)` returns the matching items and does **not** mutate `array`. Leftovers are `array.filter` with the negated predicate, or `partition`.
+- **`RetryOptions.backoff` is a `number`** (retry delay multiplier, default `1`). The unused `'linear' | 'exponential'` union is removed.
+- **Node.js `>= 20`.** Documented support for Node 12 / Chrome 70 is dropped. Target is ES2020 / evergreen browsers.
+
+### Added
+
+- Optional `AbortSignal` on `delay`, `timeout`, and `retry`. Already-aborted signals reject immediately; abort while waiting clears timers.
+- Repo-local agent skills under `skills/` (`using-rabjs-kit`, `adding-kit-function`, `migrating-lodash-to-kit`), plus `AGENTS.md` and generated `llms.txt`.
+- Catalog-first Vite + React documentation site (base path `/kit/`) with per-function playground and `/zh` locale.
+- Changesets for versioning and npm publish.
+
+### Toolchain
+
+- Build: **tsdown** unbundle dual ESM + CJS + `.d.ts`. `package.json` `exports` is generated (`exports: true`); do not hand-edit it.
+- Tests: **Vitest** (v8 coverage, 90% floor). Replaces Jest.
+- Docs: **Vite 7 + React 19**. Replaces the previous docs app.
+- Package `"type": "module"`, `sideEffects: false`.
+- Public types no longer use `any` (generics / `unknown` at boundaries).
+- Array helpers that previously shared a file (`flattenDeep`, `uniqBy`, `take`, `drop`, `remove`) each have their own source file for deep imports.
+
 ## [0.0.1] - 2026-01-02
 
 ### Added
