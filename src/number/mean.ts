@@ -17,4 +17,3 @@ export function mean(numbers: number[]): number {
   const sum = numbers.reduce((total, num) => total + num, 0);
   return sum / numbers.length;
 }
-

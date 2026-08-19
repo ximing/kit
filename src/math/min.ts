@@ -17,4 +17,3 @@ export function min(numbers: number[]): number | undefined {
 
   return Math.min(...numbers);
 }
-

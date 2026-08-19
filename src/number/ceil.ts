@@ -14,4 +14,3 @@ export function ceil(number: number, precision: number = 0): number {
   const factor = Math.pow(10, precision);
   return Math.ceil(number * factor) / factor;
 }
-

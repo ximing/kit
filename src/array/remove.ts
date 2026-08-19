@@ -8,10 +8,7 @@
  * remove(arr, (item) => item > 3); // [4, 5]
  * // arr is still [1, 2, 3, 4, 5]
  */
-export function remove<T>(
-  array: readonly T[],
-  predicate: (item: T, index: number) => boolean,
-): T[] {
+export function remove<T>(array: readonly T[], predicate: (item: T, index: number) => boolean): T[] {
   if (!Array.isArray(array)) {
     return [];
   }

@@ -23,4 +23,3 @@ export function median(numbers: number[]): number {
 
   return sorted[mid];
 }
-

@@ -19,4 +19,3 @@ export function meanBy<T>(array: T[], iteratee: (item: T) => number): number {
   const sum = array.reduce((total, item) => total + iteratee(item), 0);
   return sum / array.length;
 }
-

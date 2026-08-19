@@ -17,4 +17,3 @@ export function max(numbers: number[]): number | undefined {
 
   return Math.max(...numbers);
 }
-

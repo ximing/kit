@@ -155,7 +155,7 @@ export const catalog: CatalogItem[] = [
     name: 'remove',
     category: 'array',
     summary: 'Returns items that match the predicate without mutating the input',
-    signature: 'export function remove<T>( array: readonly T[], predicate: (item: T, index: number) => boolean, ): T[]',
+    signature: 'export function remove<T>(array: readonly T[], predicate: (item: T, index: number) => boolean): T[]',
     params: [
       {
         name: 'array',

@@ -30,4 +30,3 @@ export function random(lower: number, upper?: number, floating?: boolean): numbe
   const result = Math.random() * (max - min) + min;
   return floating ? result : Math.floor(result);
 }
-

@@ -39,4 +39,3 @@ export function reduce<T, U>(
     Promise.resolve(initialValue),
   );
 }
-

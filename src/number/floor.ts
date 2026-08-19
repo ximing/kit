@@ -14,4 +14,3 @@ export function floor(number: number, precision: number = 0): number {
   const factor = Math.pow(10, precision);
   return Math.floor(number * factor) / factor;
 }
-

@@ -65,4 +65,3 @@ export function map<T, U>(
     execute();
   });
 }
-

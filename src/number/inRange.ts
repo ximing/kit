@@ -27,4 +27,3 @@ export function inRange(number: number, start: number, end?: number): boolean {
 
   return number >= min && number < max;
 }
-

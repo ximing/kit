@@ -35,4 +35,3 @@ export function series<T>(tasks: Array<() => Promise<T> | T>): Promise<T[]> {
     Promise.resolve<T[]>([]),
   );
 }
-
