@@ -14,4 +14,3 @@ export function isMap(value: unknown): value is Map<any, any> {
   return Object.prototype.toString.call(value) === '[object Map]';
 }
 
-export default isMap;

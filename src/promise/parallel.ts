@@ -65,4 +65,3 @@ export function parallel<T>(tasks: Array<() => Promise<T> | T>, concurrency = In
   });
 }
 
-export default parallel;

@@ -66,4 +66,3 @@ export function map<T, U>(
   });
 }
 
-export default map;

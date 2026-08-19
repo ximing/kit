@@ -14,4 +14,3 @@ export function isError(value: unknown): value is Error {
   return value instanceof Error || Object.prototype.toString.call(value) === '[object Error]';
 }
 
-export default isError;

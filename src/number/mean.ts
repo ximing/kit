@@ -18,4 +18,3 @@ export function mean(numbers: number[]): number {
   return sum / numbers.length;
 }
 
-export default mean;

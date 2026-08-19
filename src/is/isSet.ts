@@ -14,4 +14,3 @@ export function isSet(value: unknown): value is Set<any> {
   return Object.prototype.toString.call(value) === '[object Set]';
 }
 
-export default isSet;

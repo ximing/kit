@@ -24,4 +24,3 @@ export function median(numbers: number[]): number {
   return sorted[mid];
 }
 
-export default median;

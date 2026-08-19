@@ -36,4 +36,3 @@ export function isPlainObject(value: unknown): value is Record<string, any> {
   return Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === proto;
 }
 
-export default isPlainObject;

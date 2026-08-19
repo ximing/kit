@@ -30,4 +30,3 @@ export function maxBy<T>(array: T[], iteratee: (item: T) => number): T | undefin
   return maxItem;
 }
 
-export default maxBy;

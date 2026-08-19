@@ -20,4 +20,3 @@ export function meanBy<T>(array: T[], iteratee: (item: T) => number): number {
   return sum / array.length;
 }
 
-export default meanBy;

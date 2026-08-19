@@ -18,4 +18,3 @@ export function clamp(number: number, lower: number, upper: number): number {
   return Math.max(lower, Math.min(number, upper));
 }
 
-export default clamp;

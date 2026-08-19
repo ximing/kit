@@ -13,4 +13,3 @@ export function isWeakSet(value: unknown): value is WeakSet<any> {
   return Object.prototype.toString.call(value) === '[object WeakSet]';
 }
 
-export default isWeakSet;

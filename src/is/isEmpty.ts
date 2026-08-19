@@ -41,4 +41,3 @@ export function isEmpty(value: unknown): boolean {
   return false;
 }
 
-export default isEmpty;

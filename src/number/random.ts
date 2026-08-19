@@ -31,4 +31,3 @@ export function random(lower: number, upper?: number, floating?: boolean): numbe
   return floating ? result : Math.floor(result);
 }
 
-export default random;

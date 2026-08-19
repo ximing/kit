@@ -13,4 +13,3 @@ export function isWeakMap(value: unknown): value is WeakMap<any, any> {
   return Object.prototype.toString.call(value) === '[object WeakMap]';
 }
 
-export default isWeakMap;

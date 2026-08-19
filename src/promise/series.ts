@@ -36,4 +36,3 @@ export function series<T>(tasks: Array<() => Promise<T> | T>): Promise<T[]> {
   );
 }
 
-export default series;

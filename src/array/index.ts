@@ -5,10 +5,15 @@
 
 export { chunk } from './chunk';
 export { compact } from './compact';
-export { flatten, flattenDeep } from './flatten';
-export { uniq, uniqBy } from './uniq';
+export { flatten } from './flatten';
+export { flattenDeep } from './flattenDeep';
+export { uniq } from './uniq';
+export { uniqBy } from './uniqBy';
 export { difference } from './difference';
 export { intersection } from './intersection';
 export { union } from './union';
-export { zip, take, drop } from './zip';
-export { findIndex, remove } from './findIndex';
+export { zip } from './zip';
+export { take } from './take';
+export { drop } from './drop';
+export { findIndex } from './findIndex';
+export { remove } from './remove';

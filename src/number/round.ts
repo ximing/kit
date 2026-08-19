@@ -15,4 +15,3 @@ export function round(number: number, precision: number = 0): number {
   return Math.round(number * factor) / factor;
 }
 
-export default round;

@@ -21,4 +21,3 @@ export function delay<T = void>(ms: number, value?: T): Promise<T | void> {
   });
 }
 
-export default delay;

@@ -15,4 +15,3 @@ export function floor(number: number, precision: number = 0): number {
   return Math.floor(number * factor) / factor;
 }
 
-export default floor;

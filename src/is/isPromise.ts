@@ -14,4 +14,3 @@ export function isPromise(value: unknown): value is Promise<any> {
   return Object.prototype.toString.call(value) === '[object Promise]';
 }
 
-export default isPromise;

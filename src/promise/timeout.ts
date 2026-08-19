@@ -28,4 +28,3 @@ export function timeout<T>(promise: Promise<T>, ms: number, message = 'Promise t
   ]);
 }
 
-export default timeout;

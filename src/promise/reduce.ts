@@ -40,4 +40,3 @@ export function reduce<T, U>(
   );
 }
 
-export default reduce;

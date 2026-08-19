@@ -19,4 +19,3 @@ export function sumBy<T>(array: T[], iteratee: (item: T) => number): number {
   return array.reduce((total, item) => total + iteratee(item), 0);
 }
 
-export default sumBy;

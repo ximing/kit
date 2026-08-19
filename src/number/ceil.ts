@@ -15,4 +15,3 @@ export function ceil(number: number, precision: number = 0): number {
   return Math.ceil(number * factor) / factor;
 }
 
-export default ceil;

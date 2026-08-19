@@ -30,4 +30,3 @@ export function minBy<T>(array: T[], iteratee: (item: T) => number): T | undefin
   return minItem;
 }
 
-export default minBy;

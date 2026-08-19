@@ -66,4 +66,3 @@ export function filter<T>(
   });
 }
 
-export default filter;
