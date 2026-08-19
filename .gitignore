@@ -1,3 +1,6 @@
+# Visual brainstorm companion (local only)
+.superpowers/
+
 # Log files
 logs
 *.log
