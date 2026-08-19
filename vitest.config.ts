@@ -9,6 +9,7 @@ export default defineConfig({
       provider: 'v8',
       include: ['src/**/*.ts'],
       exclude: ['src/**/index.ts', 'src/types/**'],
+      reporter: ['text', 'html', 'clover', 'json', 'lcov'],
       thresholds: {
         branches: 90,
         functions: 90,
