@@ -22,6 +22,6 @@ describe('take', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(take(null as any, 2)).toEqual([]);
+    expect(take(null as unknown as number[], 2)).toEqual([]);
   });
 });

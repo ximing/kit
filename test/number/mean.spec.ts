@@ -16,7 +16,7 @@ describe('mean', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(mean(null as any)).toBe(0);
-    expect(mean(undefined as any)).toBe(0);
+    expect(mean(null as unknown as number[])).toBe(0);
+    expect(mean(undefined as unknown as number[])).toBe(0);
   });
 });

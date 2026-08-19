@@ -18,6 +18,6 @@ describe('findIndex', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(findIndex(null as any, (item) => item)).toBe(-1);
+    expect(findIndex(null as unknown as number[], (item) => item > 0)).toBe(-1);
   });
 });

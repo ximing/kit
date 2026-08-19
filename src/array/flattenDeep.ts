@@ -5,7 +5,7 @@
  * @example
  * flattenDeep([1, [2, [3, [4]]]]); // [1, 2, 3, 4]
  */
-export function flattenDeep<T>(array: any[]): T[] {
+export function flattenDeep<T>(array: readonly unknown[]): T[] {
   if (!Array.isArray(array)) {
     return [];
   }
@@ -14,7 +14,7 @@ export function flattenDeep<T>(array: any[]): T[] {
 
   for (const item of array) {
     if (Array.isArray(item)) {
-      result.push(...(flattenDeep(item) as any));
+      result.push(...flattenDeep<T>(item));
     } else {
       result.push(item as T);
     }

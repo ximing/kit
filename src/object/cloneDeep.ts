@@ -9,15 +9,15 @@
  * console.log(obj.b.c); // 2
  * console.log(cloned.b === obj.b); // false (deep copy)
  */
-export function cloneDeep<T>(value: T, hash = new WeakMap()): T {
+export function cloneDeep<T>(value: T, hash: WeakMap<object, unknown> = new WeakMap()): T {
   // Handle primitives and functions
   if (value === null || typeof value !== 'object') {
     return value;
   }
 
   // Handle circular references
-  if (hash.has(value as any)) {
-    return hash.get(value as any);
+  if (hash.has(value)) {
+    return hash.get(value) as T;
   }
 
   // Handle Date
@@ -32,8 +32,8 @@ export function cloneDeep<T>(value: T, hash = new WeakMap()): T {
 
   // Handle Array
   if (Array.isArray(value)) {
-    const result: any[] = [];
-    hash.set(value as any, result as any);
+    const result: unknown[] = [];
+    hash.set(value, result);
     for (let i = 0; i < value.length; i++) {
       result[i] = cloneDeep(value[i], hash);
     }
@@ -43,7 +43,7 @@ export function cloneDeep<T>(value: T, hash = new WeakMap()): T {
   // Handle Map
   if (value instanceof Map) {
     const result = new Map();
-    hash.set(value as any, result as any);
+    hash.set(value, result);
     value.forEach((val, key) => {
       result.set(cloneDeep(key, hash), cloneDeep(val, hash));
     });
@@ -53,7 +53,7 @@ export function cloneDeep<T>(value: T, hash = new WeakMap()): T {
   // Handle Set
   if (value instanceof Set) {
     const result = new Set();
-    hash.set(value as any, result as any);
+    hash.set(value, result);
     value.forEach((val) => {
       result.add(cloneDeep(val, hash));
     });
@@ -62,11 +62,11 @@ export function cloneDeep<T>(value: T, hash = new WeakMap()): T {
 
   // Handle plain objects
   if (Object.prototype.toString.call(value) === '[object Object]') {
-    const result: any = {};
-    hash.set(value as any, result);
+    const result: Record<string, unknown> = {};
+    hash.set(value, result);
     for (const key in value) {
       if (Object.prototype.hasOwnProperty.call(value, key)) {
-        result[key] = cloneDeep((value as any)[key], hash);
+        result[key] = cloneDeep((value as Record<string, unknown>)[key], hash);
       }
     }
     return result as T;

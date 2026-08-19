@@ -14,35 +14,37 @@
  */
 export function orderBy<T>(
   collection: T[],
-  iteratees: ((item: T) => any) | string | (((item: T) => any) | string)[],
+  iteratees: ((item: T) => unknown) | string | Array<((item: T) => unknown) | string>,
   orders?: ('asc' | 'desc')[],
 ): T[] {
   const iterateeArray = Array.isArray(iteratees) ? iteratees : [iteratees];
-  const orderArray = orders || iterateeArray.map(() => 'asc');
+  const orderArray = orders || iterateeArray.map(() => 'asc' as const);
 
   return [...collection].sort((a, b) => {
     for (let i = 0; i < iterateeArray.length; i++) {
       const iteratee = iterateeArray[i];
       const order = orderArray[i] || 'asc';
 
-      let aVal: any;
-      let bVal: any;
+      let aVal: unknown;
+      let bVal: unknown;
 
       if (typeof iteratee === 'function') {
         aVal = iteratee(a);
         bVal = iteratee(b);
       } else if (typeof iteratee === 'string') {
-        aVal = (a as any)[iteratee];
-        bVal = (b as any)[iteratee];
+        aVal = (a as Record<string, unknown>)[iteratee];
+        bVal = (b as Record<string, unknown>)[iteratee];
       } else {
         aVal = a;
         bVal = b;
       }
 
-      if (aVal < bVal) {
+      const left = aVal as string | number;
+      const right = bVal as string | number;
+      if (left < right) {
         return order === 'asc' ? -1 : 1;
       }
-      if (aVal > bVal) {
+      if (left > right) {
         return order === 'asc' ? 1 : -1;
       }
     }

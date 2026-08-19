@@ -16,7 +16,7 @@ describe('meanBy', () => {
   });
 
   it('should return 0 for empty array', () => {
-    expect(meanBy([], (o: any) => o.n)).toBe(0);
+    expect(meanBy([] as Array<{ n: number }>, (o) => o.n)).toBe(0);
   });
 
   it('should handle single element', () => {
@@ -35,7 +35,7 @@ describe('meanBy', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(meanBy(null as any, () => 0)).toBe(0);
-    expect(meanBy(undefined as any, () => 0)).toBe(0);
+    expect(meanBy(null as unknown as number[], () => 0)).toBe(0);
+    expect(meanBy(undefined as unknown as number[], () => 0)).toBe(0);
   });
 });

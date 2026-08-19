@@ -39,8 +39,8 @@ describe('padEnd', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(padEnd(null as any, 5)).toBe('');
-    expect(padEnd(undefined as any, 5)).toBe('');
+    expect(padEnd(null as unknown as string, 5)).toBe('');
+    expect(padEnd(undefined as unknown as string, 5)).toBe('');
   });
 
   it('should handle zero length', () => {

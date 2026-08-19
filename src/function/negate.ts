@@ -19,8 +19,8 @@
  * const isActive = (user: typeof users[0]) => user.active;
  * users.filter(negate(isActive)); // => [{ name: 'Bob', active: false }]
  */
-export function negate<T extends (...args: any[]) => boolean>(predicate: T): T {
-  return function (this: any, ...args: Parameters<T>): boolean {
-    return !predicate.apply(this, args);
+export function negate<T extends (...args: never[]) => boolean>(predicate: T): T {
+  return function (this: unknown, ...args: Parameters<T>): boolean {
+    return !(predicate as (this: unknown, ...args: Parameters<T>) => boolean).apply(this, args);
   } as T;
 }

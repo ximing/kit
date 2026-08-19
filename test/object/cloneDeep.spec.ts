@@ -19,7 +19,7 @@ describe('cloneDeep', () => {
   });
 
   it('should handle circular references', () => {
-    const obj: any = { a: 1 };
+    const obj: { a: number; self?: unknown } = { a: 1 };
     obj.self = obj;
     const cloned = cloneDeep(obj);
     expect(cloned.self).toBe(cloned);

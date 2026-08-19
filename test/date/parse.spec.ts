@@ -38,13 +38,13 @@ describe('parse', () => {
   });
 
   it('should return null for non-string input', () => {
-    expect(parse(null as any)).toBeNull();
-    expect(parse(undefined as any)).toBeNull();
-    expect(parse(123 as any)).toBeNull();
+    expect(parse(null as unknown as string)).toBeNull();
+    expect(parse(undefined as unknown as string)).toBeNull();
+    expect(parse(123 as unknown as string)).toBeNull();
   });
 
   it('should return null for non-string format', () => {
-    expect(parse('2024-01-15', null as any)).toBeNull();
-    expect(parse('2024-01-15', 123 as any)).toBeNull();
+    expect(parse('2024-01-15', null as unknown as string)).toBeNull();
+    expect(parse('2024-01-15', 123 as unknown as string)).toBeNull();
   });
 });

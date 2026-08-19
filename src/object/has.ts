@@ -9,26 +9,30 @@
  * has(obj, ['a', 'b', 'c']); // true
  * has(obj, 'a.b.d'); // false
  */
-export function has(obj: any, path: string | readonly (string | number)[]): boolean {
+export function has(obj: unknown, path: string | readonly (string | number)[]): boolean {
   if (obj == null) {
     return false;
   }
 
   // Convert string path to array
-  const pathArray: (string | number)[] = Array.isArray(path)
-    ? [...path]
-    : (path as string)
-        .replace(/\[(\d+)\]/g, '.$1') // Convert array indices to dot notation
-        .split('.')
-        .filter(Boolean);
+  const pathArray: (string | number)[] =
+    typeof path === 'string'
+      ? path
+          .replace(/\[(\d+)\]/g, '.$1')
+          .split('.')
+          .filter(Boolean)
+      : [...path];
 
-  let current: any = obj;
+  let current: unknown = obj;
 
   for (const key of pathArray) {
-    if (current == null || !(key in Object(current))) {
+    if (current == null || (typeof current !== 'object' && typeof current !== 'function')) {
       return false;
     }
-    current = current[key];
+    if (!(key in Object(current))) {
+      return false;
+    }
+    current = (current as Record<PropertyKey, unknown>)[key];
   }
 
   return true;

@@ -20,7 +20,7 @@ describe('min', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(min(null as any)).toBe(undefined);
-    expect(min(undefined as any)).toBe(undefined);
+    expect(min(null as unknown as number[])).toBe(undefined);
+    expect(min(undefined as unknown as number[])).toBe(undefined);
   });
 });

@@ -16,7 +16,7 @@ describe('sumBy', () => {
   });
 
   it('should return 0 for empty array', () => {
-    expect(sumBy([], (o: any) => o.n)).toBe(0);
+    expect(sumBy([] as Array<{ n: number }>, (o) => o.n)).toBe(0);
   });
 
   it('should handle single element', () => {
@@ -35,7 +35,7 @@ describe('sumBy', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(sumBy(null as any, () => 0)).toBe(0);
-    expect(sumBy(undefined as any, () => 0)).toBe(0);
+    expect(sumBy(null as unknown as number[], () => 0)).toBe(0);
+    expect(sumBy(undefined as unknown as number[], () => 0)).toBe(0);
   });
 });

@@ -18,6 +18,6 @@ describe('uniq', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(uniq(null as any)).toEqual([]);
+    expect(uniq(null as unknown as number[])).toEqual([]);
   });
 });

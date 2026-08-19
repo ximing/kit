@@ -18,15 +18,15 @@
  * greet('Alice'); // => 'Hello, Alice!'
  * greet('Bob'); // => 'Hello, Alice!' (returns cached result)
  */
-export function once<T extends (...args: any[]) => any>(func: T): T {
+export function once<T extends (...args: never[]) => unknown>(func: T): T {
   let called = false;
-  let result: ReturnType<T>;
+  let result: ReturnType<T> | undefined;
 
-  return function (this: any, ...args: Parameters<T>): ReturnType<T> {
+  return function (this: unknown, ...args: Parameters<T>): ReturnType<T> {
     if (!called) {
       called = true;
-      result = func.apply(this, args);
+      result = (func as (this: unknown, ...args: Parameters<T>) => ReturnType<T>).apply(this, args);
     }
-    return result;
+    return result as ReturnType<T>;
   } as T;
 }

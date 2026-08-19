@@ -15,7 +15,7 @@ describe('entries', () => {
   });
 
   it('should return empty array for null', () => {
-    expect(entries(null as any)).toEqual([]);
+    expect(entries(null as unknown as Record<string, unknown>)).toEqual([]);
   });
 
   it('should only return own property entries', () => {

@@ -42,8 +42,8 @@ describe('camelCase', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(camelCase(null as any)).toBe('');
-    expect(camelCase(undefined as any)).toBe('');
+    expect(camelCase(null as unknown as string)).toBe('');
+    expect(camelCase(undefined as unknown as string)).toBe('');
   });
 
   it('should handle consecutive separators', () => {

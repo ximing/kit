@@ -21,7 +21,7 @@ describe('minBy', () => {
   });
 
   it('should return undefined for empty array', () => {
-    expect(minBy([], (o: any) => o.n)).toBe(undefined);
+    expect(minBy([] as Array<{ n: number }>, (o) => o.n)).toBe(undefined);
   });
 
   it('should handle negative values', () => {
@@ -30,7 +30,7 @@ describe('minBy', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(minBy(null as any, () => 0)).toBe(undefined);
-    expect(minBy(undefined as any, () => 0)).toBe(undefined);
+    expect(minBy(null as unknown as number[], () => 0)).toBe(undefined);
+    expect(minBy(undefined as unknown as number[], () => 0)).toBe(undefined);
   });
 });

@@ -23,13 +23,22 @@
  * sayHello('Alice'); // => 'Hello, Alice!'
  * sayHello('Bob'); // => 'Hello, Bob!'
  */
-export function curry<T extends (...args: any[]) => any>(func: T, arity: number = func.length): any {
-  return function curried(this: any, ...args: any[]): any {
+type Curried = {
+  (...args: unknown[]): Curried;
+};
+
+export function curry<T extends (...args: never[]) => unknown>(func: T, arity: number = func.length): Curried {
+  const call = (thisArg: unknown, args: unknown[]): unknown =>
+    (func as (this: unknown, ...args: never[]) => unknown).apply(thisArg, args as never[]);
+
+  function curried(this: unknown, ...args: unknown[]): unknown {
     if (args.length >= arity) {
-      return func.apply(this, args);
+      return call(this, args);
     }
-    return function (this: any, ...nextArgs: any[]): any {
+    return function (this: unknown, ...nextArgs: unknown[]): unknown {
       return curried.apply(this, [...args, ...nextArgs]);
     };
-  };
+  }
+
+  return curried as Curried;
 }

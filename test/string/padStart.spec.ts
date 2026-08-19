@@ -39,8 +39,8 @@ describe('padStart', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(padStart(null as any, 5)).toBe('');
-    expect(padStart(undefined as any, 5)).toBe('');
+    expect(padStart(null as unknown as string, 5)).toBe('');
+    expect(padStart(undefined as unknown as string, 5)).toBe('');
   });
 
   it('should handle zero length', () => {

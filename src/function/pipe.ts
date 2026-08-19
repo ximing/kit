@@ -18,20 +18,20 @@
  * const shout = pipe(toUpper, exclaim);
  * shout('hello'); // => 'HELLO!'
  */
-export function pipe<R>(...funcs: Array<(arg: any) => any>): (arg: any) => R {
+export function pipe<T>(...funcs: Array<(arg: T) => T>): (arg: T) => T {
   if (funcs.length === 0) {
-    return (arg: any) => arg as R;
+    return (arg: T) => arg;
   }
 
   if (funcs.length === 1) {
     return funcs[0];
   }
 
-  return function piped(...args: any[]): any {
-    let result = args[0];
+  return function piped(arg: T): T {
+    let result = arg;
     for (let i = 0; i < funcs.length; i++) {
       result = funcs[i](result);
     }
     return result;
-  } as (arg: any) => R;
+  };
 }

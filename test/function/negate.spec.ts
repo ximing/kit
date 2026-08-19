@@ -25,7 +25,7 @@ describe('negate', () => {
   it('should preserve this context', () => {
     const obj = {
       threshold: 5,
-      isAboveThreshold: function (this: any, n: number) {
+      isAboveThreshold: function (this: { threshold: number }, n: number) {
         return n > this.threshold;
       },
     };

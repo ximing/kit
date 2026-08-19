@@ -30,7 +30,7 @@ describe('upperFirst', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(upperFirst(null as any)).toBe(null);
-    expect(upperFirst(undefined as any)).toBe(undefined);
+    expect(upperFirst(null as unknown as string)).toBe(null);
+    expect(upperFirst(undefined as unknown as string)).toBe(undefined);
   });
 });

@@ -10,20 +10,21 @@
  * set(obj, ['x', 'y', 'z'], 5);
  * set(obj, 'a.b.d[0]', 6);
  */
-export function set<T extends object>(obj: T, path: string | readonly (string | number)[], value: any): T {
+export function set<T extends object>(obj: T, path: string | readonly (string | number)[], value: unknown): T {
   if (obj == null) {
     return obj;
   }
 
   // Convert string path to array
-  const pathArray: (string | number)[] = Array.isArray(path)
-    ? [...path]
-    : (path as string)
-        .replace(/\[(\d+)\]/g, '.$1') // Convert array indices to dot notation
-        .split('.')
-        .filter(Boolean);
+  const pathArray: (string | number)[] =
+    typeof path === 'string'
+      ? path
+          .replace(/\[(\d+)\]/g, '.$1')
+          .split('.')
+          .filter(Boolean)
+      : [...path];
 
-  let current: any = obj;
+  let current: Record<PropertyKey, unknown> = obj as Record<PropertyKey, unknown>;
 
   for (let i = 0; i < pathArray.length - 1; i++) {
     const key = pathArray[i];
@@ -37,7 +38,7 @@ export function set<T extends object>(obj: T, path: string | readonly (string | 
       current[key] = isNextKeyIndex ? [] : {};
     }
 
-    current = current[key];
+    current = current[key] as Record<PropertyKey, unknown>;
   }
 
   // Set the final value

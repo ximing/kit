@@ -26,12 +26,15 @@
  * const boundAdd = bind(add, obj, 5);
  * boundAdd(3); // => 18
  */
-export function bind<T extends (...args: any[]) => any>(
+export function bind<T extends (...args: never[]) => unknown>(
   func: T,
-  thisArg: any,
-  ...partialArgs: any[]
-): (...args: any[]) => ReturnType<T> {
-  return function (...args: any[]): ReturnType<T> {
-    return func.apply(thisArg, [...partialArgs, ...args]);
+  thisArg: unknown,
+  ...partialArgs: unknown[]
+): (...args: unknown[]) => ReturnType<T> {
+  const call = (args: unknown[]): ReturnType<T> =>
+    (func as (this: unknown, ...args: never[]) => ReturnType<T>).apply(thisArg, args as never[]);
+
+  return function (...args: unknown[]): ReturnType<T> {
+    return call([...partialArgs, ...args]);
   };
 }

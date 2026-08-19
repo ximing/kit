@@ -50,7 +50,7 @@ describe('pascalCase', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(pascalCase(null as any)).toBe('');
-    expect(pascalCase(undefined as any)).toBe('');
+    expect(pascalCase(null as unknown as string)).toBe('');
+    expect(pascalCase(undefined as unknown as string)).toBe('');
   });
 });

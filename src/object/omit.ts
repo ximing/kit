@@ -12,12 +12,12 @@ export function omit<T extends object, K extends keyof T>(obj: T, keys: readonly
     return {} as Omit<T, K>;
   }
 
-  const result = { ...obj } as any;
+  const result = { ...obj } as Record<PropertyKey, unknown>;
   const keysSet = new Set(keys);
 
   for (const key of keysSet) {
     delete result[key];
   }
 
-  return result;
+  return result as Omit<T, K>;
 }

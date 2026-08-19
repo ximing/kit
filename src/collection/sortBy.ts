@@ -13,28 +13,30 @@
  */
 export function sortBy<T>(
   collection: T[],
-  iteratees: ((item: T) => any) | string | (((item: T) => any) | string)[],
+  iteratees: ((item: T) => unknown) | string | Array<((item: T) => unknown) | string>,
 ): T[] {
   const iterateeArray = Array.isArray(iteratees) ? iteratees : [iteratees];
 
   return [...collection].sort((a, b) => {
     for (const iteratee of iterateeArray) {
-      let aVal: any;
-      let bVal: any;
+      let aVal: unknown;
+      let bVal: unknown;
 
       if (typeof iteratee === 'function') {
         aVal = iteratee(a);
         bVal = iteratee(b);
       } else if (typeof iteratee === 'string') {
-        aVal = (a as any)[iteratee];
-        bVal = (b as any)[iteratee];
+        aVal = (a as Record<string, unknown>)[iteratee];
+        bVal = (b as Record<string, unknown>)[iteratee];
       } else {
         aVal = a;
         bVal = b;
       }
 
-      if (aVal < bVal) return -1;
-      if (aVal > bVal) return 1;
+      const left = aVal as string | number;
+      const right = bVal as string | number;
+      if (left < right) return -1;
+      if (left > right) return 1;
     }
 
     return 0;

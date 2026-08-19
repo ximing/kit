@@ -41,7 +41,7 @@ describe('repeat', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(repeat(null as any, 3)).toBe('');
-    expect(repeat(undefined as any, 3)).toBe('');
+    expect(repeat(null as unknown as string, 3)).toBe('');
+    expect(repeat(undefined as unknown as string, 3)).toBe('');
   });
 });

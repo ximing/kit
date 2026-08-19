@@ -14,7 +14,7 @@ describe('invert', () => {
   });
 
   it('should return empty object for null', () => {
-    const result = invert(null as any);
+    const result = invert(null as unknown as Record<string, string>);
     expect(result).toEqual({});
   });
 

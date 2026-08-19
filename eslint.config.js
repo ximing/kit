@@ -61,12 +61,24 @@ export default [
     rules: {
       ...(typeCheckedConfigs?.rules ?? {}),
       ...sharedOffRules,
+      '@typescript-eslint/no-explicit-any': 'error',
     },
   },
   {
     files: ['test/**/*.ts'],
+    settings: {
+      vitest: {
+        typecheck: true,
+      },
+    },
     rules: {
       ...vitest.configs.recommended.rules,
+      'vitest/expect-expect': [
+        'error',
+        {
+          assertFunctionNames: ['expect', 'expectTypeOf'],
+        },
+      ],
     },
   },
   prettierConfig,

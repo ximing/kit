@@ -24,7 +24,7 @@ describe('median', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(median(null as any)).toBe(0);
-    expect(median(undefined as any)).toBe(0);
+    expect(median(null as unknown as number[])).toBe(0);
+    expect(median(undefined as unknown as number[])).toBe(0);
   });
 });

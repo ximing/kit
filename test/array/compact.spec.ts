@@ -18,8 +18,8 @@ describe('compact', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(compact(null as any)).toEqual([]);
-    expect(compact(undefined as any)).toEqual([]);
+    expect(compact(null as unknown as number[])).toEqual([]);
+    expect(compact(undefined as unknown as number[])).toEqual([]);
   });
 
   it('should keep 0 as falsy but remove it', () => {

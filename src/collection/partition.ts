@@ -23,7 +23,7 @@ export function partition<T>(collection: T[], predicate: ((item: T, index: numbe
       result = predicate(item, index);
     } else if (typeof predicate === 'string') {
       // Handle property access like 'active'
-      result = !!(item as any)[predicate];
+      result = !!(item as Record<string, unknown>)[predicate];
     } else {
       result = !!item;
     }

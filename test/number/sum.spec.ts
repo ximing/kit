@@ -17,7 +17,7 @@ describe('sum', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(sum(null as any)).toBe(0);
-    expect(sum(undefined as any)).toBe(0);
+    expect(sum(null as unknown as number[])).toBe(0);
+    expect(sum(undefined as unknown as number[])).toBe(0);
   });
 });

@@ -45,7 +45,7 @@ describe('snakeCase', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(snakeCase(null as any)).toBe('');
-    expect(snakeCase(undefined as any)).toBe('');
+    expect(snakeCase(null as unknown as string)).toBe('');
+    expect(snakeCase(undefined as unknown as string)).toBe('');
   });
 });

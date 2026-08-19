@@ -56,7 +56,7 @@ describe('template', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(template(null as any)).toBe('');
-    expect(template(undefined as any)).toBe('');
+    expect(template(null as unknown as string)).toBe('');
+    expect(template(undefined as unknown as string)).toBe('');
   });
 });

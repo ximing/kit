@@ -20,7 +20,7 @@ describe('partial', () => {
     const obj = {
       multiplier: 2,
       add: function (a: number, b: number) {
-        return (a + b) * (this as any).multiplier;
+        return (a + b) * this.multiplier;
       },
     };
 

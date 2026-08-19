@@ -5,7 +5,7 @@ describe('bind', () => {
     const obj = {
       name: 'Alice',
       greet(greeting: string) {
-        return `${greeting}, ${(this as any).name}!`;
+        return `${greeting}, ${this.name}!`;
       },
     };
 

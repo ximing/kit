@@ -26,7 +26,7 @@ export function mergeDeep<T extends object, S extends object>(target: T, ...sour
 
           // If both values are plain objects, merge recursively
           if (isPlainObject(targetValue) && isPlainObject(sourceValue)) {
-            result[key] = mergeDeep(Object(targetValue), sourceValue as any);
+            result[key] = mergeDeep(Object(targetValue) as object, sourceValue);
           } else {
             result[key] = sourceValue;
           }

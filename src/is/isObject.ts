@@ -13,7 +13,6 @@
  * isObject(undefined) // => false
  * isObject('abc') // => false
  */
-export function isObject(value: unknown): value is Record<string, any> {
+export function isObject(value: unknown): value is object {
   return value !== null && (typeof value === 'object' || typeof value === 'function');
 }
-

@@ -49,7 +49,7 @@ describe('memoize', () => {
   it('should preserve this context', () => {
     const obj = {
       multiplier: 3,
-      multiply: memoize(function (this: any, n: number) {
+      multiply: memoize(function (this: { multiplier: number }, n: number) {
         return n * this.multiplier;
       }),
     };

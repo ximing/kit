@@ -7,12 +7,12 @@
  * uniqBy([{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 1, name: 'c' }], (item) => item.id);
  * // [{ id: 1, name: 'a' }, { id: 2, name: 'b' }]
  */
-export function uniqBy<T>(array: T[], iteratee: (item: T) => any): T[] {
+export function uniqBy<T, K = unknown>(array: T[], iteratee: (item: T) => K): T[] {
   if (!Array.isArray(array)) {
     return [];
   }
 
-  const seen = new Set<any>();
+  const seen = new Set<K>();
   const result: T[] = [];
 
   for (const item of array) {

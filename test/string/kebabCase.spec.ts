@@ -45,7 +45,7 @@ describe('kebabCase', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(kebabCase(null as any)).toBe('');
-    expect(kebabCase(undefined as any)).toBe('');
+    expect(kebabCase(null as unknown as string)).toBe('');
+    expect(kebabCase(undefined as unknown as string)).toBe('');
   });
 });

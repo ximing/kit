@@ -10,7 +10,6 @@
  * isPromise(async () => {}) // => false
  * isPromise({ then: () => {} }) // => false
  */
-export function isPromise(value: unknown): value is Promise<any> {
+export function isPromise(value: unknown): value is Promise<unknown> {
   return Object.prototype.toString.call(value) === '[object Promise]';
 }
-

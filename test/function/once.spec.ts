@@ -32,7 +32,7 @@ describe('once', () => {
   it('should preserve this context', () => {
     const obj = {
       value: 42,
-      getValue: once(function (this: any) {
+      getValue: once(function (this: { value: number }) {
         return this.value;
       }),
     };

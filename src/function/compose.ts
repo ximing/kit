@@ -18,20 +18,20 @@
  * const shout = compose(exclaim, toUpper);
  * shout('hello'); // => 'HELLO!'
  */
-export function compose<R>(...funcs: Array<(arg: any) => any>): (arg: any) => R {
+export function compose<T>(...funcs: Array<(arg: T) => T>): (arg: T) => T {
   if (funcs.length === 0) {
-    return (arg: any) => arg as R;
+    return (arg: T) => arg;
   }
 
   if (funcs.length === 1) {
     return funcs[0];
   }
 
-  return function composed(...args: any[]): any {
-    let result = args[0];
+  return function composed(arg: T): T {
+    let result = arg;
     for (let i = funcs.length - 1; i >= 0; i--) {
       result = funcs[i](result);
     }
     return result;
-  } as (arg: any) => R;
+  };
 }

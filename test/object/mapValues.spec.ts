@@ -14,7 +14,7 @@ describe('mapValues', () => {
   });
 
   it('should return empty object for null', () => {
-    const result = mapValues(null as any, (v) => v);
+    const result = mapValues(null as unknown as Record<string, unknown>, (v) => v);
     expect(result).toEqual({});
   });
 

@@ -27,7 +27,7 @@ describe('chunk', () => {
   });
 
   it('should return empty array for non-array input', () => {
-    expect(chunk(null as any, 2)).toEqual([]);
-    expect(chunk(undefined as any, 2)).toEqual([]);
+    expect(chunk(null as unknown as number[], 2)).toEqual([]);
+    expect(chunk(undefined as unknown as number[], 2)).toEqual([]);
   });
 });

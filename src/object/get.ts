@@ -10,27 +10,32 @@
  * get(obj, ['a', 'b', 'c']); // 3
  * get(obj, 'a.b.d', 'default'); // 'default'
  */
-export function get<T = any>(obj: any, path: string | readonly (string | number)[], defaultValue?: T): T {
+export function get<T = unknown, D = undefined>(
+  obj: unknown,
+  path: string | readonly (string | number)[],
+  defaultValue?: D,
+): T | D {
   if (obj == null) {
-    return defaultValue as T;
+    return defaultValue as T | D;
   }
 
   // Convert string path to array
-  const pathArray: (string | number)[] = Array.isArray(path)
-    ? [...path]
-    : (path as string)
-        .replace(/\[(\d+)\]/g, '.$1') // Convert array indices to dot notation
-        .split('.')
-        .filter(Boolean);
+  const pathArray: (string | number)[] =
+    typeof path === 'string'
+      ? path
+          .replace(/\[(\d+)\]/g, '.$1')
+          .split('.')
+          .filter(Boolean)
+      : [...path];
 
-  let result: any = obj;
+  let result: unknown = obj;
 
   for (const key of pathArray) {
-    if (result == null) {
-      return defaultValue as T;
+    if (result == null || (typeof result !== 'object' && typeof result !== 'function')) {
+      return defaultValue as T | D;
     }
-    result = result[key];
+    result = (result as Record<PropertyKey, unknown>)[key];
   }
 
-  return result === undefined ? (defaultValue as T) : result;
+  return result === undefined ? (defaultValue as T | D) : (result as T);
 }

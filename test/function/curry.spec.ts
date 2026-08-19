@@ -20,7 +20,7 @@ describe('curry', () => {
   });
 
   it('should preserve this context', () => {
-    function add(this: any, a: number, b: number) {
+    function add(this: { multiplier: number }, a: number, b: number) {
       return (a + b) * this.multiplier;
     }
     const obj = {

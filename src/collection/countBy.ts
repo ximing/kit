@@ -25,7 +25,7 @@ export function countBy<T>(
       key = iteratee(item, index);
     } else if (typeof iteratee === 'string') {
       // Handle property access like 'age'
-      key = (item as any)[iteratee];
+      key = (item as Record<string, unknown>)[iteratee] as string | number;
     } else {
       key = String(item);
     }

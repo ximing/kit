@@ -9,7 +9,6 @@
  * isArray('abc') // => false
  * isArray({ length: 0 }) // => false
  */
-export function isArray(value: unknown): value is any[] {
+export function isArray(value: unknown): value is unknown[] {
   return Array.isArray(value);
 }
-

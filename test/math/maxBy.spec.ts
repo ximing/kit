@@ -21,7 +21,7 @@ describe('maxBy', () => {
   });
 
   it('should return undefined for empty array', () => {
-    expect(maxBy([], (o: any) => o.n)).toBe(undefined);
+    expect(maxBy([] as Array<{ n: number }>, (o) => o.n)).toBe(undefined);
   });
 
   it('should handle negative values', () => {
@@ -30,7 +30,7 @@ describe('maxBy', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(maxBy(null as any, () => 0)).toBe(undefined);
-    expect(maxBy(undefined as any, () => 0)).toBe(undefined);
+    expect(maxBy(null as unknown as number[], () => 0)).toBe(undefined);
+    expect(maxBy(undefined as unknown as number[], () => 0)).toBe(undefined);
   });
 });

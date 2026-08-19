@@ -9,12 +9,12 @@ describe('pick', () => {
 
   it('should handle non-existent keys', () => {
     const obj = { a: 1, b: 2 };
-    const result = pick(obj, ['a', 'c'] as any);
+    const result = pick(obj, ['a', 'c'] as unknown as Array<keyof typeof obj>);
     expect(result).toEqual({ a: 1 });
   });
 
   it('should return empty object for null', () => {
-    const result = pick(null as any, ['a']);
+    const result = pick(null as unknown as Record<string, unknown>, ['a']);
     expect(result).toEqual({});
   });
 

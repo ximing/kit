@@ -10,7 +10,6 @@
  * isMap({}) // => false
  * isMap(new WeakMap()) // => false
  */
-export function isMap(value: unknown): value is Map<any, any> {
+export function isMap(value: unknown): value is Map<unknown, unknown> {
   return Object.prototype.toString.call(value) === '[object Map]';
 }
-

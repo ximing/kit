@@ -7,7 +7,7 @@
  * flatten([1, [2, 3], [4, [5]]]); // [1, 2, 3, 4, [5]]
  * flatten([1, [2, 3], [4, [5]]], 2); // [1, 2, 3, 4, 5]
  */
-export function flatten<T>(array: any[], depth: number = 1): T[] {
+export function flatten<T>(array: readonly unknown[], depth: number = 1): T[] {
   if (!Array.isArray(array)) {
     return [];
   }
@@ -20,7 +20,7 @@ export function flatten<T>(array: any[], depth: number = 1): T[] {
 
   for (const item of array) {
     if (Array.isArray(item) && depth > 0) {
-      result.push(...(flatten(item, depth - 1) as any));
+      result.push(...flatten<T>(item, depth - 1));
     } else {
       result.push(item as T);
     }

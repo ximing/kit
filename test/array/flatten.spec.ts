@@ -19,6 +19,6 @@ describe('flatten', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(flatten(null as any)).toEqual([]);
+    expect(flatten(null as unknown as number[])).toEqual([]);
   });
 });

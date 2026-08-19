@@ -25,11 +25,16 @@ describe('merge', () => {
 
   it('should ignore null and undefined sources', () => {
     const obj = { a: 1 };
-    const result = merge(obj, null as any, undefined as any, { b: 2 });
+    const result = merge(
+      obj,
+      null as unknown as Record<string, unknown>,
+      undefined as unknown as Record<string, unknown>,
+      { b: 2 },
+    );
     expect(result).toEqual({ a: 1, b: 2 });
   });
 
   it('should throw on null target', () => {
-    expect(() => merge(null as any, { a: 1 })).toThrow(TypeError);
+    expect(() => merge(null as unknown as Record<string, unknown>, { a: 1 })).toThrow(TypeError);
   });
 });

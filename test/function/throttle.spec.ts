@@ -127,7 +127,7 @@ describe('throttle', () => {
   it('should preserve this context', () => {
     const obj = {
       value: 42,
-      getValue: throttle(function (this: any) {
+      getValue: throttle(function (this: { value: number }) {
         return this.value;
       }, 100),
     };

@@ -124,7 +124,7 @@ describe('debounce', () => {
   it('should preserve this context', () => {
     const obj = {
       value: 42,
-      getValue: debounce(function (this: any) {
+      getValue: debounce(function (this: { value: number }) {
         return this.value;
       }, 100),
     };

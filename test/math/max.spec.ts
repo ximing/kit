@@ -20,7 +20,7 @@ describe('max', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(max(null as any)).toBe(undefined);
-    expect(max(undefined as any)).toBe(undefined);
+    expect(max(null as unknown as number[])).toBe(undefined);
+    expect(max(undefined as unknown as number[])).toBe(undefined);
   });
 });

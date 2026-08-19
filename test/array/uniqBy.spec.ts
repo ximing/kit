@@ -26,6 +26,6 @@ describe('uniqBy', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(uniqBy(null as any, (item) => item)).toEqual([]);
+    expect(uniqBy(null as unknown as number[], (item) => item)).toEqual([]);
   });
 });

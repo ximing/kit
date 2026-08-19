@@ -37,7 +37,7 @@ describe('trimStart', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(trimStart(null as any)).toBe('');
-    expect(trimStart(undefined as any)).toBe('');
+    expect(trimStart(null as unknown as string)).toBe('');
+    expect(trimStart(undefined as unknown as string)).toBe('');
   });
 });

@@ -22,6 +22,6 @@ describe('drop', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(drop(null as any, 2)).toEqual([]);
+    expect(drop(null as unknown as number[], 2)).toEqual([]);
   });
 });

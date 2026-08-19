@@ -9,7 +9,6 @@
  * isWeakSet(new Set()) // => false
  * isWeakSet({}) // => false
  */
-export function isWeakSet(value: unknown): value is WeakSet<any> {
+export function isWeakSet(value: unknown): value is WeakSet<object> {
   return Object.prototype.toString.call(value) === '[object WeakSet]';
 }
-

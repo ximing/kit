@@ -30,7 +30,7 @@ describe('capitalize', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(capitalize(null as any)).toBe(null);
-    expect(capitalize(undefined as any)).toBe(undefined);
+    expect(capitalize(null as unknown as string)).toBe(null);
+    expect(capitalize(undefined as unknown as string)).toBe(undefined);
   });
 });

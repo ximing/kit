@@ -25,23 +25,27 @@
  * memoized(1, 2); // => 3 (calculates)
  * memoized(1, 2); // => 3 (cached)
  */
-export function memoize<T extends (...args: any[]) => any>(
+export function memoize<T extends (...args: never[]) => unknown>(
   func: T,
-  resolver?: (...args: Parameters<T>) => any,
-): T & { cache: Map<any, ReturnType<T>> } {
-  const cache = new Map<any, ReturnType<T>>();
+  resolver?: (...args: Parameters<T>) => unknown,
+): T & { cache: Map<unknown, ReturnType<T>> } {
+  type Memoized = T & { cache: Map<unknown, ReturnType<T>> };
 
-  const memoized = function (this: any, ...args: Parameters<T>): ReturnType<T> {
-    const key = resolver ? resolver.apply(this, args) : args[0];
+  const cache = new Map<unknown, ReturnType<T>>();
+  const call = (thisArg: unknown, args: Parameters<T>): ReturnType<T> =>
+    (func as (this: unknown, ...args: Parameters<T>) => ReturnType<T>).apply(thisArg, args);
+
+  const memoized = function (this: unknown, ...args: Parameters<T>): ReturnType<T> {
+    const key = resolver ? resolver.apply(this as ThisParameterType<typeof resolver>, args) : args[0];
 
     if (cache.has(key)) {
       return cache.get(key)!;
     }
 
-    const result = func.apply(this, args);
+    const result = call(this, args);
     cache.set(key, result);
     return result;
-  } as T & { cache: Map<any, ReturnType<T>> };
+  } as Memoized;
 
   memoized.cache = cache;
 

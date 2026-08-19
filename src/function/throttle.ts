@@ -20,35 +20,40 @@
  * const throttled = throttle(() => console.log('Hello'), 1000, { leading: false });
  * throttled(); // Waits 1 second before logging 'Hello'
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: never[]) => unknown>(
   func: T,
   wait = 0,
   options: {
     leading?: boolean;
     trailing?: boolean;
   } = {},
-): T & { cancel: () => void; flush: () => void } {
+): T & { cancel(): void; flush(): ReturnType<T> } {
   const { leading = true, trailing = true } = options;
+
+  type ThrottledFn = T & { cancel(): void; flush(): ReturnType<T> };
+
+  const invoke = (thisArg: unknown, args: Parameters<T>): ReturnType<T> =>
+    (func as (this: unknown, ...args: Parameters<T>) => ReturnType<T>).apply(thisArg, args);
 
   let timerId: ReturnType<typeof setTimeout> | undefined;
   let lastCallTime: number | undefined;
   let lastInvokeTime = 0;
-  let lastArgs: any[] | undefined;
-  let lastThis: any;
-  let result: any;
+  let lastArgs: Parameters<T> | undefined;
+  let lastThis: unknown;
+  let result: ReturnType<T> | undefined;
 
   function invokeFunc(time: number) {
     const args = lastArgs!;
     const thisArg = lastThis;
 
-    lastArgs = lastThis = undefined;
+    lastArgs = undefined;
+    lastThis = undefined;
     lastInvokeTime = time;
-    result = func.apply(thisArg, args);
+    result = invoke(thisArg, args);
     return result;
   }
 
   function leadingEdge(time: number) {
-    // Reset any `maxWait` timer.
     lastInvokeTime = time;
     // Start the timer for the trailing edge.
     timerId = setTimeout(timerExpired, wait);
@@ -70,7 +75,7 @@ export function throttle<T extends (...args: any[]) => any>(
 
     // Either this is the first call, activity has stopped and we're at the
     // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `wait` limit.
+    // it as the trailing edge, or we've hit the wait limit.
     return (
       lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || timeSinceLastInvoke >= wait
     );
@@ -93,7 +98,8 @@ export function throttle<T extends (...args: any[]) => any>(
     if (trailing && lastArgs) {
       return invokeFunc(time);
     }
-    lastArgs = lastThis = undefined;
+    lastArgs = undefined;
+    lastThis = undefined;
     return result;
   }
 
@@ -102,14 +108,17 @@ export function throttle<T extends (...args: any[]) => any>(
       clearTimeout(timerId);
     }
     lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
+    lastArgs = undefined;
+    lastCallTime = undefined;
+    lastThis = undefined;
+    timerId = undefined;
   }
 
   function flush() {
     return timerId === undefined ? result : trailingEdge(Date.now());
   }
 
-  function throttled(this: any, ...args: any[]) {
+  function throttled(this: unknown, ...args: Parameters<T>): ReturnType<T> {
     const time = Date.now();
     const isInvoking = shouldInvoke(time);
 
@@ -119,7 +128,7 @@ export function throttle<T extends (...args: any[]) => any>(
 
     if (isInvoking) {
       if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
+        return leadingEdge(lastCallTime) as ReturnType<T>;
       }
       // Handle invocations in a tight loop.
       timerId = setTimeout(timerExpired, wait);
@@ -128,11 +137,11 @@ export function throttle<T extends (...args: any[]) => any>(
     if (timerId === undefined) {
       timerId = setTimeout(timerExpired, wait);
     }
-    return result;
+    return result as ReturnType<T>;
   }
 
-  throttled.cancel = cancel;
-  throttled.flush = flush;
+  (throttled as ThrottledFn).cancel = cancel;
+  (throttled as ThrottledFn).flush = flush as () => ReturnType<T>;
 
-  return throttled as T & { cancel: () => void; flush: () => void };
+  return throttled as ThrottledFn;
 }

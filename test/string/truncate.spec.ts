@@ -48,7 +48,7 @@ describe('truncate', () => {
   });
 
   it('should handle non-string input', () => {
-    expect(truncate(null as any)).toBe('');
-    expect(truncate(undefined as any)).toBe('');
+    expect(truncate(null as unknown as string)).toBe('');
+    expect(truncate(undefined as unknown as string)).toBe('');
   });
 });

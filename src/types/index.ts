@@ -3,11 +3,6 @@
  */
 
 /**
- * Any type - used when we accept any value
- */
-export type Any = any;
-
-/**
  * Primitive types
  */
 export type Primitive = string | number | boolean | symbol | null | undefined;
@@ -15,12 +10,12 @@ export type Primitive = string | number | boolean | symbol | null | undefined;
 /**
  * Object type
  */
-export type ObjectType = Record<string, Any>;
+export type ObjectType = Record<string, unknown>;
 
 /**
  * Function type
  */
-export type FunctionType = (...args: Any[]) => Any;
+export type FunctionType = (...args: never[]) => unknown;
 
 /**
  * Iteratee function type

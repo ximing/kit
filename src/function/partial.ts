@@ -18,11 +18,14 @@
  * const add5 = partial(add, 5);
  * add5(10, 15); // => 30
  */
-export function partial<T extends (...args: any[]) => any>(
+export function partial<T extends (...args: never[]) => unknown>(
   func: T,
-  ...partialArgs: any[]
-): (...args: any[]) => ReturnType<T> {
-  return function (this: any, ...args: any[]): ReturnType<T> {
-    return func.apply(this, [...partialArgs, ...args]);
+  ...partialArgs: unknown[]
+): (...args: unknown[]) => ReturnType<T> {
+  const call = (thisArg: unknown, args: unknown[]): ReturnType<T> =>
+    (func as (this: unknown, ...args: never[]) => ReturnType<T>).apply(thisArg, args as never[]);
+
+  return function (this: unknown, ...args: unknown[]): ReturnType<T> {
+    return call(this, [...partialArgs, ...args]);
   };
 }

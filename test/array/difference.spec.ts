@@ -19,6 +19,6 @@ describe('difference', () => {
   });
 
   it('should handle non-array input', () => {
-    expect(difference(null as any, [1, 2])).toEqual([]);
+    expect(difference(null as unknown as number[], [1, 2])).toEqual([]);
   });
 });
