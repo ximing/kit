@@ -1,0 +1,22 @@
+{
+  "name": "kit",
+  "version": "1.0.0",
+  "description": "@rabjs/kit skills for coding agents: using-rabjs-kit (when to use kit vs native APIs), adding-kit-function (how to add a public function), migrating-lodash-to-kit (replace lodash).",
+  "author": {
+    "name": "ximing",
+    "homepage": "https://github.com/ximing"
+  },
+  "homepage": "https://github.com/ximing/kit",
+  "license": "MIT",
+  "keywords": ["kit", "rabjs", "lodash", "utilities", "typescript", "skills"],
+  "skills": "./skills/",
+  "skillInstructions": "kit skills tool mapping for Kimi Code:\n\n- When a kit skill refers to fetching a URL or fetching documentation, use Kimi Code's `FetchURL` tool; when it asks to search the web, use `WebSearch`.\n- When a kit skill asks to run shell commands (pnpm test, pnpm build, pnpm docs:catalog), use `Bash`.\n- When a kit skill asks to read or edit project files, use `Read`, `Write`, `Edit`, `Grep`, and `Glob` by their actual exposed names.\n- Invoke kit skills with Kimi Code's native `Skill` tool.",
+  "interface": {
+    "displayName": "@rabjs/kit",
+    "shortDescription": "Skills for the @rabjs/kit utility library",
+    "longDescription": "Use @rabjs/kit skills to pick kit vs native APIs, add public functions in this repo, and migrate from lodash without inventing helpers kit already has.",
+    "developerName": "ximing",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/ximing/kit"
+  }
+}

@@ -4,7 +4,7 @@ import { homePath, withLocale } from '../lib/paths';
 
 export function Header() {
   const { locale, prefix, t } = useI18n();
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const navClass = ({ isActive }: { isActive: boolean }) => (isActive ? 'nav-link is-active' : 'nav-link');
 
   return (
@@ -30,13 +30,21 @@ export function Header() {
           {t.nav.skills}
         </NavLink>
         <span className="lang-toggle" role="group" aria-label="Language">
-          <Link className={locale === 'en' ? 'lang is-active' : 'lang'} to={withLocale(pathname, 'en')} lang="en">
+          <Link
+            className={locale === 'en' ? 'lang is-active' : 'lang'}
+            to={`${withLocale(pathname, 'en')}${hash}`}
+            lang="en"
+          >
             {t.nav.langEn}
           </Link>
           <span className="lang-slash" aria-hidden="true">
             /
           </span>
-          <Link className={locale === 'zh' ? 'lang is-active' : 'lang'} to={withLocale(pathname, 'zh')} lang="zh">
+          <Link
+            className={locale === 'zh' ? 'lang is-active' : 'lang'}
+            to={`${withLocale(pathname, 'zh')}${hash}`}
+            lang="zh"
+          >
             {t.nav.langZh}
           </Link>
         </span>

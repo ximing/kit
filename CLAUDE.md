@@ -50,4 +50,4 @@ Source file + category `index.ts` re-export + Vitest spec + `pnpm docs:catalog`.
 - `remove` returns removed items and does not mutate the input.
 - No `any` in public signatures.
 - Docs site base path is `/kit/`.
-- Skills stay in `skills/`. Do not install them to `~/.grok/skills` or `~/.agents/skills`.
+- Skills stay in `skills/`. Install them via this repo's plugin manifests (README). Do not copy them to `~/.grok/skills` or `~/.agents/skills`.

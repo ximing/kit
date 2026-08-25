@@ -24,6 +24,7 @@ export const en = {
     featured: 'Featured',
     categories: 'Categories',
     functions: (n: number) => `${n} functions`,
+    agentsCta: 'Coding agents: install as a plugin',
   },
   api: {
     indexTitle: 'API',
@@ -47,7 +48,7 @@ export const en = {
   },
   skills: {
     title: 'Skills',
-    lead: 'Repo-local skills for coding agents. They live only in this repository — do not copy them to ~/.grok/skills or ~/.agents/skills.',
+    lead: 'Plain SKILL.md files for coding agents. Install this repository as a plugin in your tool — do not copy them into ~/.grok/skills or ~/.agents/skills.',
     useWhen: 'Use when',
     viewOnGithub: 'View SKILL.md on GitHub',
     items: [
@@ -68,6 +69,46 @@ export const en = {
         href: 'https://github.com/ximing/kit/blob/main/skills/migrating-lodash-to-kit/SKILL.md',
       },
     ],
+  },
+  plugins: {
+    title: 'Install as a plugin',
+    lead: 'The same skills work in every tool. Each tool has its own plugin manifest in this repo, so install once per tool you use.',
+    copy: 'Copy',
+    copied: 'Copied',
+    tools: {
+      claude: {
+        label: 'Claude Code',
+        note: 'Or copy the three skill directories into ~/.claude/skills/. Manifest: .claude-plugin/',
+      },
+      codex: {
+        label: 'Codex',
+        note: 'This repo is a Codex marketplace (.agents/plugins/marketplace.json). After adding it, you can also open /plugins and search for kit.',
+      },
+      cursor: {
+        label: 'Cursor',
+        note: 'Manifest: .cursor-plugin/plugin.json. If the slash command is unavailable, search for kit in the Cursor plugin marketplace.',
+      },
+      grok: {
+        label: 'Grok',
+        note: 'This repo is a Grok marketplace (.grok-plugin/marketplace.json). Direct install: grok plugin install ximing/kit --trust',
+      },
+      kimi: {
+        label: 'Kimi Code',
+        note: 'Start a new session (/new) after installing so the plugin loads.',
+      },
+      opencode: {
+        label: 'OpenCode',
+        note: '.opencode/plugins/kit.js registers skills/ in this repo. If git install does not load, set "skills" to the kit skills/ directory.',
+      },
+      pi: {
+        label: 'Pi',
+        note: 'package.json declares skills/ for Pi native discovery (keywords: pi-package).',
+      },
+      manual: {
+        label: 'Manual',
+        note: 'Last resort. Prefer the plugin command for your tool so updates stay in git.',
+      },
+    },
   },
   notFound: {
     title: 'Page not found',

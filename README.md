@@ -8,14 +8,14 @@
 
 Typed lodash-shaped utilities for humans and coding agents.
 
-| Claim                                          | lodash                | es-toolkit | @rabjs/kit 1.0                    |
-| ---------------------------------------------- | --------------------- | ---------- | --------------------------------- |
-| lodash-shaped names / arity                    | yes                   | mostly     | yes, explicit                     |
-| TypeScript-native, no `any` in public APIs     | no                    | yes        | yes                               |
-| Immutable by default                           | no (`remove` mutates) | mixed      | yes                               |
-| Dual ESM + CJS, generated `exports`            | CJS-first             | yes        | yes (tsdown)                      |
-| Agent assets (`llms.txt`, skills, `AGENTS.md`) | no                    | no         | yes                               |
-| Interactive Vite catalog docs                  | no                    | partial    | catalog-first + per-fn playground |
+| Claim                                               | lodash                | es-toolkit | @rabjs/kit 1.0                    |
+| --------------------------------------------------- | --------------------- | ---------- | --------------------------------- |
+| lodash-shaped names / arity                         | yes                   | mostly     | yes, explicit                     |
+| TypeScript-native, no `any` in public APIs          | no                    | yes        | yes                               |
+| Immutable by default                                | no (`remove` mutates) | mixed      | yes                               |
+| Dual ESM + CJS, generated `exports`                 | CJS-first             | yes        | yes (tsdown)                      |
+| Agent assets (`llms.txt`, skills, plugin manifests) | no                    | no         | yes                               |
+| Interactive Vite catalog docs                       | no                    | partial    | catalog-first + per-fn playground |
 
 ## Install
 
@@ -73,15 +73,94 @@ Representative functions (full list in [`llms.txt`](./llms.txt) and the [docs ca
 - **collection** — `groupBy`, `sortBy`, `partition`, `keyBy`
 - **math** — `max`, `min`, `maxBy`, `sumBy`
 
-## Agents
+## Coding agent plugins
 
-This library is meant to be used from coding agents as well as by people.
+This library is meant to be used from coding agents as well as by people. Point an agent at [`llms.txt`](./llms.txt) or the [agent guide](https://ximing.github.io/kit/guide/agents).
 
-- API index: [`llms.txt`](./llms.txt)
-- Repo skills: [`skills/`](./skills/) (`using-rabjs-kit`, `adding-kit-function`, `migrating-lodash-to-kit`)
-- Agent guide: [https://ximing.github.io/kit/guide/agents](https://ximing.github.io/kit/guide/agents)
+[Agent Skills](https://code.claude.com/docs/en/claude-code/skills) live in [`skills/`](./skills):
 
-Skills live only in this repository. Do not copy them into `~/.grok/skills` or `~/.agents/skills`.
+| Skill                                                         | Purpose                                                             |
+| ------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [`using-rabjs-kit`](./skills/using-rabjs-kit)                 | When to pick kit vs native APIs, import styles, immutable `remove`. |
+| [`adding-kit-function`](./skills/adding-kit-function)         | File layout, JSDoc, Vitest, catalog regen — for work in this repo.  |
+| [`migrating-lodash-to-kit`](./skills/migrating-lodash-to-kit) | Name map, `remove` mutation difference, no `_.chain` / `fp`.        |
+
+The skills are plain `SKILL.md` documents with no runtime dependency, so the same files work across coding tools. Installation differs by tool — if you use more than one, install separately for each. Copy-paste UI: [docs → Skills](https://ximing.github.io/kit/skills#install).
+
+Do not copy them into `~/.grok/skills` or `~/.agents/skills`. Use the plugin command for your tool instead.
+
+### Claude Code
+
+```bash
+/plugin marketplace add ximing/kit
+/plugin install kit@kit
+```
+
+Or manually: `cp -r skills/using-rabjs-kit skills/adding-kit-function skills/migrating-lodash-to-kit ~/.claude/skills/`
+
+### Codex App / Codex CLI
+
+This repository doubles as a Codex plugin marketplace (see [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json)), so no official listing is needed:
+
+```bash
+codex plugin marketplace add ximing/kit
+codex plugin add kit@kit
+```
+
+In the Codex app or TUI you can also open `/plugins` and search for `kit` after adding the marketplace.
+
+### Cursor
+
+The plugin manifest lives at [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). In Cursor Agent chat run `/add-plugin kit`, or search for `kit` in the plugin marketplace. Manually, copy the skill directories into `.cursor/skills/` of your project.
+
+### Grok Build CLI
+
+This repository is a Grok plugin marketplace (see [`.grok-plugin/marketplace.json`](.grok-plugin/marketplace.json)):
+
+```bash
+grok plugin marketplace add ximing/kit
+grok plugin install kit --trust
+```
+
+You can also install the plugin directly from the repo:
+
+```bash
+grok plugin install ximing/kit --trust
+```
+
+### Kimi Code
+
+```text
+/plugins install https://github.com/ximing/kit
+```
+
+Then start a fresh session (`/new`) so the plugin loads.
+
+### OpenCode
+
+Working in this repository, [`.opencode/plugins/kit.js`](.opencode/plugins/kit.js) registers `skills/` automatically. In another project, add the plugin to `opencode.json` (global or project-level):
+
+```json
+{
+  "plugin": ["kit@git+https://github.com/ximing/kit.git"]
+}
+```
+
+If git install does not load (this package's `main` is the library, not the plugin), point OpenCode at the skills directory instead:
+
+```json
+{
+  "skills": ["./path/to/kit/skills"]
+}
+```
+
+### Pi
+
+```bash
+pi install git:github.com/ximing/kit
+```
+
+The package manifest in [`package.json`](package.json) declares the `skills/` directory for Pi's native skill discovery.
 
 ## Docs
 

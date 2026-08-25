@@ -9,6 +9,8 @@ description: Use when writing application code that needs array, object, string,
 pnpm add @rabjs/kit
 ```
 
+For coding agents in another project, install this repository as a plugin (Claude Code, Codex, Cursor, Grok, Kimi Code, OpenCode, Pi). Commands: [README](../../README.md) or https://ximing.github.io/kit/skills#install.
+
 ## Imports
 
 Named exports only. Three equivalent styles:

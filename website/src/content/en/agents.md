@@ -1,6 +1,6 @@
 # Agents
 
-@rabjs/kit is meant to be used from coding agents as well as by people. Point an agent at the repo (or at this site) and keep skills in-repo.
+@rabjs/kit is meant to be used from coding agents as well as by people. Point an agent at the repo (or at this site).
 
 ## llms.txt
 
@@ -16,9 +16,11 @@ Three skills live under [`skills/`](https://github.com/ximing/kit/tree/main/skil
 - [`adding-kit-function`](https://github.com/ximing/kit/blob/main/skills/adding-kit-function/SKILL.md) — file layout, JSDoc, Vitest, catalog regen.
 - [`migrating-lodash-to-kit`](https://github.com/ximing/kit/blob/main/skills/migrating-lodash-to-kit/SKILL.md) — name map, `remove` mutation difference, no `_.chain` / `fp`.
 
-Skills live **only in this repository**. Do not copy them into `~/.grok/skills` or `~/.agents/skills`.
+They are plain `SKILL.md` files. The same files work in Claude Code, Codex, Cursor, Grok, Kimi Code, OpenCode, and Pi. This repository ships a plugin manifest per tool — install on the [Skills page](/kit/skills#install).
 
-See the [Skills page](/kit/skills) for the `Use when` lines.
+When you work **inside this repo**, agents already see `skills/`. Plugin install is for other projects that depend on `@rabjs/kit`.
+
+Do not copy skills into `~/.grok/skills` or `~/.agents/skills`.
 
 ## Working in the repo
 

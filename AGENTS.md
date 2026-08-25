@@ -29,4 +29,4 @@ Coverage floor is 90% branches, functions, lines, and statements. Package manage
 
 ## Skills
 
-Skills live only under [`skills/`](./skills/). Do not copy them to `~/.grok/skills` or `~/.agents/skills`.
+Skills live only under [`skills/`](./skills/). Install them into coding tools via this repository's plugin manifests (see README). Do not copy them to `~/.grok/skills` or `~/.agents/skills`.

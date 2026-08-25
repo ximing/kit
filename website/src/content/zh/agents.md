@@ -1,6 +1,6 @@
 # Agent
 
-@rabjs/kit 同时面向人和 coding agent。把仓库（或本站）指给 agent，skills 留在仓库里。
+@rabjs/kit 同时面向人和 coding agent。把仓库（或本站）指给 agent。
 
 ## llms.txt
 
@@ -16,9 +16,11 @@
 - [`adding-kit-function`](https://github.com/ximing/kit/blob/main/skills/adding-kit-function/SKILL.md) — 文件布局、JSDoc、Vitest、更新目录。
 - [`migrating-lodash-to-kit`](https://github.com/ximing/kit/blob/main/skills/migrating-lodash-to-kit/SKILL.md) — 名称对照、`remove` 是否修改原数组、没有 `_.chain` / `fp`。
 
-Skills **只放在本仓库里**。不要复制到 `~/.grok/skills` 或 `~/.agents/skills`。
+它们是纯 `SKILL.md`。同一份文件可用于 Claude Code、Codex、Cursor、Grok、Kimi Code、OpenCode 和 Pi。本仓库为每个工具提供了 plugin 清单 — 在 [Skills 页](/kit/zh/skills#install) 按工具安装。
 
-`Use when` 说明见 [Skills 页](/kit/zh/skills)。
+在**本仓库里**改代码时，agent 已经能看到 `skills/`。Plugin 安装是给依赖 `@rabjs/kit` 的其他项目用的。
+
+不要把 skill 复制到 `~/.grok/skills` 或 `~/.agents/skills`。
 
 ## 在本仓库里改代码
 

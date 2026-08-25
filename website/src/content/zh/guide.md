@@ -52,6 +52,10 @@ arr; // [1, 2, 3, 4, 5]
 
 `delay`、`timeout`、`retry` 接受可选的 `AbortSignal`。不传时行为与以前相同。
 
+## Coding agent
+
+把本仓库作为 plugin 安装，其他项目里的 agent 才能按 kit 的约定写代码。各工具命令见 [Skills](/kit/zh/skills#install)。
+
 ## 接下来
 
 - [API 目录](/kit/zh/api)

@@ -35,6 +35,27 @@
     "date",
     "collection"
   ],
+  "keywords": [
+    "utility",
+    "toolkit",
+    "lodash",
+    "helpers",
+    "typescript",
+    "array",
+    "object",
+    "string",
+    "function",
+    "promise",
+    "date",
+    "collection",
+    "pi-package",
+    "skills"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc --noEmit -p tsconfig.json",

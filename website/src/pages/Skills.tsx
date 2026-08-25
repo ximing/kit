@@ -1,3 +1,4 @@
+import { PluginInstall } from '../components/PluginInstall';
 import { useI18n } from '../lib/i18n';
 import { useTitle } from '../lib/title';
 
@@ -11,6 +12,7 @@ export function Skills() {
         <h1>{t.skills.title}</h1>
         <p>{t.skills.lead}</p>
       </header>
+      <PluginInstall />
       <ul className="skill-list">
         {t.skills.items.map((skill) => (
           <li key={skill.name} className="skill-card">

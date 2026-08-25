@@ -52,6 +52,10 @@ Keepers: `arr.filter((item, i) => !predicate(item, i))` or `partition`.
 
 `delay`, `timeout`, and `retry` accept an optional `AbortSignal`. Omitting it keeps the previous behavior.
 
+## Coding agents
+
+Install this repository as a plugin so an agent in another project knows kit conventions. Per-tool commands: [Skills](/kit/skills#install).
+
 ## Next
 
 - [API catalog](/kit/api)

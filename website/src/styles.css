@@ -206,6 +206,83 @@ a:hover {
   border: 1px solid var(--rule);
 }
 
+.install-extra {
+  margin: -1.15rem 0 1.75rem;
+  font-size: 0.9rem;
+}
+
+.plugin-install {
+  margin: 0 0 2.25rem;
+  scroll-margin-top: 1rem;
+}
+
+.plugin-lead {
+  margin: 0 0 0.85rem;
+  color: var(--mute);
+  max-width: 48rem;
+}
+
+.tool-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.85rem;
+}
+
+.tool-tab {
+  appearance: none;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-2);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.tool-tab:hover,
+.tool-tab.is-active {
+  background: var(--wash);
+}
+
+.tool-tab.is-active {
+  color: var(--ink);
+}
+
+.copy-block {
+  position: relative;
+}
+
+.copy-block pre {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  background: var(--paper-2);
+  border: 1px solid var(--ink);
+  padding: 0.85rem 5.5rem 0.85rem 1rem;
+  overflow-x: auto;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.copy-block .btn {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+}
+
+.plugin-note {
+  margin: 0.65rem 0 0;
+  color: var(--mute);
+  font-size: 0.9rem;
+  max-width: 48rem;
+}
+
+.skills-page .skill-list {
+  margin-top: 0.5rem;
+}
+
 .btn {
   appearance: none;
   border: 1px solid var(--ink);
@@ -563,6 +640,14 @@ mark {
   margin: 1.6rem 0 0.55rem;
 }
 
+.skills-page .plugin-install h2 {
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: var(--ink);
+  margin: 0 0 0.65rem;
+}
+
 .fn-page pre,
 .prose pre,
 .playground-out {
@@ -760,6 +845,11 @@ th {
 }
 
 @media (max-width: 640px) {
+  .copy-block pre {
+    padding-right: 1rem;
+    padding-top: 2.7rem;
+  }
+
   .shell {
     width: min(var(--measure), calc(100% - 1.25rem));
   }

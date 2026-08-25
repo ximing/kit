@@ -59,6 +59,9 @@ export function Home() {
           {copied ? t.home.copied : t.home.copy}
         </button>
       </div>
+      <p className="install-extra">
+        <Link to={`${prefix}/skills#install`}>{t.home.agentsCta}</Link>
+      </p>
       <div className="search-block" id="search">
         <label className="search-label" htmlFor="catalog-search">
           {t.home.searchLabel}
@@ -130,6 +133,8 @@ export function Home() {
         <Link to={apiPath(prefix)}>{t.api.indexTitle}</Link>
         {' · '}
         <Link to={`${prefix}/guide`}>{t.nav.guide}</Link>
+        {' · '}
+        <Link to={`${prefix}/skills`}>{t.nav.skills}</Link>
       </p>
     </div>
   );

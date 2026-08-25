@@ -47,4 +47,4 @@ Agent walkthrough: [`skills/adding-kit-function/SKILL.md`](./skills/adding-kit-f
 
 ## Skills
 
-The files under `skills/` are repo documentation for coding agents. Do not copy them to `~/.grok/skills` or `~/.agents/skills`.
+The files under `skills/` are documentation for coding agents. This repository ships plugin manifests so Claude Code, Codex, Cursor, Grok, Kimi Code, OpenCode, and Pi can install them. Do not copy them to `~/.grok/skills` or `~/.agents/skills` — use the plugin command for your tool (see README).

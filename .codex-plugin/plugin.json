@@ -1,0 +1,24 @@
+{
+  "name": "kit",
+  "version": "1.0.0",
+  "description": "@rabjs/kit skills for coding agents: using-rabjs-kit (when to use kit vs native APIs), adding-kit-function (how to add a public function), migrating-lodash-to-kit (replace lodash).",
+  "author": {
+    "name": "ximing",
+    "url": "https://github.com/ximing"
+  },
+  "homepage": "https://github.com/ximing/kit",
+  "repository": "https://github.com/ximing/kit",
+  "license": "MIT",
+  "keywords": ["kit", "rabjs", "lodash", "utilities", "typescript", "skills"],
+  "skills": "./skills/",
+  "hooks": {},
+  "interface": {
+    "displayName": "@rabjs/kit",
+    "shortDescription": "Skills for the @rabjs/kit utility library",
+    "longDescription": "Use @rabjs/kit skills to pick kit vs native APIs, add public functions in this repo, and migrate from lodash without inventing helpers kit already has.",
+    "developerName": "ximing",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/ximing/kit"
+  }
+}

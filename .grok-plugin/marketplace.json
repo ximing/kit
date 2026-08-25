@@ -1,0 +1,17 @@
+{
+  "name": "kit",
+  "description": "@rabjs/kit skills for coding agents",
+  "owner": {
+    "name": "ximing"
+  },
+  "plugins": [
+    {
+      "name": "kit",
+      "description": "Skills for the @rabjs/kit utility library: using-rabjs-kit, adding-kit-function, migrating-lodash-to-kit",
+      "category": "development",
+      "source": "./",
+      "homepage": "https://github.com/ximing/kit",
+      "keywords": ["kit", "rabjs", "lodash", "utilities", "typescript", "skills"]
+    }
+  ]
+}
