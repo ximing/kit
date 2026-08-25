@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+### Patch Changes
+
+- 2f0bc31: Ship plugin manifests so coding agents can install kit skills from Claude Code, Codex, Cursor, Grok, Kimi Code, OpenCode, and Pi, and document the commands in the README and docs site.
+
 ## 1.0.0
 
 ### Major Changes

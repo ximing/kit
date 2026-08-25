@@ -1,6 +1,6 @@
 {
   "name": "@rabjs/kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typed lodash-shaped utilities for humans and coding agents.",
   "author": "ximing",
   "license": "MIT",
